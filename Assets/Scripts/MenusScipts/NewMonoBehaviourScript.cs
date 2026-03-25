@@ -96,10 +96,7 @@ public class SceneTransction : MonoBehaviour
 
     void startScene()
     {
-        
         SetAlpha(blackbackground, 0);
-        
-       
         SetAlpha(text1_P1, 0); SetAlpha(text2_P1, 0);
         SetAlpha(text1_P2, 0); SetAlpha(text2_P2, 0);
         SetAlpha(backgroundMenu, 0);
