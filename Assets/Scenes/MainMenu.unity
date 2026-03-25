@@ -1801,6 +1801,7 @@ GameObject:
   - component: {fileID: 1096977710}
   - component: {fileID: 1096977712}
   - component: {fileID: 1096977711}
+  - component: {fileID: 1096977713}
   m_Layer: 5
   m_Name: playtext
   m_TagString: Untagged
@@ -1927,6 +1928,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096977709}
   m_CullTransparentMesh: 1
+--- !u!114 &1096977713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096977709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9666f193a280be4f99d6b6de4b47b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextHoverColor
+  hoverColor: {r: 0, g: 0, b: 0, a: 1}
+  transitionSpeed: 5
 --- !u!1 &1278056673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1953,7 @@ GameObject:
   - component: {fileID: 1278056674}
   - component: {fileID: 1278056676}
   - component: {fileID: 1278056675}
+  - component: {fileID: 1278056677}
   m_Layer: 5
   m_Name: optionText
   m_TagString: Untagged
@@ -2064,6 +2080,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278056673}
   m_CullTransparentMesh: 1
+--- !u!114 &1278056677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278056673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9666f193a280be4f99d6b6de4b47b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextHoverColor
+  hoverColor: {r: 0, g: 0, b: 0, a: 1}
+  transitionSpeed: 5
 --- !u!1 &1374257573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2627,7 @@ GameObject:
   - component: {fileID: 1876223572}
   - component: {fileID: 1876223574}
   - component: {fileID: 1876223573}
+  - component: {fileID: 1876223575}
   m_Layer: 5
   m_Name: quittext
   m_TagString: Untagged
@@ -2723,6 +2754,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876223571}
   m_CullTransparentMesh: 1
+--- !u!114 &1876223575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876223571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9666f193a280be4f99d6b6de4b47b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TextHoverColor
+  hoverColor: {r: 0, g: 0, b: 0, a: 1}
+  transitionSpeed: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
