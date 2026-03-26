@@ -76,6 +76,12 @@ public class LevelSelector : MonoBehaviour
         level.isLocked = false;
         level.button.interactable = true;
     }
+    
+    
+    
+    
+    
+    
 
     public void LoadLevel(LevelButton level)
     {

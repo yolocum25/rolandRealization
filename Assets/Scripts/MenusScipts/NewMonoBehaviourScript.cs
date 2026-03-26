@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -26,16 +27,33 @@ public class SceneTransction : MonoBehaviour
     [Header("Configuración")]
     public float fadeSpeed = 1.0f;
     public float waitToLecture = 2.0f;
+    public bool skipScene = true;
+
+
+    // private void OnEnable()
+    // {
+    //     EventManager.Instance.OnFirstTimeSeen +=  introScene();
+    // }
+    //
+    // private void OnDisable()
+    // {
+    //     EventManager.Instance.OnFirstTimeSeen -=  introScene();
+    // }
+
 
     void Start()
     {
-        startScene();
-        StartCoroutine(MasterScene());
+        startScene1();
+        startScene2();
+        StartCoroutine(introScene());
+        StartCoroutine(MenuScene());
     }
 
-    IEnumerator MasterScene()
+    IEnumerator introScene(bool skip = false)
     {
         
+        if  (skipScene = false) yield break;
+        {
         yield return StartCoroutine(Fade(blackbackground, 0, 1)); 
         yield return StartCoroutine(Fade(text1_P1, 0, 1));
         yield return new WaitForSeconds(0.5f);
@@ -58,8 +76,12 @@ public class SceneTransction : MonoBehaviour
         
         blackbackground.gameObject.SetActive(false);
         SetAlpha(backgroundMenu, 1); 
-
         
+        }
+    }
+
+   IEnumerator MenuScene()
+   {
         yield return StartCoroutine(Fade(GameTittle, 0, 1));
 
         float t = 0;
@@ -94,15 +116,23 @@ public class SceneTransction : MonoBehaviour
         g.color = new Color(c.r, c.g, c.b, a);
     }
 
-    void startScene()
+     public void startScene1()
     {
         SetAlpha(blackbackground, 0);
         SetAlpha(text1_P1, 0); SetAlpha(text2_P1, 0);
         SetAlpha(text1_P2, 0); SetAlpha(text2_P2, 0);
+    }
+
+    public void startScene2()
+    {
         SetAlpha(backgroundMenu, 0);
         SetAlpha(GameTittle, 0);
-
+        
         foreach (Image img in buttonImage) { SetAlpha(img, 0); img.raycastTarget = false; }
         foreach (TextMeshProUGUI txt in buttonText) SetAlpha(txt, 0);
     }
+     
+     
+     
+     
 }

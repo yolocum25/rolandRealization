@@ -2326,6 +2326,7 @@ MonoBehaviour:
   - {fileID: 1876223573}
   fadeSpeed: 1.2
   waitToLecture: 2.3
+  SkipScene: 1
 --- !u!4 &1469144882
 Transform:
   m_ObjectHideFlags: 0

@@ -1,13 +1,25 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScene : MonoBehaviour
 {
-    public void StartGame()
+    
+    public event Action OnFirstTimeSeen;
+    
+    public void StartGame(bool Skip)
     {
+        
+        OnFirstTimeSeen?.Invoke();
+        EventManager.Instance.IntroScene(false);
+        
+        
+        
+        
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         
-    }
+}
 
     public void OptionsMenu()
     {
