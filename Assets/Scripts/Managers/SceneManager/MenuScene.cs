@@ -5,21 +5,12 @@ using UnityEngine.SceneManagement;
 public class MenuScene : MonoBehaviour
 {
     
-    public event Action OnFirstTimeSeen;
     
-    public void StartGame(bool Skip)
+    
+    public void StartGame()
     {
-        
-        OnFirstTimeSeen?.Invoke();
-        EventManager.Instance.IntroScene(false);
-        
-        
-        
-        
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        
-}
+    }
 
     public void OptionsMenu()
     {

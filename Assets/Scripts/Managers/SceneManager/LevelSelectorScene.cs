@@ -31,7 +31,7 @@ public class LevelSelector : MonoBehaviour
             
             
             
-            if (i == 0) chapters[i].isLocked = true;
+            
 
             UpdateVisuals(chapters[i]);
             

@@ -1,38 +1,21 @@
-using System;
+
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-   public static EventManager Instance {get; private set;}
+    public static GameManager Instance;
+    public bool introAlreadyPlayed = false; // Aquí guardamos si ya se vio la intro
 
-   public event Action <bool> OnFirstTimeSeen;
-   
-   
-   private void Awake()
-   {
-      if (Instance == null)
-      {
-         Instance = this;
-         DontDestroyOnLoad(gameObject);
-      }
-      else
-      {
-         Destroy(gameObject);
-      }
-
-   }
-
-   public void IntroScene(bool skip)
-   {
-      OnFirstTimeSeen?.Invoke(skip);
-   }
-   
-   
-   
-   
-   
-   
-   
-   
-   
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Esto hace que el objeto sobreviva entre escenas
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 }
