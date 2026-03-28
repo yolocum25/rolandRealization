@@ -12,7 +12,7 @@ public class LevelChanger : MonoBehaviour
         
         if (!string.IsNullOrEmpty(sceneName))
         {
-            SceneManager.LoadScene(sceneName);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
         }
         
     }

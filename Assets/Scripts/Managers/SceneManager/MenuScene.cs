@@ -9,12 +9,12 @@ public class MenuScene : MonoBehaviour
     
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void OptionsMenu()
     {
-        SceneManager.LoadScene("Options");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Options");
     }
     
     

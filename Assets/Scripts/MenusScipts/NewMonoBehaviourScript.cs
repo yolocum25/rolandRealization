@@ -190,7 +190,7 @@ public class SceneTransction : MonoBehaviour
 
         
         bool yaSeVio = false;
-        if (GameManager.Instance != null && GameManager.Instance.introAlreadyPlayed)
+        if (SceneSkipManager.Instance != null && SceneSkipManager.Instance.introAlreadyPlayed)
         {
             yaSeVio = true;
         }
@@ -214,7 +214,7 @@ public class SceneTransction : MonoBehaviour
         yield return StartCoroutine(introScene());
         
        
-        if (GameManager.Instance != null) GameManager.Instance.introAlreadyPlayed = true;
+        if (SceneSkipManager.Instance != null) SceneSkipManager.Instance.introAlreadyPlayed = true;
 
        
         yield return StartCoroutine(MenuScene());

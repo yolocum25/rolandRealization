@@ -87,7 +87,7 @@ public class LevelSelector : MonoBehaviour
     {
         if (!level.isLocked)
         {
-            SceneManager.LoadScene(level.sceneName);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(level.sceneName);
         }
     }
 }

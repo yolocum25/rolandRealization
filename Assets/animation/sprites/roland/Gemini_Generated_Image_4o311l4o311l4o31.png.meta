@@ -100,6 +100,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: roland walking
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1408
+        width: 592
+        height: 346
+      alignment: 9
+      pivot: {x: 0.7740441, y: 2.1531186}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc72d46f52390cee0800000000000000
+      internalID: -1242831705898932276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Gemini_Generated_Image_4o311l4o311l4o31_0
       rect:
         serializedVersion: 2
@@ -113,10 +135,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cc72d46f52390cee0800000000000000
-      internalID: -1242831705898932276
+      spriteID: 3b26c3c732bf4614ca518f74dcf3c772
+      internalID: -983083227
       vertices: []
       indices: 
       edges: []
@@ -133,9 +155,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: True
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gemini_Generated_Image_4o311l4o311l4o31_0: -1242831705898932276
+      Gemini_Generated_Image_4o311l4o311l4o31_0: -983083227
+      roland walking: -1242831705898932276
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

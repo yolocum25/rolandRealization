@@ -1,21 +1,34 @@
-
+﻿using System;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class EventManager : MonoBehaviour
 {
-    public static GameManager Instance;
-    public bool introAlreadyPlayed = false; // Aquí guardamos si ya se vio la intro
+    public static EventManager Instance {get; private set; }
+    
+    
+    public event Action< float,float >  OnPlayerDamaged;
+    
+    
+    
 
-    void Awake()
+    private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Esto hace que el objeto sobreviva entre escenas
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+        
+        
+        
+    }
+
+    public void PlayerDamage(float currentHealth, float maxHealth)
+    {
+        OnPlayerDamaged?.Invoke(currentHealth, maxHealth);
     }
 }
