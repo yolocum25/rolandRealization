@@ -15,10 +15,10 @@ public class PlayerMain : MonoBehaviour
         Anim = GetComponent<Animator>();
     }
     //Cuando un jugador nace..
-    private void Start()
-    {
-        
-        transform.position = GameManager.Instance.SavedPosition;
-        transform.eulerAngles = GameManager.Instance.SavedOrientation;
-    }
+    // private void Start()
+    // {
+    //     
+    //     transform.position = GameManager.Instance.SavedPosition;
+    //     transform.eulerAngles = GameManager.Instance.SavedOrientation;
+    // }
 }

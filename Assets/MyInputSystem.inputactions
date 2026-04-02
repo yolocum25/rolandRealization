@@ -3,14 +3,23 @@
     "name": "MyInputSystem",
     "maps": [
         {
-            "name": "New action map",
+            "name": "Roland_Player",
             "id": "efdde918-04cf-4f81-accc-7d629811b046",
             "actions": [
                 {
-                    "name": "movement",
-                    "type": "Value",
+                    "name": "Jump",
+                    "type": "Button",
                     "id": "c2e0bc3b-3ff5-4854-8e5a-f589dff4e2a6",
                     "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "6f8a8535-82a7-4909-aed2-94eff5c57fe5",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -20,66 +29,66 @@
                 {
                     "name": "",
                     "id": "33e5a7ca-6ac2-4325-ae75-0f741ef36af7",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "2D Vector",
-                    "id": "93d485fe-4b97-48fd-ad9a-6896111f4193",
+                    "id": "6ba79b66-0524-4a3f-9ffb-8f4cc2caf567",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "371065a3-53ec-4072-8eed-5b7b82fd8305",
+                    "id": "0b8d08de-8eed-4d2e-916e-563df0dae936",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "498238de-39ef-4e5d-b487-4423cd37ea99",
+                    "id": "80701386-1888-4ab5-ad6d-792ce5fb195a",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "5778bd46-ce10-4114-aae2-907578cc3ddf",
+                    "id": "f99148d8-cb23-4b6e-8a02-0d02805aae79",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "839dc6db-3034-4d3c-ab83-c58e3f011f8f",
+                    "id": "d174bd96-5a99-4981-8e75-d103922ae945",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

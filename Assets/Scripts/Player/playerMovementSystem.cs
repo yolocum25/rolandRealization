@@ -1,57 +1,122 @@
-using UnityEngine;
+    using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
 {
-    [Header("Configuración de Movimiento")]
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float jumpForce = 12f;
+    [Header("Movement")]
+    [SerializeField] private float movementSpeed = 8f;
+    [SerializeField] private float jumpHeight = 3f;
+
+    [Header("Ground Detection")]
+    [SerializeField] private Transform feet;
+    [SerializeField] private float detectionRadius = 0.2f;
+    [SerializeField] private LayerMask whatIsGround;
 
     private Rigidbody2D rb;
-    private Vector2 moveInput;
+    private Animator anim;
     private bool isGrounded;
+    private Vector2 inputVector;
+    private Vector3 initialScale;
 
-    [Header("Detección de Suelo")]
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private float groundCheckRadius = 0.2f;
-    [SerializeField] private LayerMask groundLayer;
+    public PlayerInput PlayerInput { get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        PlayerInput = GetComponent<PlayerInput>();
+        initialScale = transform.localScale;
+        
+        anim = GetComponent<Animator>();
+       
+        rb.freezeRotation = true;
+        
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
-    // Este método se vincula al evento "Performed" y "Canceled" del Player Input
-    public void OnMove(InputAction.CallbackContext context)
+    private void OnEnable()
     {
-        moveInput = context.ReadValue<Vector2>();
+        PlayerInput.actions["Move"].performed += UpdateMovement;
+        PlayerInput.actions["Move"].canceled += UpdateMovement;
+        PlayerInput.actions["Jump"].started += Jump;
     }
 
-    // Este método se vincula al evento del botón de Salto
-    public void OnJump(InputAction.CallbackContext context)
+    private void OnDisable()
     {
-        if (context.started && isGrounded)
+        PlayerInput.actions["Move"].performed -= UpdateMovement;
+        PlayerInput.actions["Move"].canceled -= UpdateMovement;
+        PlayerInput.actions["Jump"].started -= Jump;
+    }
+
+    private void UpdateMovement(InputAction.CallbackContext ctx)
+    {
+        inputVector = ctx.ReadValue<Vector2>();
+    }
+
+    private void Jump(InputAction.CallbackContext ctx)
+    {
+        // Solo saltar si se presiona el botón Y estamos tocando el suelo
+        if (ctx.started && isGrounded)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            float gravity = Physics2D.gravity.y * rb.gravityScale;
+            float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
+        
+            // OPCIONAL: Forzamos isGrounded a false un instante para evitar dobles saltos
+            isGrounded = false; 
+        }
+    }
+
+    private void Update()
+    {
+        GroundCheck();
+        FlipSprite();
+        float horizontalSpeed = Mathf.Abs(inputVector.x);
+        if (anim != null) 
+        {
+            anim.SetFloat("Speed", horizontalSpeed);
         }
     }
 
     private void FixedUpdate()
     {
-        // Aplicamos el movimiento horizontal
-        rb.linearVelocity = new Vector2(moveInput.x * speed, rb.linearVelocity.y);
+        Move();
+    }
 
-        // Verificamos si tocamos el suelo
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+    private void Move()
+    {
+       
+        rb.linearVelocity = new Vector2(inputVector.x * movementSpeed, rb.linearVelocity.y);
+    }
+
+    private void GroundCheck()
+    {
         
-        // Opcional: Voltear el sprite según la dirección
-        FlipSprite();
+        isGrounded = Physics2D.OverlapCircle(feet.position, detectionRadius, whatIsGround);
     }
 
     private void FlipSprite()
     {
-        if (moveInput.x > 0) transform.localScale = new Vector3(1, 1, 1);
-        else if (moveInput.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        if (inputVector.x > 0.1f)
+        {
+            
+            transform.localScale = initialScale;
+        }
+        else if (inputVector.x < -0.1f)
+        {
+            
+            transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+        }
     }
+
+    private void OnDrawGizmos()
+    {
+        if (feet != null)
+        {
+            Gizmos.color = isGrounded ? Color.green : Color.red;
+            Gizmos.DrawWireSphere(feet.position, detectionRadius);
+        }
+    }
+    
 }
+
