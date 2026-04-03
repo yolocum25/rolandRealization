@@ -5,7 +5,7 @@ public class PlayerAttackSystem : PlayerSystem
     #region AnimParameters
 
     private static readonly int Attack = Animator.StringToHash("attack");
-    private static readonly int Running = Animator.StringToHash("running");
+    
 
     #endregion
 
