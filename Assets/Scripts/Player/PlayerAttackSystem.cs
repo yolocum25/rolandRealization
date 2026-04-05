@@ -1,66 +1,87 @@
 using UnityEngine;
 using System.Collections.Generic;
-public class PlayerAttackSystem : PlayerSystem
+
+
+public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de ahí
 {
     #region AnimParameters
-
-    private static readonly int Attack = Animator.StringToHash("attack");
-    
-
+    // Usar Hash es más eficiente que usar Strings cada frame
+    private static readonly int AttackTrigger = Animator.StringToHash("attack");
     #endregion
 
+    [Header("Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
-    private float damage = 20;
+    [SerializeField] private Transform attackPoint; // El punto desde donde sale el círculo de daño
+    [SerializeField] private float attackRadius = 0.5f;
+    [SerializeField] private float damage = 20f;
+
+    private Animator anim;
     private bool attacking;
     private List<IDamageable> alreadyDamaged = new();
-    [SerializeField] private float what_is_damageble;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-   
-   
-   
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Update()
     {
-        AttackAnim();
+        // Detectar el clic
+        if (Input.GetMouseButtonDown(0) && !attacking)
+        {
+            HandleAttackInput();
+        }
+
+        // Lógica de daño mientras la ventana de ataque está abierta
         if (attacking)
         {
-            Collider2D result = Physics2D.OverlapCircle(main.InteractPoint.position, main.InteractionRadius,whatIsDamageable);
+            CheckForDamage();
+        }
+    }
 
-            if (result != null)
+    private void HandleAttackInput()
+    {
+        anim.SetTrigger(AttackTrigger);
+        // El daño no se activa aquí, sino mediante el Animation Event "OpenAttackWindow"
+    }
+
+    private void CheckForDamage()
+    {
+        // Asegúrate de que attackPoint no sea null para evitar el error "NullReference"
+        if (attackPoint == null) return;
+
+        // Esta línea detecta a todos los enemigos en el círculo
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsDamageable);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            // Intentamos obtener el componente de daño
+            if (enemy.TryGetComponent(out IDamageable damageable) && !alreadyDamaged.Contains(damageable))
             {
-                if (result.TryGetComponent(out IDamageable damageableElement)&& !alreadyDamaged.Contains(damageableElement))
-                { 
-                    damageableElement.TakeDamage(damage);
-                    alreadyDamaged.Add(damageableElement);
-                }
+                damageable.TakeDamage(damage);
+                alreadyDamaged.Add(damageable);
             }
         }
     }
-    private void AttackAnim()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            main.Anim.SetTrigger((int)Attack);
-            
-            
-                
-            
-            //1. Se lanza la animación
-            //2. Lanzar Overlap en "Interaction point"
-            //3. Preguntar si aquello detectado implementa la interfaz dañable
-            //4. Hacer daño --> Implementa un nuevo método TakeDamage(float damage) en la interfaz
-        }
-    }
-    //se ejecuta cuando el ataque llegue a su punto de impacto
-   
 
-    private void OpenAttackWindow()
+    // --- EVENTOS DE ANIMACIÓN (Se llaman desde la línea de tiempo) ---
+
+    public void OpenAttackWindow()
     {
         attacking = true;
     }
 
-    private void CloseAttackWindow()
+    public void CloseAttackWindow()
     {
         attacking = false;
-        alreadyDamaged.Clear();
+        alreadyDamaged.Clear(); // Limpiamos la lista para el próximo tajo
+    }
+
+    // Para ver el rango del ataque en el editor
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

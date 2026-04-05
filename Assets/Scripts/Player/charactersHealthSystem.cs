@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class charactersHealthSystem : MonoBehaviour,IDamageable
 {
-    [SerializeField] protected float maxhealth = 100;
-    
-    //este es un evento que se disparara cuando me hagan daño
+    [SerializeField] protected float maxhealth = 186;
+    [SerializeField] protected float staggerThreshold = 70f;
+  
     public event Action OnDamaged;
+    public event Action OnStagger;
     
-    
+  
+    public float GetCurrentHealth() => currentHealth;
+    public float GetMaxHealth() => maxhealth;
     protected float currentHealth;
+    protected bool staggered = false;
 
-
+    
     protected virtual void Awake()
     {
         currentHealth = maxhealth;
@@ -24,10 +28,13 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
         currentHealth -= damage;
         OnDamaged.Invoke();
         
-        if (currentHealth <= 0)
+        if (currentHealth <= staggerThreshold && !staggered)
         {
-            Destroy(gameObject);
+            staggered = true;
+            OnStagger?.Invoke();
         }
+
+        if (currentHealth <= 0) Destroy(gameObject);
         
         
     }
