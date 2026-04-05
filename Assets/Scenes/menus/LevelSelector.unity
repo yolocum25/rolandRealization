@@ -1506,7 +1506,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sudenly One Day...
+  m_text: 'YourVoice
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1839,7 +1841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: are we more than this?
+  m_text: Pure Sorrow
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4071,7 +4073,7 @@ MonoBehaviour:
     button: {fileID: 1086855108}
     lockVideo: {fileID: 1413743926}
     unlockedImage: {fileID: 1609303570}
-    isLocked: 0
+    isLocked: 1
   - sceneName: Sudenly One Day...
     button: {fileID: 979898939}
     lockVideo: {fileID: 1887048190}
