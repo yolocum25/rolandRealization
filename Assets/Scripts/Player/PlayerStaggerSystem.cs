@@ -1,13 +1,16 @@
 using UnityEngine;
 using System.Collections;
-using Player; // Asegúrate de que el namespace sea correcto
+using Player; 
+using UnityEngine.InputSystem;
 
 public class PlayerStaggerSystem : MonoBehaviour
 {
     [Header("Ref")]
     [SerializeField] private PlayerHealthSystem playerHealth;
     [SerializeField] private MonoBehaviour playerMovementScript; 
+    [SerializeField] private PlayerAttackSystem playerAttackScript;
     [SerializeField] private Animator anim; 
+    [SerializeField] private PlayerInput pInput;
 
     [Header("Configuration")]
     [SerializeField] private float freezeDuration = 4.0f;
@@ -25,30 +28,41 @@ public class PlayerStaggerSystem : MonoBehaviour
 
     private void HandlePlayerStagger()
     {
-        // 1. ACTIVAR LA ANIMACIÓN
+       
         if (anim != null)
         {
             anim.SetTrigger(staggerParameterName);
         }
-        else
-        {
-            Debug.LogWarning("¡No hay Animator asignado en PlayerStaggerResponse!");
-        }
+      
 
         StartCoroutine(StaggerSequence());
     }
 
     private IEnumerator StaggerSequence()
     {
-        // 2. BLOQUEAR MOVIMIENTO
+       
         if (playerMovementScript != null) playerMovementScript.enabled = false;
+        if (playerAttackScript != null) playerAttackScript.enabled = false;
+        PlayerInput pInput = GetComponent<PlayerInput>();
+        if (pInput != null) pInput.enabled = false;
+        if (anim != null) 
+        {
+            anim.SetFloat("Speed", 0f); 
+        }
+        if (anim != null) anim.Play("roland_Stagger", 0, 0f);
         
-        yield return new WaitForSeconds(freezeDuration);
+        // 3. Frenamos al personaje
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
 
-        // 3. RESTAURAR MOVIMIENTO
+        yield return new WaitForSeconds(4f); 
+
+       
+        if (pInput != null) pInput.enabled = true;
         if (playerMovementScript != null) playerMovementScript.enabled = true;
-        
-        // Opcional: Podrías forzar la vuelta a Idle si se queda trabado
-        // anim.Play("Idle"); 
+        if (playerAttackScript != null) playerAttackScript.enabled = true;
     }
 }

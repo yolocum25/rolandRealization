@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 4295d58449b1f9a4798511abe68a1b5a
+guid: 9f7058ea6ca3fb54dbc5fc63d7446100
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3773781540542972488
-    second: stagger_Anim_0
+      213: 9156434412132254561
+    second: movmente enemy1_0
   - first:
-      213: 5198191199669279328
-    second: stagger_Anim_1
+      213: 5016460377776621444
+    second: movmente enemy1_1
+  - first:
+      213: 4934581492146039297
+    second: movmente enemy1_2
+  - first:
+      213: 2279198647458091268
+    second: movmente enemy1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,45 +109,67 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stagger_Anim_0
+      name: movmente enemy1_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 12
-        width: 220
-        height: 351
-      alignment: 9
-      pivot: {x: 0.50434446, y: 0.62525755}
+        x: 0
+        y: 222
+        width: 223
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8428df7115a2f5430800000000000000
-      internalID: 3773781540542972488
+      spriteID: 1634e40c590321f70800000000000000
+      internalID: 9156434412132254561
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stagger_Anim_1
+      name: movmente enemy1_1
       rect:
         serializedVersion: 2
-        x: 347
-        y: 15
-        width: 222
-        height: 348
-      alignment: 9
-      pivot: {x: 0.5322894, y: 0.62908375}
+        x: 224
+        y: 223
+        width: 193
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06a59dada5fa32840800000000000000
-      internalID: 5198191199669279328
+      spriteID: 487823f922c0e9540800000000000000
+      internalID: 5016460377776621444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: movmente enemy1_2
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 222
+        width: 201
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10ae49af8b72b7440800000000000000
+      internalID: 4934581492146039297
       vertices: []
       indices: 
       edges: []
@@ -150,7 +178,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 334c846a9be03894abf477dfb965b8a9
+    spriteID: 116e742c2a2862149b17014fdf174154
     internalID: 0
     vertices: []
     indices: 
@@ -158,10 +186,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":206.0,"y":403.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      stagger_Anim_0: 3773781540542972488
-      stagger_Anim_1: 5198191199669279328
+      movmente enemy1_0: 9156434412132254561
+      movmente enemy1_1: 5016460377776621444
+      movmente enemy1_2: 4934581492146039297
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

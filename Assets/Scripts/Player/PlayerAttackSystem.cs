@@ -26,17 +26,20 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
     void Update()
     {
-        // Detectar el clic
-        if (Input.GetMouseButtonDown(0) && !attacking)
-        {
-            HandleAttackInput();
-        }
+           
+            if (!enabled) return;
 
-        // Lógica de daño mientras la ventana de ataque está abierta
-        if (attacking)
-        {
-            CheckForDamage();
-        }
+           
+            if (Input.GetMouseButtonDown(0) && !attacking)
+            {
+                HandleAttackInput();
+            }
+
+           
+            if (attacking)
+            {
+                CheckForDamage();
+            }
     }
 
     private void HandleAttackInput()

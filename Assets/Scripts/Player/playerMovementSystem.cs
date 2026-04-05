@@ -46,29 +46,42 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].performed -= UpdateMovement;
         PlayerInput.actions["Move"].canceled -= UpdateMovement;
         PlayerInput.actions["Jump"].started -= Jump;
+        inputVector = Vector2.zero;
+        if (rb != null) 
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
+        if (anim != null) anim.SetFloat("Speed", 0);
     }
+    
+    
 
     private void UpdateMovement(InputAction.CallbackContext ctx)
     {
+        if (!enabled) 
+        {
+            inputVector = Vector2.zero;
+            return;
+        }
         inputVector = ctx.ReadValue<Vector2>();
     }
 
     private void Jump(InputAction.CallbackContext ctx)
     {
-        // Solo saltar si se presiona el botón Y estamos tocando el suelo
+        if (!enabled) return;
+
         if (ctx.started && isGrounded)
         {
             float gravity = Physics2D.gravity.y * rb.gravityScale;
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
-        
-            // OPCIONAL: Forzamos isGrounded a false un instante para evitar dobles saltos
             isGrounded = false; 
         }
     }
 
     private void Update()
     {
+        if (!enabled) return;
         GroundCheck();
         FlipSprite();
         float horizontalSpeed = Mathf.Abs(inputVector.x);
@@ -80,6 +93,12 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!enabled) 
+        {
+            
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
         Move();
     }
 
