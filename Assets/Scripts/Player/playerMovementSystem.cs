@@ -104,13 +104,12 @@ public class PlayerMovement2D : MonoBehaviour
             return; 
         }
 
-        // 3. LÓGICA DE JUEGO (Solo se ejecuta si el mapa es "Player")
-        // Aquí van tus funciones normales de movimiento y físicas.
+       
     
-        GroundCheck(); // Sensor de suelo para el salto
-        FlipSprite();  // Girar el personaje según la dirección
+        GroundCheck(); 
+        FlipSprite();  
     
-        // Actualizar animaciones de movimiento
+        
         if (anim != null)
         {
             anim.SetFloat("Speed", Mathf.Abs(inputVector.x));
@@ -122,7 +121,7 @@ public class PlayerMovement2D : MonoBehaviour
     {
         if (PlayerInput == null || PlayerInput.currentActionMap == null) 
         {
-            return; // Salimos si algo no está listo
+            return;
         }
         
         if (PlayerInput.currentActionMap.name != "Player") 
