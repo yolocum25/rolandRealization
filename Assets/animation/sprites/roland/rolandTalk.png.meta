@@ -1,0 +1,248 @@
+fileFormatVersion: 2
+guid: 0c002f4f434cb95459877ec0651770bd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6377429667268641606
+    second: roland idle 1_0
+  - first:
+      213: -2751014846169356909
+    second: roland idle 1_1
+  - first:
+      213: 5059919793407358137
+    second: roland idle 1_2
+  - first:
+      213: -273249698176211460
+    second: roland idle 1_3
+  - first:
+      213: -2495017860451747463
+    second: roland idle 1_4
+  - first:
+      213: 1118397213020044963
+    second: roland idle 1_5
+  - first:
+      213: -2823613504323012039
+    second: roland idle 1_6
+  - first:
+      213: 7152738589771835008
+    second: roland idle 1_7
+  - first:
+      213: -7890894774116677067
+    second: roland idle 1_8
+  - first:
+      213: -2388217550879684127
+    second: roland idle 1_9
+  - first:
+      213: 9037588373786632950
+    second: roland idle 1_10
+  - first:
+      213: -8891761774724094634
+    second: roland idle 1_11
+  - first:
+      213: 1251384813482535554
+    second: roland idle 1_12
+  - first:
+      213: 949285555291933440
+    second: roland idle 1_13
+  - first:
+      213: 2636702146335693194
+    second: roland idle 1_14
+  - first:
+      213: 1942477143607273942
+    second: roland idle 1_15
+  - first:
+      213: -4318975793811927281
+    second: roland idle 1_16
+  - first:
+      213: 4473121028202844206
+    second: roland idle 1_17
+  - first:
+      213: 8783434531418957978
+    second: roland idle 1_18
+  - first:
+      213: -4185223293691735827
+    second: roland idle 1_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: roland idle 1_0
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 203
+        width: 62
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643c5994e7e218850800000000000000
+      internalID: 6377429667268641606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roland idle 1_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 93
+        width: 72
+        height: 98
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 395ef3aa29e62d9d0800000000000000
+      internalID: -2751014846169356909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: roland idle 1_2
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 203
+        width: 62
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b473065e32783640800000000000000
+      internalID: 5059919793407358137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 70c293eac97469f46a5860e908882b8d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":96.0,"y":860.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      roland idle 1_0: 6377429667268641606
+      roland idle 1_1: -2751014846169356909
+      roland idle 1_2: 5059919793407358137
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

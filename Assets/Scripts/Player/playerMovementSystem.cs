@@ -79,20 +79,57 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        if (!enabled) return;
-        GroundCheck();
-        FlipSprite();
-        float horizontalSpeed = Mathf.Abs(inputVector.x);
-        if (anim != null) 
+        // 1. SEGURIDAD: Verificamos que las referencias críticas no sean nulas
+        // Si por algún motivo el PlayerInput o el Mapa no están listos, salimos para no dar error.
+        if (PlayerInput == null || PlayerInput.currentActionMap == null)
         {
-            anim.SetFloat("Speed", horizontalSpeed);
+            return; 
+        }
+
+        // 2. CONTROL DE ESTADO: ¿Estamos en modo Diálogo/UI o en modo Juego?
+        if (PlayerInput.currentActionMap.name != "Player")
+        {
+            // Si no estamos en el mapa "Player", reseteamos el movimiento
+            inputVector = Vector2.zero;
+
+            // Si tienes animaciones, forzamos el Idle para que no se quede corriendo
+            if (anim != null) 
+            {
+                anim.SetFloat("Speed", 0);
+            }
+
+            // Salimos del Update aquí. Todo lo que esté debajo no se ejecutará.
+            return; 
+        }
+
+        // 3. LÓGICA DE JUEGO (Solo se ejecuta si el mapa es "Player")
+        // Aquí van tus funciones normales de movimiento y físicas.
+    
+        GroundCheck(); // Sensor de suelo para el salto
+        FlipSprite();  // Girar el personaje según la dirección
+    
+        // Actualizar animaciones de movimiento
+        if (anim != null)
+        {
+            anim.SetFloat("Speed", Mathf.Abs(inputVector.x));
+            anim.SetBool("isGrounded", isGrounded);
         }
     }
 
     private void FixedUpdate()
     {
+        if (PlayerInput == null || PlayerInput.currentActionMap == null) 
+        {
+            return; // Salimos si algo no está listo
+        }
+        
+        if (PlayerInput.currentActionMap.name != "Player") 
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            return;
+        }
         if (!enabled) 
         {
             

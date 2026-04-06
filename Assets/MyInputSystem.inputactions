@@ -3,7 +3,7 @@
     "name": "MyInputSystem",
     "maps": [
         {
-            "name": "Roland_Player",
+            "name": "Player",
             "id": "efdde918-04cf-4f81-accc-7d629811b046",
             "actions": [
                 {
@@ -91,6 +91,34 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "502a22de-6792-46bf-9366-2ac9a3f66abd",
+            "actions": [
+                {
+                    "name": "NextText",
+                    "type": "Button",
+                    "id": "0c2868d4-aa96-4005-9576-b01d212a8c66",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c61ac2c4-db58-4742-9135-dc0857a94313",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextText",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
