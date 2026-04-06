@@ -69,7 +69,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.99, y: -4.11, z: 0}
-  m_LocalScale: {x: 6.698112, y: 6.698112, z: 6.698112}
+  m_LocalScale: {x: 9.764679, y: 9.764679, z: 9.764679}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2642675260942998072}
@@ -122,11 +122,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -522283363
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -8067817034649971665, guid: 7cec8d611c2652f4fbb2a84b312657ea, type: 3}
+  m_Sprite: {fileID: 3773781540542972488, guid: 4295d58449b1f9a4798511abe68a1b5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -324,10 +324,34 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2e0bc3b-3ff5-4854-8e5a-f589dff4e2a6
+    m_ActionName: 'Roland_Player/Jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f8a8535-82a7-4909-aed2-94eff5c57fe5
+    m_ActionName: 'Roland_Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: OnNextText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0c2868d4-aa96-4005-9576-b01d212a8c66
+    m_ActionName: 'UI/NextText[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Roland_Player
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!95 &6558213031465356475
@@ -366,7 +390,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStaggerSystem
   playerHealth: {fileID: 8027435698697520703}
   playerMovementScript: {fileID: 146891670575003275}
+  playerAttackScript: {fileID: 1471313705317855344}
   anim: {fileID: 6558213031465356475}
+  pInput: {fileID: 7152358730356212774}
   freezeDuration: 4
   staggerParameterName: Stagger
 --- !u!114 &8027435698697520703

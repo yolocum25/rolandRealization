@@ -14,19 +14,25 @@ public class DialogueSystem : MonoBehaviour
     [Header("Content")]
     [TextArea(3, 5)] public string[] sentences;
     public Sprite[] portraits; 
+    public AudioClip[] dialogueSounds;
     [SerializeField] private float typingSpeed = 0.05f;
 
+    [Header("Audio Settings")]
+    private AudioSource audioSource;
+    
     private int index;
     private bool isTyping;
     private PlayerInput playerInput;
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) playerInput = player.GetComponent<PlayerInput>();
     }
 
-    // Nombre exacto: ActivateDialogue
+    
     public void ActivateDialogue()
     {
         index = 0;
@@ -44,6 +50,12 @@ public class DialogueSystem : MonoBehaviour
         
         if (portraits.Length > index && portraits[index] != null)
             portraitImage.sprite = portraits[index];
+        
+        if (audioSource != null && dialogueSounds.Length > index && dialogueSounds[index] != null)
+        {
+            audioSource.clip = dialogueSounds[index];
+            audioSource.Play();
+        }
 
         foreach (char letter in sentences[index].ToCharArray())
         {
@@ -65,7 +77,6 @@ public class DialogueSystem : MonoBehaviour
 
     private void HandleAdvance()
     {
-        // Verificamos que el array no esté vacío y el índice sea válido
         if (sentences == null || sentences.Length == 0 || index >= sentences.Length)
         {
             FinishDialogue();
@@ -75,8 +86,9 @@ public class DialogueSystem : MonoBehaviour
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.text = sentences[index]; // Aquí daba el error
+            dialogueText.text = sentences[index]; 
             isTyping = false;
+            if (audioSource != null) audioSource.Stop();
         }
         else
         {
@@ -93,7 +105,6 @@ public class DialogueSystem : MonoBehaviour
     }
     void FinishDialogue()
     {
-        // Buscamos el manager con el nuevo nombre
         TutorialManager tutorial = Object.FindFirstObjectByType<TutorialManager>();
         
         if (tutorial != null)
