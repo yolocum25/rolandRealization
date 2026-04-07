@@ -526,6 +526,28 @@ MonoBehaviour:
   - Are you bothering the newbie?....huh..explain the basic mechanics to him and
     leave him alone, got it?
   - Yes Madam...
+  - First things first, to face the anomalies we depend on our E.G.O equipment.
+  - These are processed anomalies turned into weapons; these weapons can be problematic
+    because they feed on emotions.
+  - As I told you, if you don't take care of your mind you can go crazy, which is
+    understood as becoming distorted.
+  - People who, after experiencing traumatic events, are consumed by their emotions
+    and influenced by anomalies
+  - In short, the advantage of our E.G.O. equipment is that we can use its power
+    to our advantage.
+  - 'These are classified into 4 levels of power and danger: Zahyin, Teth, He, and
+    Waw; the greater the power, the greater the risk of distortion.'
+  - Not to brag, but I own one of the Teth class
+  - Well, even though Angelica has a "Waw" category...which means we don't overlap
+    much at work...
+  - Well, when using your E.G.O. Equipment, you'll have an emotion meter when you
+    hit or take damage, and also when you're stagger.
+  - Huh? What's stagger? It's when you take a lot of damage that damages your equipment.
+  - This causes you pain and mental collapse that blocks your basic functions This
+    causes you pain and mental collapse that blocks your basic functions
+  - In short, you're Fuck
+  - Okay, rookie, that's all. Practice the movement for your first mission; you don't
+    want to die at the hands of those things.
   portraits:
   - {fileID: 6377429667268641606, guid: 0c002f4f434cb95459877ec0651770bd, type: 3}
   - {fileID: -2751014846169356909, guid: 0c002f4f434cb95459877ec0651770bd, type: 3}
@@ -542,6 +564,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a18cb9f1086d7d64f805fb3c4c1abfd0, type: 3}
   - {fileID: 8300000, guid: 3eb90099655acca43a9483da71f53814, type: 3}
   - {fileID: 8300000, guid: 8fc09acb6a3453d4986eec5f615c294d, type: 3}
+  - {fileID: 8300000, guid: 5bff84f5d66398746969a9d57dcc9512, type: 3}
+  - {fileID: 8300000, guid: 81de48f840cfdaa4bb24f88d9853410b, type: 3}
+  - {fileID: 8300000, guid: a3d7e043eee241340a939ad2637a0334, type: 3}
+  - {fileID: 8300000, guid: 7fa44c3a86f6ab14698ec739e6c15724, type: 3}
+  - {fileID: 8300000, guid: 86fc0fb93587d6844b0d7d22bb89c63e, type: 3}
+  - {fileID: 8300000, guid: 6d4c17df78c74344387f2f02b2db0656, type: 3}
+  - {fileID: 8300000, guid: 649904b6c8ab53f45bb2e84f514661e0, type: 3}
+  - {fileID: 8300000, guid: 9cbfaf43eb5c4024282947909b71cb06, type: 3}
+  - {fileID: 8300000, guid: 960108c9231c012478d4aa7aaafe003b, type: 3}
+  - {fileID: 8300000, guid: 6d8d2328b524be2468fa9f310e63ddfb, type: 3}
+  - {fileID: 8300000, guid: 869b96f1e546ae64e8155b09e2e95fc8, type: 3}
+  - {fileID: 8300000, guid: 3c20b351266a3d740b7b89b348afe976, type: 3}
+  - {fileID: 8300000, guid: 1778d009d097b234abe58a44774a9f20, type: 3}
   typingSpeed: 0.05
 --- !u!82 &356299707
 AudioSource:
