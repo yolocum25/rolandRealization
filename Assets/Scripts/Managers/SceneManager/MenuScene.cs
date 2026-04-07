@@ -14,7 +14,7 @@ public class MenuScene : MonoBehaviour
 
     public void OptionsMenu()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Options");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("tutorial");
     }
     
     
