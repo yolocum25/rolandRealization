@@ -168,6 +168,8 @@ public class PlayerMovement2D : MonoBehaviour
             {
                 StartCoroutine(Dash());
             }
+           
+            
         }
     }
 

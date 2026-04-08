@@ -26,20 +26,20 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
     void Update()
     {
-           
-            if (!enabled) return;
+        if (!enabled) return;
 
-           
-            if (Input.GetMouseButtonDown(0) && !attacking)
-            {
-                HandleAttackInput();
-            }
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetTrigger(AttackTrigger);
+            // Forzamos el ataque manualmente sin esperar a la animación
+            attacking = true; 
+            Invoke("CloseAttackWindow", 0.5f); // Lo cerramos a los 0.5 segundos
+        }
 
-           
-            if (attacking)
-            {
-                CheckForDamage();
-            }
+        if (attacking)
+        {
+            CheckForDamage();
+        }
     }
 
     private void HandleAttackInput()

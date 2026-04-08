@@ -303,42 +303,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
   m_PrefabInstance: {fileID: 9013278535045424756}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &165135457
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165135448}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1.1150001
 --- !u!114 &165135458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +317,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTouchDamage
   damageToPlayer: 15
   attackInterval: 1
+--- !u!50 &165135465
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165135448}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &232780183
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,17 +938,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1471313705317855344, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: baseAttackRadius
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471313705317855344, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: whatIsDamageable.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_Name
       value: Roland_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: dashForce
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: dashDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2538,6 +2533,18 @@ PrefabInstance:
       propertyPath: targetHealthSystem
       value: 
       objectReference: {fileID: 622359809}
+    - target: {fileID: 8353910811172563093, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 39.5144
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353910811172563093, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 142.5799
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353910811172563093, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 80.56949
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2693,6 +2700,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4297036048548071337, guid: ac73714a375248248815463c53199e2d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297036048548071337, guid: ac73714a375248248815463c53199e2d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1809376505
+      objectReference: {fileID: 0}
     - target: {fileID: 4689973268044223750, guid: ac73714a375248248815463c53199e2d, type: 3}
       propertyPath: m_LocalScale.x
       value: 14.098782
@@ -2745,8 +2760,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4984489936525745395, guid: ac73714a375248248815463c53199e2d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8198338581596279471, guid: ac73714a375248248815463c53199e2d, type: 3}
+      propertyPath: maxhealth
+      value: 1000
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 4984489936525745395, guid: ac73714a375248248815463c53199e2d, type: 3}
     - {fileID: 785664235851984620, guid: ac73714a375248248815463c53199e2d, type: 3}
     - {fileID: 9105833579361757081, guid: ac73714a375248248815463c53199e2d, type: 3}
     m_RemovedGameObjects: []
@@ -2754,10 +2776,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 165135457}
+      addedObject: {fileID: 165135458}
     - targetCorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 165135458}
+      addedObject: {fileID: 165135465}
   m_SourcePrefab: {fileID: 100100000, guid: ac73714a375248248815463c53199e2d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

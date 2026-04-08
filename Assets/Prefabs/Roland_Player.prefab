@@ -208,6 +208,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  dashForce: 200
+  dashDuration: 0.2
+  dashCooldown: 4
 --- !u!114 &1471313705317855344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,10 +225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackSystem
   whatIsDamageable:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   attackPoint: {fileID: 7695681758672137007}
-  attackRadius: 4
-  damage: 20
+  baseAttackRadius: 20
+  baseDamage: 20
 --- !u!70 &5899988863050667571
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -349,6 +352,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0c2868d4-aa96-4005-9576-b01d212a8c66
     m_ActionName: 'UI/NextText[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4b58633-cee9-4076-96d6-41936856576e
+    m_ActionName: 'Player/Dash[/Keyboard/shift]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -434,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 4179508594312556810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.955, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

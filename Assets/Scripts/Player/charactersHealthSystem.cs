@@ -26,7 +26,7 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
     public virtual void TakeDamage (float damage)
     {
         currentHealth -= damage;
-        OnDamaged.Invoke();
+        OnDamaged?.Invoke();
         
         if (currentHealth <= staggerThreshold && !staggered)
         {
