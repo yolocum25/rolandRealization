@@ -4068,7 +4068,7 @@ MonoBehaviour:
     button: {fileID: 2065055224}
     lockVideo: {fileID: 435202883}
     unlockedImage: {fileID: 1774694639}
-    isLocked: 0
+    isLocked: 1
   - sceneName: are we more than this?
     button: {fileID: 1086855108}
     lockVideo: {fileID: 1413743926}

@@ -5,7 +5,7 @@ public class PlayerHealthBarUI : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] private charactersHealthSystem targetHealthSystem;
-    [SerializeField] private Image healthBarFill; // La imagen de la barra (tipo Filled)
+    [SerializeField] private Image healthBarFill; 
 
     private void OnEnable()
     {
