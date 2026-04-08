@@ -6,16 +6,27 @@ using System.Collections;
 
 public class DialogueSystem : MonoBehaviour
 {
+    #region AnimParameters
+    
+    private static readonly int AttackTrigger = Animator.StringToHash("attack");
+    #endregion
+    
+    
     [Header("UI References")]
     public GameObject narrationCanvas;
     public TextMeshProUGUI dialogueText;
     public Image portraitImage;
+    
+    [Header("References")]
+    [SerializeField] private Animator anim;
+    
 
     [Header("Content")]
     [TextArea(3, 5)] public string[] sentences;
     public Sprite[] portraits; 
     public AudioClip[] dialogueSounds;
     [SerializeField] private float typingSpeed = 0.05f;
+    [SerializeField] private PlayerAttackSystem playerAttackScript;
 
     [Header("Audio Settings")]
     private AudioSource audioSource;
@@ -30,6 +41,8 @@ public class DialogueSystem : MonoBehaviour
         
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null) playerInput = player.GetComponent<PlayerInput>();
+        
+        
     }
 
     
@@ -37,8 +50,9 @@ public class DialogueSystem : MonoBehaviour
     {
         index = 0;
         narrationCanvas.SetActive(true);
-        
+
         if (playerInput != null) playerInput.SwitchCurrentActionMap("UI");
+        if (playerAttackScript != null) playerAttackScript.enabled = false;;
         
         StartCoroutine(TypeSentence());
     }
@@ -100,6 +114,7 @@ public class DialogueSystem : MonoBehaviour
             else
             {
                 FinishDialogue();
+                if (playerAttackScript != null) playerAttackScript.enabled = true;
             }
         }
     }
@@ -110,12 +125,15 @@ public class DialogueSystem : MonoBehaviour
         if (tutorial != null)
         {
             tutorial.EndTutorialNarrative();
+            
         }
         else
         {
             narrationCanvas.SetActive(false);
             if (playerInput != null) playerInput.SwitchCurrentActionMap("Player");
+           
             Destroy(gameObject);
+            
         }
     }
 }

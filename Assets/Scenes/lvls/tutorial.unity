@@ -512,6 +512,7 @@ MonoBehaviour:
   narrationCanvas: {fileID: 134824664}
   dialogueText: {fileID: 775857136}
   portraitImage: {fileID: 1936384641}
+  anim: {fileID: 1505915917}
   sentences:
   - oh,hello there
   - well,ist your first time here isnt it?
@@ -578,6 +579,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3c20b351266a3d740b7b89b348afe976, type: 3}
   - {fileID: 8300000, guid: 1778d009d097b234abe58a44774a9f20, type: 3}
   typingSpeed: 0.05
+  playerAttackScript: {fileID: 1505915921}
 --- !u!82 &356299707
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1712,6 +1714,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
   m_PrefabInstance: {fileID: 622359808}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1505915917 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6558213031465356475, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+  m_PrefabInstance: {fileID: 622359808}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1505915921 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1471313705317855344, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+  m_PrefabInstance: {fileID: 622359808}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c27f3a8cc98c249b4be41a2435c96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttackSystem
 --- !u!1 &1575322864
 GameObject:
   m_ObjectHideFlags: 0
