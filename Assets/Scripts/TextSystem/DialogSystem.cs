@@ -31,6 +31,9 @@ public class DialogueSystem : MonoBehaviour
     [Header("Audio Settings")]
     private AudioSource audioSource;
     
+    [Header("Skip Settings")]
+    [SerializeField] private bool canSkip = true;
+    
     private int index;
     private bool isTyping;
     private PlayerInput playerInput;
@@ -46,6 +49,12 @@ public class DialogueSystem : MonoBehaviour
     }
 
     
+    public void SkipAllDialogue()
+    {
+        StopAllCoroutines();
+        if (audioSource != null) audioSource.Stop();
+        FinishDialogue();
+    }
     public void ActivateDialogue()
     {
         index = 0;
@@ -120,20 +129,39 @@ public class DialogueSystem : MonoBehaviour
     }
     void FinishDialogue()
     {
-        TutorialManager tutorial = Object.FindFirstObjectByType<TutorialManager>();
+        isTyping = false; 
+
         
+        if (anim != null)
+        {
+            anim.Play("Idle"); 
+            anim.SetBool("attacking", false); 
+        }
+
+      
+        if (playerInput != null) 
+        {
+            playerInput.SwitchCurrentActionMap("Player");
+        }
+
+      
+        if (playerAttackScript != null) 
+        {
+            playerAttackScript.enabled = true;
+            playerAttackScript.CloseAttackWindow(); 
+        }
+
+       
+        TutorialManager tutorial = Object.FindFirstObjectByType<TutorialManager>();
         if (tutorial != null)
         {
             tutorial.EndTutorialNarrative();
-            
         }
         else
         {
             narrationCanvas.SetActive(false);
-            if (playerInput != null) playerInput.SwitchCurrentActionMap("Player");
-           
             Destroy(gameObject);
-            
         }
     }
+    
 }
