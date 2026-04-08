@@ -12,8 +12,8 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     [Header("Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
     [SerializeField] private Transform attackPoint; // El punto desde donde sale el círculo de daño
-    [SerializeField] private float attackRadius = 0.5f;
-    [SerializeField] private float damage = 20f;
+    [SerializeField] private float baseAttackRadius = 0.5f;
+    [SerializeField] private float baseDamage = 20f;
 
     private Animator anim;
     private bool attacking;
@@ -50,18 +50,22 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
     private void CheckForDamage()
     {
-        // Asegúrate de que attackPoint no sea null para evitar el error "NullReference"
+        
         if (attackPoint == null) return;
-
-        // Esta línea detecta a todos los enemigos en el círculo
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, whatIsDamageable);
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
+        
+        float currentDamage = baseDamage + (baseDamage * negPerc);
+        float currentRadius = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
+        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, currentRadius, whatIsDamageable);
 
         foreach (Collider2D enemy in hitEnemies)
         {
             // Intentamos obtener el componente de daño
             if (enemy.TryGetComponent(out IDamageable damageable) && !alreadyDamaged.Contains(damageable))
             {
-                damageable.TakeDamage(damage);
+                damageable.TakeDamage(currentDamage);
                 alreadyDamaged.Add(damageable);
             }
         }
@@ -85,6 +89,17 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     {
         if (attackPoint == null) return;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+
+       
+        float visualRadius = baseAttackRadius;
+        
+       
+        if (Application.isPlaying && EmotionManager.Instance != null)
+        {
+            float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+            visualRadius = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
+        }
+
+        Gizmos.DrawWireSphere(attackPoint.position, visualRadius);
     }
 }

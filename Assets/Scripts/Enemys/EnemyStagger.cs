@@ -25,17 +25,14 @@ public class EnemyStaggerResponse : MonoBehaviour
 
     private IEnumerator StaggerRoutine()
     {
-        // 1. Detener movimiento y poner animación
         if (enemyAI != null) enemyAI.enabled = false;
         if (anim != null) anim.SetTrigger("Stagger");
 
-        
-
         yield return new WaitForSeconds(stunDuration);
 
-        
         if (enemyAI != null) enemyAI.enabled = true;
-        
-        
+    
+        // Le decimos al sistema de salud que ya puede volver a ser aturdido
+        healthSystem.ResetStagger();
     }
 }

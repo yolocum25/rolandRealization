@@ -298,6 +298,61 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &165135448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
+  m_PrefabInstance: {fileID: 9013278535045424756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &165135457
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165135448}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 1.1150001
+--- !u!114 &165135458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165135448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a424eebd9ab41e54695f42e441ed6f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTouchDamage
+  damageToPlayer: 15
+  attackInterval: 1
 --- !u!1 &232780183
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +947,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1471313705317855344, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: baseAttackRadius
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471313705317855344, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: whatIsDamageable.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_Name
       value: Roland_Player
@@ -2623,6 +2686,10 @@ PrefabInstance:
       value: ravager
       objectReference: {fileID: 0}
     - target: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -2678,10 +2745,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4984489936525745395, guid: ac73714a375248248815463c53199e2d, type: 3}
+    - {fileID: 785664235851984620, guid: ac73714a375248248815463c53199e2d, type: 3}
+    - {fileID: 9105833579361757081, guid: ac73714a375248248815463c53199e2d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165135457}
+    - targetCorrespondingSourceObject: {fileID: 113078919294019534, guid: ac73714a375248248815463c53199e2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 165135458}
   m_SourcePrefab: {fileID: 100100000, guid: ac73714a375248248815463c53199e2d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

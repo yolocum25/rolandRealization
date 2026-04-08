@@ -1,3 +1,5 @@
+    using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +14,15 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private Transform feet;
     [SerializeField] private float detectionRadius = 0.2f;
     [SerializeField] private LayerMask whatIsGround;
+    
+    
+    
+    [Header("Dash Settings")]
+    [SerializeField] private float dashForce = 20f;
+    [SerializeField] private float dashDuration = 0.2f;
+    [SerializeField] private float dashCooldown = 4f;
+    private bool canDash = true;
+    private bool isDashing;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -26,11 +37,8 @@ public class PlayerMovement2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         PlayerInput = GetComponent<PlayerInput>();
         initialScale = transform.localScale;
-        
         anim = GetComponent<Animator>();
-       
         rb.freezeRotation = true;
-        
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
 
@@ -39,6 +47,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].performed += UpdateMovement;
         PlayerInput.actions["Move"].canceled += UpdateMovement;
         PlayerInput.actions["Jump"].started += Jump;
+        PlayerInput.actions["Dash"].started += OnDashPerformed;
     }
 
     private void OnDisable()
@@ -46,6 +55,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].performed -= UpdateMovement;
         PlayerInput.actions["Move"].canceled -= UpdateMovement;
         PlayerInput.actions["Jump"].started -= Jump;
+        PlayerInput.actions["Dash"].started -= OnDashPerformed;
         inputVector = Vector2.zero;
         if (rb != null) 
         {
@@ -72,6 +82,9 @@ public class PlayerMovement2D : MonoBehaviour
 
         if (ctx.started && isGrounded)
         {
+            float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+            float extraJump = jumpHeight * (posPerc * 0.4f);
+            float finalJumpHeight = jumpHeight + extraJump;
             float gravity = Physics2D.gravity.y * rb.gravityScale;
             float jumpVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
@@ -81,8 +94,6 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
-        // 1. SEGURIDAD: Verificamos que las referencias críticas no sean nulas
-        // Si por algún motivo el PlayerInput o el Mapa no están listos, salimos para no dar error.
         if (PlayerInput == null || PlayerInput.currentActionMap == null)
         {
             return; 
@@ -140,8 +151,58 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void Move()
     {
-       
-        rb.linearVelocity = new Vector2(inputVector.x * movementSpeed, rb.linearVelocity.y);
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
+        float finalSpeed = movementSpeed + (movementSpeed * posPerc * 0.5f) - (movementSpeed * negPerc * 0.3f);
+        rb.linearVelocity = new Vector2(inputVector.x * finalSpeed, rb.linearVelocity.y);
+    }
+
+    private void OnDashPerformed(InputAction.CallbackContext ctx)
+    {
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+        
+        
+        if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
+        {
+            if (posPerc >= 0.5f)
+            {
+                StartCoroutine(Dash());
+            }
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+
+        float currentDashForce = dashForce + (dashForce * posPerc * 0.5f);
+
+
+        float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
+
+        rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
+
+
+        if (anim != null) anim.SetTrigger("Dash");
+
+        yield return new WaitForSeconds(dashDuration);
+
+        // Restauramos estado
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+
+
     }
 
     private void GroundCheck()
