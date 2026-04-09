@@ -219,7 +219,7 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Binding"",
+                    ""name"": ""Modifier"",
                     ""id"": ""e3d85558-4e89-4012-833b-6bb6e8ca290c"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -230,7 +230,7 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Modifier"",
+                    ""name"": ""Binding"",
                     ""id"": ""b1b46d59-60c4-480f-a581-29275c03e159"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

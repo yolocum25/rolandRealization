@@ -181,10 +181,10 @@ TextureImporter:
       name: slashDashtry2-removebg-preview_3
       rect:
         serializedVersion: 2
-        x: 419
-        y: 57
-        width: 200
-        height: 126
+        x: 619
+        y: 60
+        width: 197
+        height: 106
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: slashDashtry2-removebg-preview_4
       rect:
         serializedVersion: 2
-        x: 618
-        y: 70
-        width: 200
-        height: 84
+        x: 420
+        y: 53
+        width: 194
+        height: 113
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

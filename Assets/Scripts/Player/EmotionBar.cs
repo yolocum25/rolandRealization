@@ -7,6 +7,8 @@ public class EmotionBar : MonoBehaviour
     public float maxValue = 100f;
     private float currentValue = 0f;
     
+    public float CurrentValue => currentValue;
+    
     [Header("Drain Settings")]
     [SerializeField] private float drainSpeed = 2f;    
     [SerializeField] private float idleDelay = 10f;
@@ -61,10 +63,17 @@ public class EmotionBar : MonoBehaviour
 
     public void AddValue(float amount)
     {
-        currentValue = Mathf.Clamp(currentValue + amount, 0, maxValue);
+        float finalAmount = (amount > 0 && amount < 1) ? amount * maxValue : amount;
+        currentValue = Mathf.Clamp(currentValue + finalAmount, 0, maxValue);
         lastIncreaseTime = Time.time;
     }
-    
+
+    public void SubtractValue(float amount)
+    {
+        float finalAmount = (amount > 0 && amount < 1) ? amount * maxValue : amount;
+        currentValue = Mathf.Clamp(currentValue - finalAmount, 0, maxValue);
+        lastIncreaseTime = Time.time;
+    }
     
     private void PlayHalfwaySound()
     {

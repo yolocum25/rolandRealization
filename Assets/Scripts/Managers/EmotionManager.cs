@@ -15,4 +15,8 @@ public class EmotionManager : MonoBehaviour
 
     public void GainPositive(float amt) => positiveBar.AddValue(amt);
     public void GainNegative(float amt) => negativeBar.AddValue(amt);
+    
+    public void LostPositive(float amt) => positiveBar.SubtractValue(amt);
+    public void LostNegative(float amt) => negativeBar.SubtractValue(amt);
+    
 }

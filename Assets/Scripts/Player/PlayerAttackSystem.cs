@@ -15,6 +15,11 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     [SerializeField] private float baseAttackRadius = 0.5f;
     [SerializeField] private float baseDamage = 20f;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioSource playerAudioSource; 
+    
     private Animator anim;
     private bool attacking;
     private List<IDamageable> alreadyDamaged = new();
@@ -30,8 +35,12 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (audioSource != null && attackSound != null)
+            {
+                playerAudioSource.PlayOneShot(attackSound);
+            }
             anim.SetTrigger(AttackTrigger);
-            // Forzamos el ataque manualmente sin esperar a la animación
+            
             attacking = true; 
             Invoke("CloseAttackWindow", 0.5f); // Lo cerramos a los 0.5 segundos
         }

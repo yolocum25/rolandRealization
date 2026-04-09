@@ -18,9 +18,9 @@ public class PlayerMovement2D : MonoBehaviour
     
     
     [Header("Dash Settings")]
-    [SerializeField] private float dashForce = 20f;
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashCooldown = 4f;
+    [SerializeField] private float dashDistance = 8f;
     private bool canDash = true;
     private bool isDashing;
     
@@ -32,7 +32,12 @@ public class PlayerMovement2D : MonoBehaviour
     private bool canSlashDash = true;
     private bool isSlashDashing;
     private bool SlashDash;
-    float elapse = 0f;
+    private bool clickDuringDash = false;
+    
+    [Header("Audio SlashDash")]
+    [SerializeField] private AudioSource playerAudioSource; 
+    [SerializeField] private AudioClip slashDashSound;
+   
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -40,15 +45,19 @@ public class PlayerMovement2D : MonoBehaviour
     private Vector2 inputVector;
     private Vector3 initialScale;
     private List<IDamageable> alreadyDamaged = new();
-
+    private float originalGravity; 
     public PlayerInput PlayerInput { get; private set; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         PlayerInput = GetComponent<PlayerInput>();
         initialScale = transform.localScale;
-        anim = GetComponent<Animator>();
+    
+        // Guardamos la gravedad original aquí
+        originalGravity = rb.gravityScale; 
+
         rb.freezeRotation = true;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
     }
@@ -59,7 +68,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].canceled += UpdateMovement;
         PlayerInput.actions["Jump"].started += Jump;
         PlayerInput.actions["Dash"].started += OnDashPerformed;
-        PlayerInput.actions["SlashDash"].started += OnDashPerformed;
+        PlayerInput.actions["SlashDash"].started += OnSlashInput;
     }
 
     private void OnDisable()
@@ -115,10 +124,10 @@ public class PlayerMovement2D : MonoBehaviour
         // 2. CONTROL DE ESTADO: ¿Estamos en modo Diálogo/UI o en modo Juego?
         if (PlayerInput.currentActionMap.name != "Player")
         {
-            // Si no estamos en el mapa "Player", reseteamos el movimiento
+           
             inputVector = Vector2.zero;
 
-            // Si tienes animaciones, forzamos el Idle para que no se quede corriendo
+            
             if (anim != null) 
             {
                 anim.SetFloat("Speed", 0);
@@ -155,112 +164,205 @@ public class PlayerMovement2D : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             return;
         }
+        if (isDashing || isSlashDashing) return;
         Move();
     }
 
-    private void Move()
-    {
-        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
-        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
-        float finalSpeed = movementSpeed + (movementSpeed * posPerc * 0.5f) - (movementSpeed * negPerc * 0.3f);
-        rb.linearVelocity = new Vector2(inputVector.x * finalSpeed, rb.linearVelocity.y);
-    }
-
-    private void OnDashPerformed(InputAction.CallbackContext ctx)
-    {
-        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
-        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
-        
-        
-        if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
+    
+        private void Move()
         {
-            if (posPerc >= 0.5f && negPerc <= 0.7f)
-            {
-                StartCoroutine(SlashDashSec());
-            }
-            else if (posPerc >= 0.5f)
-            {
-                StartCoroutine(Dash());
-            }
+            if (isDashing || isSlashDashing) return; 
+            float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+            float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
+    
+            float finalSpeed = movementSpeed + (movementSpeed * posPerc * 0.5f) - (movementSpeed * negPerc * 0.3f);
+    
            
-            
+            rb.linearVelocity = new Vector2(inputVector.x * finalSpeed, rb.linearVelocity.y);
+        }
+    
+
+    private void OnSlashInput(InputAction.CallbackContext ctx)
+    {
+        // Solo registramos el click si el botón se presiona (started)
+        // y si estamos en medio de un dash normal.
+        if (ctx.started && isDashing && !isSlashDashing)
+        {
+            clickDuringDash = true;
         }
     }
-
-    private IEnumerator Dash()
+    
+    private void OnDashPerformed(InputAction.CallbackContext ctx)
+    {
+        if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
+        {
+            float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+            if (posPerc >= 0.5f)
+            {
+                StartCoroutine(DashLogic());
+            }
+        }
+    }
+    private IEnumerator DashLogic()
     {
         canDash = false;
         isDashing = true;
+        clickDuringDash = false;
 
+        rb.gravityScale = 0f; // Usamos la global
+        rb.linearVelocity = Vector2.zero; 
 
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-
-
-        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
-
-        float currentDashForce = dashForce + (dashForce * posPerc * 0.5f);
-
-
-        float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
-
-        rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
-
+        float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
+        float speed = dashDistance / dashDuration;
 
         if (anim != null) anim.SetTrigger("Dash");
 
-        yield return new WaitForSeconds(dashDuration);
-
-        
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-
-
-    }
-    private IEnumerator SlashDashSec()
-    {
-        canSlashDash = false;
-        isSlashDashing = true;
-        
-
-
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-
-
-        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
-
-        float currentDashForce = dashForce + (dashForce * posPerc * 0.5f);
-
-
-        float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
-
-        rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
-        
-        if (anim != null) anim.SetTrigger("SlashDash");
-
-        while (elapse < dashDuration)
+        float timer = 0f;
+        while (timer < dashDuration)
         {
-            if (SlashDash)
+            rb.MovePosition(rb.position + new Vector2(dashDirection * speed * Time.fixedDeltaTime, 0f));
+
+            if (clickDuringDash && EmotionManager.Instance.negativeBar.FillPercentage <= 0.7f)
             {
-                CheckForDamageDash();
+                StartCoroutine(ConvertIntoSlashDash(dashDirection, speed)); 
+                yield break; 
             }
-            
-            elapse += Time.deltaTime;
-            yield return null;
+
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        FinalizeDash();
+    }
+
+    private void FinalizeDash()
+    {
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = originalGravity; 
+        isDashing = false;
+        StartCoroutine(DashCooldown());
+    }
+
+    private IEnumerator ConvertIntoSlashDash(float direction, float speed)
+    {
+        if (playerAudioSource != null && slashDashSound != null)
+        {
+            playerAudioSource.PlayOneShot(slashDashSound);
+        }
+        if (EmotionManager.Instance != null)
+        {
+            EmotionManager.Instance.LostPositive(20f); 
+            EmotionManager.Instance.GainNegative(15f); 
         }
         
-        rb.gravityScale = originalGravity;
-        isSlashDashing = false;
+        isSlashDashing = true;
+        if (anim != null) anim.SetTrigger("SlashDash");
+
+        float attackSpeed = speed * 1.3f; 
+        float timer = 0f;
+
+        while (timer < dashDuration)
+        {
+            rb.MovePosition(rb.position + new Vector2(direction * attackSpeed * Time.fixedDeltaTime, 0f));
+            if (SlashDash) CheckForDamageDash();
         
+            timer += Time.deltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = originalGravity; // Acceso directo y seguro
+        isDashing = false;
+        isSlashDashing = false;
+        SlashDash = false;
         alreadyDamaged.Clear();
 
-        yield return new WaitForSeconds(dashCooldown);
-        canSlashDash = true;
+        StartCoroutine(DashCooldown());
     }
+    
+    private IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+       
+    }
+    // private IEnumerator Dash()
+    // {
+    //     canDash = false;
+    //     isDashing = true;
+    //
+    //
+    //     float originalGravity = rb.gravityScale;
+    //     rb.gravityScale = 0f;
+    //
+    //
+    //     float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+    //
+    //     float currentDashForce = dashForce + (dashForce * posPerc * 0.5f);
+    //
+    //
+    //     float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
+    //
+    //     rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
+    //
+    //
+    //     if (anim != null) anim.SetTrigger("Dash");
+    //
+    //     yield return new WaitForSeconds(dashDuration);
+    //
+    //     
+    //     rb.gravityScale = originalGravity;
+    //     isDashing = false;
+    //
+    //     yield return new WaitForSeconds(dashCooldown);
+    //     canDash = true;
+    //
+    //
+    // }
+    // private IEnumerator SlashDashSec()
+    // {
+    //     // Bloqueo total para evitar doble dash
+    //     canDash = false;
+    //     isDashing = true;
+    //
+    //     float originalGravity = rb.gravityScale;
+    //     rb.gravityScale = 0f;
+    //
+    //     // Dirección: si no te mueves, hacia donde mire el sprite
+    //     float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
+    //     float currentDashForce = dashForce + (dashForce * EmotionManager.Instance.positiveBar.FillPercentage * 0.5f);
+    //
+    //     rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
+    //
+    //     if (anim != null) anim.SetTrigger("SlashDash");
+    //
+    //     // VARIABLE LOCAL: Siempre empieza en 0 cada vez que activas el dash
+    //     float timer = 0f; 
+    //
+    //     while (timer < dashDuration)
+    //     {
+    //         // El daño solo ocurre si SlashDash es true (activado por Animation Event)
+    //         if (SlashDash)
+    //         {
+    //             CheckForDamageDash();
+    //         }
+    //     
+    //         timer += Time.deltaTime;
+    //         yield return null;
+    //     }
+    //
+    //     // Finalización del movimiento
+    //     rb.gravityScale = originalGravity;
+    //     isDashing = false;
+    //
+    //     // Reset de seguridad de la ventana de daño
+    //     SlashDash = false; 
+    //     alreadyDamaged.Clear();
+    //
+    //     // Espera del Cooldown antes de poder usar cualquier dash otra vez
+    //     yield return new WaitForSeconds(dashCooldown);
+    //     canDash = true;
+    // }
 
     private void GroundCheck()
     {
@@ -313,7 +415,7 @@ public class PlayerMovement2D : MonoBehaviour
             }
         }
     }
-    
+   
     
     public void OpenSlashDashAttackWindow()
     {
