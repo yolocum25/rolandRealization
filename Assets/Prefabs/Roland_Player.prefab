@@ -75,6 +75,7 @@ Transform:
   - {fileID: 2642675260942998072}
   - {fileID: 5589395607483032579}
   - {fileID: 7695681758672137007}
+  - {fileID: 821342526358468241}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1631998257727653935
@@ -126,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3773781540542972488, guid: 4295d58449b1f9a4798511abe68a1b5a, type: 3}
+  m_Sprite: {fileID: -4574909748005070986, guid: e833a46b00b687b42ac38df8287f7953, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -211,6 +212,12 @@ MonoBehaviour:
   dashForce: 3000
   dashDuration: 0.2
   dashCooldown: 1
+  whatIsDamageable:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPointDash: {fileID: 821342526358468241}
+  baseAttackRadiusDash: 30
+  baseDamageDash: 60
 --- !u!114 &1471313705317855344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +363,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b4b58633-cee9-4076-96d6-41936856576e
     m_ActionName: 'Player/Dash[/Keyboard/shift]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 20576471-c0fb-46a0-b082-b9e62453b3c9
+    m_ActionName: 'Player/SlashDash[/Keyboard/shift,/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -441,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 4179508594312556810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 1.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -473,6 +484,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5798236570230365137}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8098212653199083273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821342526358468241}
+  m_Layer: 3
+  m_Name: dashHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821342526358468241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098212653199083273}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

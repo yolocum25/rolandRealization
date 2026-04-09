@@ -32,6 +32,7 @@ public class PlayerMovement2D : MonoBehaviour
     private bool canSlashDash = true;
     private bool isSlashDashing;
     private bool SlashDash;
+    float elapse = 0f;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -223,6 +224,7 @@ public class PlayerMovement2D : MonoBehaviour
     {
         canSlashDash = false;
         isSlashDashing = true;
+        
 
 
         float originalGravity = rb.gravityScale;
@@ -237,24 +239,27 @@ public class PlayerMovement2D : MonoBehaviour
         float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
 
         rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
-        if (SlashDash)
-        {
-            CheckForDamageDash();
-        }
-
-
+        
         if (anim != null) anim.SetTrigger("SlashDash");
 
-        yield return new WaitForSeconds(dashDuration);
-
+        while (elapse < dashDuration)
+        {
+            if (SlashDash)
+            {
+                CheckForDamageDash();
+            }
+            
+            elapse += Time.deltaTime;
+            yield return null;
+        }
         
         rb.gravityScale = originalGravity;
         isSlashDashing = false;
+        
+        alreadyDamaged.Clear();
 
         yield return new WaitForSeconds(dashCooldown);
         canSlashDash = true;
-
-
     }
 
     private void GroundCheck()
@@ -320,7 +325,23 @@ public class PlayerMovement2D : MonoBehaviour
         SlashDash = false;
         alreadyDamaged.Clear(); 
     }
-    
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPointDash == null) return;
+        Gizmos.color = Color.red;
+
+       
+        float visualRadius = baseAttackRadiusDash;
+        
+       
+        if (Application.isPlaying && EmotionManager.Instance != null)
+        {
+            float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+            visualRadius = baseAttackRadiusDash + (baseAttackRadiusDash * posPerc * 0.5f);
+        }
+
+        Gizmos.DrawWireSphere(attackPointDash.position, visualRadius);
+    }
     
 }
 

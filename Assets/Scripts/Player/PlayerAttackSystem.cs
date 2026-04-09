@@ -56,9 +56,12 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
         float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
         
         float currentDamage = baseDamage + (baseDamage * negPerc);
-        float currentRadius = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
+        float baseScale = baseAttackRadius;
+        float boxSizeXY = baseScale * 2f;
+        baseScale = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
+        Vector2 attackBoxSize = new Vector2(boxSizeXY, boxSizeXY);
         
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, currentRadius, whatIsDamageable);
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(attackPoint.position,attackBoxSize,0f, whatIsDamageable);
 
         foreach (Collider2D enemy in hitEnemies)
         {
@@ -88,18 +91,22 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.cyan;
 
        
         float visualRadius = baseAttackRadius;
         
-       
+        float baseScale = baseAttackRadius;
+        
         if (Application.isPlaying && EmotionManager.Instance != null)
         {
             float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
             visualRadius = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
+            baseScale = baseAttackRadius + (baseAttackRadius * posPerc * 0.5f);
         }
-
-        Gizmos.DrawWireSphere(attackPoint.position, visualRadius);
+        float cubeSizeXY = baseScale * 2f; 
+        Vector3 cubeSize = new Vector3(cubeSizeXY, cubeSizeXY, 1f);
+        
+        Gizmos.DrawWireCube(attackPoint.position, cubeSize);
     }
 }

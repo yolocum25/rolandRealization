@@ -1042,17 +1042,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1631998257727653935, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -4574909748005070986, guid: e833a46b00b687b42ac38df8287f7953, type: 3}
     - target: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_Name
       value: Roland_Player
       objectReference: {fileID: 0}
     - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: whatIsDamageable.m_Bits
-      value: 128
+      propertyPath: baseAttackRadiusDash
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_LocalPosition.x
