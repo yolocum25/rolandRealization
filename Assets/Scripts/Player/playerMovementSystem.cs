@@ -245,6 +245,13 @@ public class PlayerMovement2D : MonoBehaviour
 
     private IEnumerator ConvertIntoSlashDash(float direction, float speed)
     {
+        isSlashDashing = true;
+        if (anim != null)
+        {
+            anim.ResetTrigger("Dash"); 
+            
+            anim.SetTrigger("SlashDash"); 
+        }
         if (playerAudioSource != null && slashDashSound != null)
         {
             playerAudioSource.PlayOneShot(slashDashSound);

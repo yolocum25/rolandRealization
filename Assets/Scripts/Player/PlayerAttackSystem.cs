@@ -2,10 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de ahí
+public class PlayerAttackSystem : MonoBehaviour 
 {
     #region AnimParameters
-    // Usar Hash es más eficiente que usar Strings cada frame
     private static readonly int AttackTrigger = Animator.StringToHash("attack");
     #endregion
 
@@ -54,7 +53,7 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     private void HandleAttackInput()
     {
         anim.SetTrigger(AttackTrigger);
-        // El daño no se activa aquí, sino mediante el Animation Event "OpenAttackWindow"
+        
     }
 
     private void CheckForDamage()
@@ -74,7 +73,7 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            // Intentamos obtener el componente de daño
+            
             if (enemy.TryGetComponent(out IDamageable damageable) && !alreadyDamaged.Contains(damageable))
             {
                 damageable.TakeDamage(currentDamage);
@@ -83,7 +82,7 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
         }
     }
 
-    // --- EVENTOS DE ANIMACIÓN (Se llaman desde la línea de tiempo) ---
+  
 
     public void OpenAttackWindow()
     {
@@ -93,10 +92,10 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
     public void CloseAttackWindow()
     {
         attacking = false;
-        alreadyDamaged.Clear(); // Limpiamos la lista para el próximo tajo
+        alreadyDamaged.Clear(); 
     }
 
-    // Para ver el rango del ataque en el editor
+    
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null) return;
