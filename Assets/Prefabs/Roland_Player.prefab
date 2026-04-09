@@ -208,9 +208,9 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
-  dashForce: 200
+  dashForce: 3000
   dashDuration: 0.2
-  dashCooldown: 4
+  dashCooldown: 1
 --- !u!114 &1471313705317855344
 MonoBehaviour:
   m_ObjectHideFlags: 0

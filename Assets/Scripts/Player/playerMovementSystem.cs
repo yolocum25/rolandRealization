@@ -23,12 +23,22 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float dashCooldown = 4f;
     private bool canDash = true;
     private bool isDashing;
+    
+    [Header("SlashDash Settings")]
+    [SerializeField] private LayerMask whatIsDamageable;
+    [SerializeField] private Transform attackPointDash; 
+    [SerializeField] private float baseAttackRadiusDash = 4;
+    [SerializeField] private float baseDamageDash = 60f;
+    private bool canSlashDash = true;
+    private bool isSlashDashing;
+    private bool SlashDash;
 
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded;
     private Vector2 inputVector;
     private Vector3 initialScale;
+    private List<IDamageable> alreadyDamaged = new();
 
     public PlayerInput PlayerInput { get; private set; }
 
@@ -48,6 +58,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].canceled += UpdateMovement;
         PlayerInput.actions["Jump"].started += Jump;
         PlayerInput.actions["Dash"].started += OnDashPerformed;
+        PlayerInput.actions["SlashDash"].started += OnDashPerformed;
     }
 
     private void OnDisable()
@@ -56,6 +67,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Move"].canceled -= UpdateMovement;
         PlayerInput.actions["Jump"].started -= Jump;
         PlayerInput.actions["Dash"].started -= OnDashPerformed;
+        PlayerInput.actions["SlashDash"].started -= OnDashPerformed;
         inputVector = Vector2.zero;
         if (rb != null) 
         {
@@ -114,13 +126,9 @@ public class PlayerMovement2D : MonoBehaviour
             // Salimos del Update aquí. Todo lo que esté debajo no se ejecutará.
             return; 
         }
-
-       
-    
+        
         GroundCheck(); 
         FlipSprite();  
-    
-        
         if (anim != null)
         {
             anim.SetFloat("Speed", Mathf.Abs(inputVector.x));
@@ -160,11 +168,16 @@ public class PlayerMovement2D : MonoBehaviour
     private void OnDashPerformed(InputAction.CallbackContext ctx)
     {
         float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
         
         
         if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
         {
-            if (posPerc >= 0.5f)
+            if (posPerc >= 0.5f && negPerc <= 0.7f)
+            {
+                StartCoroutine(SlashDashSec());
+            }
+            else if (posPerc >= 0.5f)
             {
                 StartCoroutine(Dash());
             }
@@ -197,12 +210,49 @@ public class PlayerMovement2D : MonoBehaviour
 
         yield return new WaitForSeconds(dashDuration);
 
-        // Restauramos estado
+        
         rb.gravityScale = originalGravity;
         isDashing = false;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+
+
+    }
+    private IEnumerator SlashDashSec()
+    {
+        canSlashDash = false;
+        isSlashDashing = true;
+
+
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+
+
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+
+        float currentDashForce = dashForce + (dashForce * posPerc * 0.5f);
+
+
+        float dashDirection = inputVector.x != 0 ? Mathf.Sign(inputVector.x) : transform.localScale.x;
+
+        rb.linearVelocity = new Vector2(dashDirection * currentDashForce, 0f);
+        if (SlashDash)
+        {
+            CheckForDamageDash();
+        }
+
+
+        if (anim != null) anim.SetTrigger("SlashDash");
+
+        yield return new WaitForSeconds(dashDuration);
+
+        
+        rb.gravityScale = originalGravity;
+        isSlashDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        canSlashDash = true;
 
 
     }
@@ -235,6 +285,42 @@ public class PlayerMovement2D : MonoBehaviour
             Gizmos.DrawWireSphere(feet.position, detectionRadius);
         }
     }
+    
+    private void CheckForDamageDash()
+    {
+        
+        if (attackPointDash == null) return;
+        float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
+        float negPerc = EmotionManager.Instance.negativeBar.FillPercentage;
+        
+        float currentDamage = baseDamageDash + (baseDamageDash * negPerc);
+        float currentRadius = baseAttackRadiusDash + (baseAttackRadiusDash * posPerc * 0.5f);
+        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPointDash.position, currentRadius, whatIsDamageable);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            
+            if (enemy.TryGetComponent(out IDamageable damageable) && !alreadyDamaged.Contains(damageable))
+            {
+                damageable.TakeDamage(currentDamage);
+                alreadyDamaged.Add(damageable);
+            }
+        }
+    }
+    
+    
+    public void OpenSlashDashAttackWindow()
+    {
+        SlashDash = true;
+    }
+
+    public void CloseSlashDashAttackWindow()
+    {
+        SlashDash = false;
+        alreadyDamaged.Clear(); 
+    }
+    
     
 }
 

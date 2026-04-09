@@ -11,7 +11,7 @@ public class PlayerAttackSystem : MonoBehaviour // O PlayerSystem si heredas de 
 
     [Header("Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
-    [SerializeField] private Transform attackPoint; // El punto desde donde sale el círculo de daño
+    [SerializeField] private Transform attackPoint; 
     [SerializeField] private float baseAttackRadius = 0.5f;
     [SerializeField] private float baseDamage = 20f;
 

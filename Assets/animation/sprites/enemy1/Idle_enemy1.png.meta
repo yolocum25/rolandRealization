@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: d61087df52b140b4bb22b70d9ff04bbb
+guid: ae7a7f30be3663f49b98449740882199
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2735622281790069171
-    second: movmente enemy1 1_0
+      213: 4563010265878685936
+    second: movmente enemy1 2_0
   - first:
-      213: -1607768664915365166
-    second: movmente enemy1 1_1
+      213: 6916966365497879106
+    second: movmente enemy1 2_1
   - first:
-      213: -8250853396434787941
-    second: movmente enemy1 1_2
+      213: -3045860037398872298
+    second: movmente enemy1 2_2
   - first:
-      213: -8062649715838092839
-    second: movmente enemy1 1_3
+      213: 7672401562287235387
+    second: movmente enemy1 2_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,23 +109,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: movmente enemy1 1_0
+      name: movmente enemy1 2_0
       rect:
         serializedVersion: 2
-        x: 216
-        y: 43
-        width: 193
-        height: 140
+        x: 8
+        y: 219
+        width: 215
+        height: 146
       alignment: 9
-      pivot: {x: 0.55942595, y: 0.47269228}
+      pivot: {x: 0.6059686, y: 0.46098807}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d466246570e190ad0800000000000000
-      internalID: -2735622281790069171
+      spriteID: 0f8e82439a1135f30800000000000000
+      internalID: 4563010265878685936
       vertices: []
       indices: 
       edges: []
@@ -134,7 +134,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bfd316eff32a40c48b81b4c1434bd173
+    spriteID: be4843a558c0398428d1cdf235b0ad62
     internalID: 0
     vertices: []
     indices: 
@@ -146,7 +146,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":618.0,"y":403.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      movmente enemy1 1_0: -2735622281790069171
+      movmente enemy1 2_0: 4563010265878685936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

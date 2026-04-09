@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 876250802870077264}
   - component: {fileID: 4984489936525745395}
   - component: {fileID: 8198338581596279471}
-  - component: {fileID: 9105833579361757081}
-  - component: {fileID: 785664235851984620}
   - component: {fileID: 3974426254770160717}
-  m_Layer: 0
+  - component: {fileID: 7566982558342914311}
+  - component: {fileID: 2606130309015304438}
+  m_Layer: 7
   m_Name: ravager
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.88, y: 16.02, z: 0}
-  m_LocalScale: {x: 10.130692, y: 10.130692, z: 10.130692}
+  m_LocalScale: {x: 14.098782, y: 14.098782, z: 14.098782}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1809376505
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 9156434412132254561, guid: 9f7058ea6ca3fb54dbc5fc63d7446100, type: 3}
@@ -177,34 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af194795aa3cec4f9417ada4a72ffab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
-  maxhealth: 100
+  maxhealth: 1000
   staggerThreshold: 30
---- !u!114 &9105833579361757081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113078919294019534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 650911a0769ea2742aae7eb05112b77d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMain
---- !u!114 &785664235851984620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113078919294019534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a424eebd9ab41e54695f42e441ed6f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyTouchDamage
-  damageToPlayer: 20
-  attackInterval: 1
 --- !u!114 &3974426254770160717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +195,44 @@ MonoBehaviour:
   enemyAI: {fileID: 0}
   anim: {fileID: 876250802870077264}
   stunDuration: 4
+--- !u!114 &7566982558342914311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113078919294019534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a424eebd9ab41e54695f42e441ed6f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTouchDamage
+  damageToPlayer: 15
+  attackInterval: 1
+--- !u!50 &2606130309015304438
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113078919294019534}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
