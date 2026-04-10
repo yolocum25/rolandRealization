@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: ae7a7f30be3663f49b98449740882199
+guid: 09e761b91d2af2243b7f47d943b129b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4563010265878685936
-    second: movmente enemy1 2_0
-  - first:
-      213: 6916966365497879106
-    second: movmente enemy1 2_1
-  - first:
-      213: -3045860037398872298
-    second: movmente enemy1 2_2
-  - first:
-      213: 7672401562287235387
-    second: movmente enemy1 2_3
+      213: -1233635401622274537
+    second: fondolvl1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: movmente enemy1 2_0
+      name: fondolvl1_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 219
-        width: 215
-        height: 146
-      alignment: 9
-      pivot: {x: 0.5407573, y: 0.5630207}
+        x: 0
+        y: 0
+        width: 940
+        height: 348
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f8e82439a1135f30800000000000000
-      internalID: 4563010265878685936
+      spriteID: 71e35f7632f31eee0800000000000000
+      internalID: -1233635401622274537
       vertices: []
       indices: 
       edges: []
@@ -134,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: be4843a558c0398428d1cdf235b0ad62
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -142,11 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":618.0,"y":403.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      movmente enemy1 2_0: 4563010265878685936
+      fondolvl1_0: -1233635401622274537
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

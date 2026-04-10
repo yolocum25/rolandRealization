@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.88, y: 16.02, z: 0}
-  m_LocalScale: {x: 14.098782, y: 14.098782, z: 14.098782}
+  m_LocalScale: {x: 14.991235, y: 13.852053, z: 14.098782}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 9156434412132254561, guid: 9f7058ea6ca3fb54dbc5fc63d7446100, type: 3}
+  m_Sprite: {fileID: -2735622281790069171, guid: d61087df52b140b4bb22b70d9ff04bbb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -156,8 +156,8 @@ BoxCollider2D:
   m_Offset: {x: -0.013022065, y: -0.22463202}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.23, y: 1.81}
+    pivot: {x: 0.5130625, y: 0.6709743}
+    oldSize: {x: 1.89, y: 1.37}
     newSize: {x: 2.23, y: 1.81}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af194795aa3cec4f9417ada4a72ffab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
-  maxhealth: 1000
+  maxhealth: 100000000
   staggerThreshold: 30
 --- !u!114 &3974426254770160717
 MonoBehaviour:
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStaggerResponse
   healthSystem: {fileID: 8198338581596279471}
-  enemyAI: {fileID: 0}
+  enemyAI: {fileID: 8198338581596279471}
   anim: {fileID: 876250802870077264}
   stunDuration: 4
 --- !u!114 &7566982558342914311

@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: ae7a7f30be3663f49b98449740882199
+guid: 8c172ce03a824674a8d6473bb61bffb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4563010265878685936
-    second: movmente enemy1 2_0
-  - first:
-      213: 6916966365497879106
-    second: movmente enemy1 2_1
-  - first:
-      213: -3045860037398872298
-    second: movmente enemy1 2_2
-  - first:
-      213: 7672401562287235387
-    second: movmente enemy1 2_3
+      213: -6213700042132456976
+    second: Gemini_Generated_Image_ndkuj5ndkuj5ndku_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: movmente enemy1 2_0
+      name: Gemini_Generated_Image_ndkuj5ndkuj5ndku_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 219
-        width: 215
-        height: 146
-      alignment: 9
-      pivot: {x: 0.5407573, y: 0.5630207}
+        x: 0
+        y: 0
+        width: 1686
+        height: 624
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f8e82439a1135f30800000000000000
-      internalID: 4563010265878685936
+      spriteID: 0f97dd7bbb084c9a0800000000000000
+      internalID: -6213700042132456976
       vertices: []
       indices: 
       edges: []
@@ -134,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: be4843a558c0398428d1cdf235b0ad62
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -142,11 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":618.0,"y":403.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      movmente enemy1 2_0: 4563010265878685936
+      Gemini_Generated_Image_ndkuj5ndkuj5ndku_0: -6213700042132456976
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
