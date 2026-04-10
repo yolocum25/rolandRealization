@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3974426254770160717}
   - component: {fileID: 7566982558342914311}
   - component: {fileID: 2606130309015304438}
+  - component: {fileID: 1207639226962480501}
   m_Layer: 7
   m_Name: ravager
   m_TagString: Enemy
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2735622281790069171, guid: d61087df52b140b4bb22b70d9ff04bbb, type: 3}
+  m_Sprite: {fileID: 4563010265878685936, guid: ae7a7f30be3663f49b98449740882199, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -107,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 113078919294019534}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b2f30652f786e4741bf7cdee320236e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 15d18a33b34068540aeb35b470e75e80, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,8 +157,8 @@ BoxCollider2D:
   m_Offset: {x: -0.013022065, y: -0.22463202}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5130625, y: 0.6709743}
-    oldSize: {x: 1.89, y: 1.37}
+    pivot: {x: 0.5407573, y: 0.5630207}
+    oldSize: {x: 2.15, y: 1.46}
     newSize: {x: 2.23, y: 1.81}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af194795aa3cec4f9417ada4a72ffab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
-  maxhealth: 100000000
-  staggerThreshold: 30
+  maxhealth: 600
+  staggerThreshold: 400
 --- !u!114 &3974426254770160717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +195,8 @@ MonoBehaviour:
   healthSystem: {fileID: 8198338581596279471}
   enemyAI: {fileID: 8198338581596279471}
   anim: {fileID: 876250802870077264}
+  touchDamage: {fileID: 7566982558342914311}
+  rb: {fileID: 2606130309015304438}
   stunDuration: 4
 --- !u!114 &7566982558342914311
 MonoBehaviour:
@@ -207,8 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a424eebd9ab41e54695f42e441ed6f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTouchDamage
-  damageToPlayer: 15
+  damageToPlayer: 5
   attackInterval: 1
+  knockbackForce: 100
+  aiScript: {fileID: 1207639226962480501}
 --- !u!50 &2606130309015304438
 Rigidbody2D:
   serializedVersion: 5
@@ -232,7 +237,27 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1207639226962480501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113078919294019534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310e6093460ed6f428f5fda3e17f793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  currentState: 0
+  detectionRange: 180
+  stopDistance: 0.5
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  waitTimeAtPoint: 2
+  moveSpeed: 40
