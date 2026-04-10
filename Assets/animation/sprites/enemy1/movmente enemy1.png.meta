@@ -116,8 +116,8 @@ TextureImporter:
         y: 222
         width: 223
         height: 181
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5515493, y: 0.45161042}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: movmente enemy1_1
       rect:
         serializedVersion: 2
-        x: 224
+        x: 223
         y: 223
         width: 193
         height: 180
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.50567245, y: 0.42701247}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -160,8 +160,8 @@ TextureImporter:
         y: 222
         width: 201
         height: 181
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5190636, y: 0.42136717}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

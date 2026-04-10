@@ -6,7 +6,7 @@ public class EnemyTouchDamage : MonoBehaviour
     [SerializeField] private float attackInterval = 1.0f;
     
     [Header("Audio Settings")]
-    private AudioSource audioSource;
+     [SerializeField] private AudioSource audioSource;
     
     [Header("Knockback Settings")]
     [SerializeField] private float knockbackForce = 8f; 

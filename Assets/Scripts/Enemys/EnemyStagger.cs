@@ -10,6 +10,11 @@ public class EnemyStaggerResponse : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float stunDuration = 3f;
 
+    
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource staggerAudioSource;
+    
+    
     private void OnEnable()
     {
         healthSystem.OnStagger += HandleStagger;
@@ -27,7 +32,13 @@ public class EnemyStaggerResponse : MonoBehaviour
 
     private IEnumerator StaggerRoutine()
     {
-        // 1. Apagamos la IA (esto ejecutará el OnDisable que pusimos arriba)
+        if (staggerAudioSource != null)
+        {
+            
+            staggerAudioSource.pitch = Random.Range(0.9f, 1.1f);
+            staggerAudioSource.Play();
+        }
+      
         if (enemyAI != null) enemyAI.enabled = false;
         if (touchDamage != null) touchDamage.enabled = false;
 
