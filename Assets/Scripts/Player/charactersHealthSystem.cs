@@ -6,7 +6,10 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
 {
     [SerializeField] protected float maxhealth = 186;
     [SerializeField] protected float staggerThreshold = 70f;
-  
+    
+    [Header("Dead effects")]
+    [SerializeField] private GameObject deathVFXPrefab;
+    
     public event Action OnDamaged;
     public event Action OnStagger;
     
@@ -34,8 +37,18 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
             OnStagger?.Invoke();
         }
 
-        if (currentHealth <= 0) Destroy(gameObject);
-        
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    protected virtual void Die()
+    {
+        if (deathVFXPrefab != null)
+        {
+            Instantiate(deathVFXPrefab, transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject);
         
     }
 }

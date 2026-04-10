@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2606130309015304438}
   - component: {fileID: 1207639226962480501}
   - component: {fileID: 4125377876330395160}
+  - component: {fileID: 1629382430902319606}
   m_Layer: 7
   m_Name: ravager
   m_TagString: Enemy
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthSystem
   maxhealth: 600
   staggerThreshold: 400
+  deathVFXPrefab: {fileID: 0}
 --- !u!114 &3974426254770160717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +364,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1629382430902319606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113078919294019534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6dfbf6b8c843514aa164b5c251b1125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamageEffects
 --- !u!1 &5604414851520247355
 GameObject:
   m_ObjectHideFlags: 0
