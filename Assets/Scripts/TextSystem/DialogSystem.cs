@@ -150,7 +150,12 @@ public class DialogueSystem : MonoBehaviour
             playerAttackScript.enabled = true;
             playerAttackScript.CloseAttackWindow(); 
         }
-
+        
+        LevelStartSequencer sequencer = Object.FindFirstObjectByType<LevelStartSequencer>();
+        if (sequencer != null)
+        {
+            sequencer.EndNarrativeAndStartGame();
+        }
        
         TutorialManager tutorial = Object.FindFirstObjectByType<TutorialManager>();
         if (tutorial != null)
