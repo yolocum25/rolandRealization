@@ -10,13 +10,22 @@ public class LevelStartSequencer : MonoBehaviour
     [Header("Referencias del Jugador")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerAttackSystem playerAttack;
+    
+    [SerializeField] private AudioSource ambientAudioSource;
+    
 
     private void Awake()
     {
-        // Al despertar, nos aseguramos de que el HUD esté apagado
-        // y el de narrativa encendido para que no haya parpadeos.
+       
+        
         if (gameHUD != null) gameHUD.SetActive(false);
         if (narrativeCanvas != null) narrativeCanvas.SetActive(true);
+        
+        if (ambientAudioSource != null)
+        {
+            ambientAudioSource.loop = true;
+            ambientAudioSource.Play();
+        }
     }
 
     private void Start()
