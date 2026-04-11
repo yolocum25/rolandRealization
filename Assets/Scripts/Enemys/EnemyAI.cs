@@ -37,14 +37,13 @@ public class EnemyAI : MonoBehaviour
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        // Lógica de cambio de estado
+        
         if (distanceToPlayer <= detectionRange)
             currentState = EnemyState.Chasing;
         else
             currentState = EnemyState.Patrolling;
 
-        // Ejecución de estados
+        
         switch (currentState)
         {
             case EnemyState.Patrolling:
@@ -70,13 +69,13 @@ public class EnemyAI : MonoBehaviour
             if (waitTimer >= waitTimeAtPoint)
             {
                 isWaiting = false;
-                // Pasamos al siguiente punto
+                
                 currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
             }
             return;
         }
 
-        // Si la distancia es muy pequeña, nos detenemos
+        
         if (Mathf.Abs(distanceX) < 0.2f)
         {
             isWaiting = true;
@@ -91,7 +90,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ChaseLogic(float distance)
     {
-        isWaiting = false; // Interrumpir patrulla si nos ve
+        isWaiting = false; 
         if (distance > stopDistance)
             MoveTowards(player.position);
         else
@@ -100,10 +99,10 @@ public class EnemyAI : MonoBehaviour
 
     private void MoveTowards(Vector2 target)
     {
-        // Calculamos la dirección solo en el eje X
+        
         float diffX = target.x - transform.position.x;
     
-        // Si estamos a menos de 0.1 unidades, no nos movemos más
+        
         if (Mathf.Abs(diffX) < 0.1f) 
         {
             StopMovement();
@@ -112,10 +111,10 @@ public class EnemyAI : MonoBehaviour
 
         float direction = Mathf.Sign(diffX);
     
-        // Aplicamos velocidad pero mantenemos la velocidad vertical (gravedad)
+        
         rb.linearVelocity = new Vector2(direction * moveSpeed, rb.linearVelocity.y);
 
-        // Volteo de Sprite
+        
         if (direction > 0) sprite.flipX = false;
         else if (direction < 0) sprite.flipX = true;
 

@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 6558213031465356475}
   - component: {fileID: 2640585921317364897}
   - component: {fileID: 8027435698697520703}
+  - component: {fileID: 4631796431799046102}
   m_Layer: 3
   m_Name: Roland_Player
   m_TagString: Player
@@ -76,6 +77,8 @@ Transform:
   - {fileID: 5589395607483032579}
   - {fileID: 7695681758672137007}
   - {fileID: 821342526358468241}
+  - {fileID: 3763170537418421078}
+  - {fileID: 1073331964360356041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1631998257727653935
@@ -127,7 +130,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4574909748005070986, guid: e833a46b00b687b42ac38df8287f7953, type: 3}
+  m_Sprite: {fileID: 7258568264726202592, guid: 7cec8d611c2652f4fbb2a84b312657ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -161,8 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a586d9138328fc54aade7245789874f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMain
-  <InteractPoint>k__BackingField: {fileID: 0}
-  <InteractionRadius>k__BackingField: 0
+  <InteractPoint>k__BackingField: {fileID: 3763170537418421078}
+  <InteractionRadius>k__BackingField: 40
+  interactionLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!50 &3797242134089980393
 Rigidbody2D:
   serializedVersion: 5
@@ -202,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2cd49362f55774f8bdfddfe3fe10e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement2D
-  movementSpeed: 35
+  movementSpeed: 60
   jumpHeight: 25
   feet: {fileID: 5589395607483032579}
   detectionRadius: 0.4
@@ -210,13 +216,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   dashDuration: 0.2
-  dashCooldown: 1
+  dashCooldown: 1.5
   dashDistance: 30
   whatIsDamageable:
     serializedVersion: 2
     m_Bits: 128
   attackPointDash: {fileID: 821342526358468241}
-  baseAttackRadiusDash: 60
+  baseAttackRadiusDash: 20
   baseDamageDash: 60
   playerAudioSource: {fileID: 4857945450288047656}
   slashDashSound: {fileID: 8300000, guid: bd4449ea4215dd7419c0e44b25b7dd74, type: 3}
@@ -236,7 +242,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   attackPoint: {fileID: 7695681758672137007}
-  baseAttackRadius: 10
+  baseAttackRadius: 7
   baseDamage: 20
   audioSource: {fileID: 8390652538760718644}
   attackSound: {fileID: 8300000, guid: aaf064ac85c25eb428d7d1621066542c, type: 3}
@@ -432,6 +438,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerHealthSystem
   maxhealth: 186
   staggerThreshold: 70
+--- !u!114 &4631796431799046102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2625834785111494640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c149d18973133478580fac20a614c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterDeathVisuals
+  anim: {fileID: 6558213031465356475}
+  spriteRenderer: {fileID: 1631998257727653935}
+  deathParticles: {fileID: 0}
+  delayBeforeFade: 1.5
+  fadeDuration: 1
+  deathTriggerName: RolandDead
+  audioSource: {fileID: 8608143803157907931}
+  deathSound: {fileID: 8300000, guid: 991788c1665e50a468859543bdbee169, type: 3}
+  volume: 1
 --- !u!1 &4179508594312556810
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +485,7 @@ Transform:
   m_GameObject: {fileID: 4179508594312556810}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.21, y: 0.51, z: 0}
+  m_LocalPosition: {x: 1.21, y: 0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -561,6 +588,166 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5306489064622068919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1073331964360356041}
+  - component: {fileID: 8608143803157907931}
+  m_Layer: 3
+  m_Name: DeadSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1073331964360356041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5306489064622068919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5798236570230365137}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8608143803157907931
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5306489064622068919}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 991788c1665e50a468859543bdbee169, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!1 &6820099474352547521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3763170537418421078}
+  m_Layer: 3
+  m_Name: Interaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3763170537418421078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6820099474352547521}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.97, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5798236570230365137}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7772711123352592403
 GameObject:
   m_ObjectHideFlags: 0

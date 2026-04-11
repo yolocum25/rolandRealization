@@ -18,7 +18,32 @@ namespace Player
 
             }
         }
+        protected override void Die()
+        {
+           
+            if (EventManager.Instance != null)
+            {
+                EventManager.Instance.CharacterDead(this.gameObject);
+            }
 
+            
+            if (gameObject.CompareTag("Player"))
+            {
+                EventManager.Instance.GameOver();
+            }
+            
+            CharacterDeathVisuals visuals = GetComponent<CharacterDeathVisuals>();
+            if (visuals != null)
+            {
+                visuals.HandleDeath(this.gameObject);
+            }
+            
+            
+            if (TryGetComponent(out PlayerAttackSystem attack))
+            {
+                attack.enabled = false;
+            }
+        }
 
         protected override void Awake()
         {
@@ -42,4 +67,6 @@ namespace Player
             OnStagger -= HandleStaggerEmotion;
         }
     }
+    
+    
 }

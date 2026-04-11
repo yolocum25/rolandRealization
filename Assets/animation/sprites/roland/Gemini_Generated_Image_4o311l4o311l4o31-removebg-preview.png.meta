@@ -164,8 +164,8 @@ TextureImporter:
         y: 692
         width: 72
         height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.53244895, y: 0.48609272}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -186,8 +186,8 @@ TextureImporter:
         y: 693
         width: 72
         height: 167
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.56489724, y: 0.4580294}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -204,12 +204,12 @@ TextureImporter:
       name: Gemini_Generated_Image_4o311l4o311l4o31-removebg-preview_2
       rect:
         serializedVersion: 2
-        x: 142
+        x: 143
         y: 694
         width: 72
         height: 166
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.49999937, y: 0.4648136}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -230,8 +230,8 @@ TextureImporter:
         y: 692
         width: 72
         height: 168
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4999998, y: 0.45827955}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
