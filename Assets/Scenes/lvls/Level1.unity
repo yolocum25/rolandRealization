@@ -996,7 +996,7 @@ Transform:
   m_GameObject: {fileID: 383581326}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 7.54, z: -10}
+  m_LocalPosition: {x: -24.4, y: 5.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1085,11 +1085,11 @@ PrefabInstance:
       objectReference: {fileID: 518093160}
     - target: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.5
+      value: -24.4
       objectReference: {fileID: 0}
     - target: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.54
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 5798236570230365137, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1221,7 +1221,7 @@ Transform:
   m_GameObject: {fileID: 501417343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: 7.54, z: -10}
+  m_LocalPosition: {x: -24.4, y: 5.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2796,7 +2796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: sentences.Array.size
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[0]'
@@ -2804,19 +2804,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[1]'
-      value: 
+      value: Roland, did you hear about Ralf... that makes 7 deaths this week, and
+        the number is rising...
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[2]'
-      value: wewewesewds
+      value: Well, you know how it is with this job, every day could be your last.
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[3]'
-      value: wewewesewds
+      value: Roland, I'm serious. What would happen if you or I were next? Just because
+        I'm strong doesn't mean I can just die.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[4]'
+      value: Wow...don't worry, you know that won't happen, we're in this together.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[5]'
+      value: Hmm... Roland, what if one day you were next? I could never forget myself...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[6]'
+      value: No, no, don't talk nonsense. I would never leave you alone; that's the
+        advantage of having a beautiful wife, much stronger than you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[7]'
+      value: Yes, yes, don't worry, I'll protect you, but maybe someday we could
+        be more than just facility cleaners.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[8]'
+      value: That's the spirit! Now it's almost time for my shift, so we should start
+        heading out, don't you think?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[9]'
+      value: Well, if you want... one day... we could go far away from here, you
+        and I, escape this rotten city, but the people here need us... at least for
+        now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[10]'
+      value: ....
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[11]'
+      value: Roland...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[12]'
+      value: mhmh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[13]'
+      value: If something ever happens to me... please don't blame yourself for anything
+      objectReference: {fileID: 0}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'sentences.Array.data[14]'
+      value: as sure as if something like that would happen
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: dialogueSounds.Array.size
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[0]'
@@ -2825,7 +2876,59 @@ PrefabInstance:
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 073c3d2aaa0e73d4ca1ba250ebb6376d, type: 3}
+      objectReference: {fileID: 8300000, guid: be045cb6e6f6cef4998d0292732c2ab7, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9229790fff6781545bf7bb0b601ed593, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f478e4a87a5f9c3468282bbb2d27f54c, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 09931e161ac230c40846ce7f8e985180, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e2439dd9dc739014b8a2a64400600b95, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: eb83f9cec2c525440bfe2bb4e9d9ff4a, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 612180e00c6d99941a9e14f502423c77, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 057fe5a56a5d3da439d83c701cf3bade, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[9]'
+      value: 
+      objectReference: {fileID: 8300000, guid: b43c9a7227a0d14449469abed3b6177e, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[10]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c7f1e2862b813745981c5f4f7768afa, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[11]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f43b8513568262e448a7bd2cd0a53612, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[12]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5cfb37ef34d9b03469cf5727a993fe45, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[13]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a8b6a5ee0b8ee524e89774b9ba02be40, type: 3}
+    - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: 'dialogueSounds.Array.data[14]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cb4280a3ba306274dbc81bb5e5c579c0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

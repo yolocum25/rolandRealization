@@ -17,6 +17,7 @@ public class LevelStartSequencer : MonoBehaviour
     private void Awake()
     {
        
+        Time.timeScale = 0f;
         
         if (gameHUD != null) gameHUD.SetActive(false);
         if (narrativeCanvas != null) narrativeCanvas.SetActive(true);
@@ -24,6 +25,7 @@ public class LevelStartSequencer : MonoBehaviour
         if (ambientAudioSource != null)
         {
             ambientAudioSource.loop = true;
+            ambientAudioSource.ignoreListenerPause = true;
             ambientAudioSource.Play();
         }
     }
@@ -35,7 +37,6 @@ public class LevelStartSequencer : MonoBehaviour
 
     private void InitiateNarrativeMode()
     {
-        Debug.Log("<color=cyan><b>[Sequencer]</b> Bloqueando jugador e iniciando narrativa.</color>");
 
         // 1. Bloqueamos al jugador por completo
         if (playerInput != null) playerInput.enabled = false;
@@ -54,25 +55,25 @@ public class LevelStartSequencer : MonoBehaviour
     /// </summary>
     public void EndNarrativeAndStartGame()
     {
-        Debug.Log("<color=green><b>[Sequencer]</b> Diálogos terminados. ¡Comienza el juego!</color>");
+        Time.timeScale = 1f;
 
         // 1. Intercambio de Canvases
         if (narrativeCanvas != null) narrativeCanvas.SetActive(false);
         if (gameHUD != null) gameHUD.SetActive(true);
 
-        // 2. Devolvemos el control a Roland
+    
         if (playerInput != null) playerInput.enabled = true;
         if (playerAttack != null) playerAttack.enabled = true;
-
-       
-        
-
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         
        
-        if (playerInput != null) playerInput.SwitchCurrentActionMap("Player");
+        
+        
     }
+    
+    
+    
 }
     
