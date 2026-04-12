@@ -1,31 +1,19 @@
 fileFormatVersion: 2
-guid: 9e6bd6134ff0714448a103b710fc11de
+guid: 3fe61eb2b8c22384ba7b4daac0827a24
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -697156557245611194
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0
+      213: -5638931044943576126
+    second: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_0
   - first:
-      213: -5875428463315318993
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1
+      213: 4747580994363325341
+    second: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_1
   - first:
-      213: -4040692297728472811
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_2
+      213: 1384359869357027878
+    second: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_2
   - first:
-      213: 1601910422460329801
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_3
-  - first:
-      213: 5322963596669000087
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_4
-  - first:
-      213: -6572181581102333649
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_5
-  - first:
-      213: -8457203808485657918
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_6
-  - first:
-      213: 2631062398945147072
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_7
+      213: 3865391382025765082
+    second: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 85
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,10 +81,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,45 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0
+      name: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 125
-        width: 95
-        height: 128
-      alignment: 9
-      pivot: {x: 0.40323696, y: 0.51860833}
+        x: 0
+        y: 308
+        width: 204
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6438a8c0ec33356f0800000000000000
-      internalID: -697156557245611194
+      spriteID: 2c34739471e7eb1b0800000000000000
+      internalID: -5638931044943576126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1
+      name: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_1
       rect:
         serializedVersion: 2
-        x: 431
-        y: 250
-        width: 163
-        height: 98
-      alignment: 9
-      pivot: {x: 0.7137088, y: 0.5298188}
+        x: 200
+        y: 315
+        width: 197
+        height: 307
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f270fd421f8467ea0800000000000000
-      internalID: -5875428463315318993
+      spriteID: d9bfb67b2cbc2e140800000000000000
+      internalID: 4747580994363325341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_2
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 0
+        width: 222
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 622f45e67fb363310800000000000000
+      internalID: 1384359869357027878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_3
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 0
+        width: 170
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad080837bf0a4a530800000000000000
+      internalID: 3865391382025765082
       vertices: []
       indices: 
       edges: []
@@ -168,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f6b7dac2182b5854cb692f35eb2ec265
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -176,12 +208,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":306.0,"y":408.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0: -697156557245611194
-      Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1: -5875428463315318993
+      Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_0: -5638931044943576126
+      Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_1: 4747580994363325341
+      Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_2: 1384359869357027878
+      Gemini_Generated_Image_gmu31vgmu31vgmu3-removebg-preview 1_3: 3865391382025765082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

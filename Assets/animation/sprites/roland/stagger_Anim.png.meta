@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 275
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -111,7 +111,7 @@ TextureImporter:
         width: 220
         height: 351
       alignment: 9
-      pivot: {x: 0.50434446, y: 0.62525755}
+      pivot: {x: 0.4968798, y: 0.57691115}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: stagger_Anim_1
       rect:
         serializedVersion: 2
-        x: 347
-        y: 15
+        x: 348
+        y: 16
         width: 222
         height: 348
       alignment: 9
-      pivot: {x: 0.5322894, y: 0.62908375}
+      pivot: {x: 0.5076313, y: 0.5582985}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

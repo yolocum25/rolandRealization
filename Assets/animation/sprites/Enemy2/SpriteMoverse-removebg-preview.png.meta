@@ -1,31 +1,10 @@
 fileFormatVersion: 2
-guid: 9e6bd6134ff0714448a103b710fc11de
+guid: 7981d020873a2604f8d3fba73b27e0bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -697156557245611194
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0
-  - first:
-      213: -5875428463315318993
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1
-  - first:
-      213: -4040692297728472811
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_2
-  - first:
-      213: 1601910422460329801
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_3
-  - first:
-      213: 5322963596669000087
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_4
-  - first:
-      213: -6572181581102333649
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_5
-  - first:
-      213: -8457203808485657918
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_6
-  - first:
-      213: 2631062398945147072
-    second: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_7
+      213: -8028228978447665841
+    second: SpriteMoverse-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 85
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -93,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -121,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0
+      name: SpriteMoverse-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 171
-        y: 125
-        width: 95
-        height: 128
-      alignment: 9
-      pivot: {x: 0.40323696, y: 0.51860833}
+        x: 0
+        y: 0
+        width: 448
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6438a8c0ec33356f0800000000000000
-      internalID: -697156557245611194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1
-      rect:
-        serializedVersion: 2
-        x: 431
-        y: 250
-        width: 163
-        height: 98
-      alignment: 9
-      pivot: {x: 0.7137088, y: 0.5298188}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f270fd421f8467ea0800000000000000
-      internalID: -5875428463315318993
+      spriteID: f45312c8740069090800000000000000
+      internalID: -8028228978447665841
       vertices: []
       indices: 
       edges: []
@@ -168,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f6b7dac2182b5854cb692f35eb2ec265
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -176,12 +133,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":306.0,"y":408.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_0: -697156557245611194
-      Gemini_Generated_Image_2lmix62lmix62lmi-removebg-preview_1: -5875428463315318993
+      SpriteMoverse-removebg-preview_0: -8028228978447665841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
