@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/lvls/tutorial.unity
     guid: 15dcceeb9a8dd4d4aa686f6976eb89ec
   - enabled: 1
-    path: Assets/Scenes/lvls/Level1.unity
+    path: Assets/Scenes/lvls/A wonderfull life.unity
     guid: e3867b53ef9d97947ada6d572ec4800c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}
