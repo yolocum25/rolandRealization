@@ -29,8 +29,15 @@ public class LevelSelector : MonoBehaviour
         {
             int index = i; 
             
-            
-            
+            if (i == 0) 
+            {
+                chapters[i].isLocked = false;
+            }
+            else
+            {
+                string previousLevelName = chapters[i-1].sceneName;
+                chapters[i].isLocked = !LevelCheckerManager.IsLevelUnlocked(previousLevelName);
+            }
             
 
             UpdateVisuals(chapters[i]);

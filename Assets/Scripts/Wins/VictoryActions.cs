@@ -12,6 +12,9 @@ public class VictoryActions : MonoBehaviour
        
         Time.timeScale = 1f;
         
+        string currentLevelName = SceneManager.GetActiveScene().name;
+        LevelCheckerManager.MarkLevelAsCompleted(currentLevelName);
+        
         if (!string.IsNullOrEmpty(nextLevelName))
         {
             SceneManager.LoadScene(nextLevelName);
