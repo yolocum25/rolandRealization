@@ -309,6 +309,34 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Stagger"",
+            ""id"": ""a8589af1-cf78-4d56-b532-653560999eb2"",
+            ""actions"": [
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""Button"",
+                    ""id"": ""60bb0a2a-888f-4f04-a9e5-d972323adef0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5b0c06aa-e237-44c8-9e32-bedd2841cc10"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -324,12 +352,16 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NextText = m_UI.FindAction("NextText", throwIfNotFound: true);
         m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
+        // Stagger
+        m_Stagger = asset.FindActionMap("Stagger", throwIfNotFound: true);
+        m_Stagger_Newaction = m_Stagger.FindAction("New action", throwIfNotFound: true);
     }
 
     ~@MyInputSystem()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, MyInputSystem.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, MyInputSystem.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Stagger.enabled, "This will cause a leak and performance issues, MyInputSystem.Stagger.Disable() has not been called.");
     }
 
     /// <summary>
@@ -648,6 +680,102 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // Stagger
+    private readonly InputActionMap m_Stagger;
+    private List<IStaggerActions> m_StaggerActionsCallbackInterfaces = new List<IStaggerActions>();
+    private readonly InputAction m_Stagger_Newaction;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "Stagger".
+    /// </summary>
+    public struct StaggerActions
+    {
+        private @MyInputSystem m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public StaggerActions(@MyInputSystem wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "Stagger/Newaction".
+        /// </summary>
+        public InputAction @Newaction => m_Wrapper.m_Stagger_Newaction;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_Stagger; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="StaggerActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(StaggerActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="StaggerActions" />
+        public void AddCallbacks(IStaggerActions instance)
+        {
+            if (instance == null || m_Wrapper.m_StaggerActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_StaggerActionsCallbackInterfaces.Add(instance);
+            @Newaction.started += instance.OnNewaction;
+            @Newaction.performed += instance.OnNewaction;
+            @Newaction.canceled += instance.OnNewaction;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="StaggerActions" />
+        private void UnregisterCallbacks(IStaggerActions instance)
+        {
+            @Newaction.started -= instance.OnNewaction;
+            @Newaction.performed -= instance.OnNewaction;
+            @Newaction.canceled -= instance.OnNewaction;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="StaggerActions.UnregisterCallbacks(IStaggerActions)" />.
+        /// </summary>
+        /// <seealso cref="StaggerActions.UnregisterCallbacks(IStaggerActions)" />
+        public void RemoveCallbacks(IStaggerActions instance)
+        {
+            if (m_Wrapper.m_StaggerActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="StaggerActions.AddCallbacks(IStaggerActions)" />
+        /// <seealso cref="StaggerActions.RemoveCallbacks(IStaggerActions)" />
+        /// <seealso cref="StaggerActions.UnregisterCallbacks(IStaggerActions)" />
+        public void SetCallbacks(IStaggerActions instance)
+        {
+            foreach (var item in m_Wrapper.m_StaggerActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_StaggerActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="StaggerActions" /> instance referencing this action map.
+    /// </summary>
+    public StaggerActions @Stagger => new StaggerActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -712,5 +840,20 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUnpause(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Stagger" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="StaggerActions.AddCallbacks(IStaggerActions)" />
+    /// <seealso cref="StaggerActions.RemoveCallbacks(IStaggerActions)" />
+    public interface IStaggerActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "New action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

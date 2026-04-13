@@ -24,7 +24,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float dashDistance = 8f;
     private bool canDash = true;
     private bool isDashing;
-    private bool IsPaused;
+    private bool isPaused;
     
     [Header("SlashDash Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
@@ -50,9 +50,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerAttackSystem playerAttack;
     
-    [Header("Pause Settings")]
-    [SerializeField] private GameObject PauseCanvas; // El Pausa
-    [SerializeField] private GameObject gameHUD;       
+    
     public PlayerInput PlayerInput { get; private set; }
 
     private void Awake()
@@ -76,8 +74,8 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Jump"].started += Jump;
         PlayerInput.actions["Dash"].started += OnDashPerformed;
         PlayerInput.actions["SlashDash"].started += OnSlashInput;
-        PlayerInput.actions["Player/Pause"].performed += OnPauseToggle;
-        PlayerInput.actions["UI/UnPause"].performed += OnPauseToggle;
+        // PlayerInput.actions["Player/Pause"].performed += OnPauseToggle;
+        // PlayerInput.actions["UI/UnPause"].performed += OnPauseToggle;
     }
 
     private void OnDisable()
@@ -126,6 +124,9 @@ public class PlayerMovement2D : MonoBehaviour
 
     void Update()
     {
+        
+        if (isPaused) return;
+        
         if (PlayerInput == null || PlayerInput.currentActionMap == null)
         {
             return; 
@@ -142,8 +143,7 @@ public class PlayerMovement2D : MonoBehaviour
             {
                 anim.SetFloat("Speed", 0);
             }
-
-            // Salimos del Update aquí. Todo lo que esté debajo no se ejecutará.
+            
             return; 
         }
         
@@ -158,6 +158,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void FixedUpdate()
     {
+       
         if (PlayerInput == null || PlayerInput.currentActionMap == null) 
         {
             return;
@@ -202,38 +203,8 @@ public class PlayerMovement2D : MonoBehaviour
         }
     }
 
-    private void OnPauseToggle(InputAction.CallbackContext ctx)
-    {
-        
-        IsPaused = !IsPaused;
-
-        if (IsPaused)
-        {
-            Time.timeScale = 0f;
-            playerInput.SwitchCurrentActionMap("UI");
-            if (gameHUD != null) gameHUD.SetActive(false);
-            if (PauseCanvas != null) PauseCanvas.SetActive(true);
-            if (playerInput != null) playerInput.enabled = false;
-            if (playerAttack != null) playerAttack.enabled = false;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            
-        }
-        
-        {
-            Time.timeScale = 1f;
-            playerInput.SwitchCurrentActionMap("Player");
-            if (gameHUD != null) gameHUD.SetActive(true);
-            if(PauseCanvas != null) PauseCanvas.SetActive(false);
-            if (PlayerInput != null) PlayerInput.enabled = true;
-            if (playerInput != null) playerInput.enabled = true;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        
-        
-    }
     
+
     private void OnDashPerformed(InputAction.CallbackContext ctx)
     {
         if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")

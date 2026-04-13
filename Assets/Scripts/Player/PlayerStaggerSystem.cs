@@ -44,7 +44,9 @@ public class PlayerStaggerSystem : MonoBehaviour
         if (playerMovementScript != null) playerMovementScript.enabled = false;
         if (playerAttackScript != null) playerAttackScript.enabled = false;
         PlayerInput pInput = GetComponent<PlayerInput>();
-        if (pInput != null) pInput.enabled = false;
+        pInput.SwitchCurrentActionMap("Stagger");
+        if (!pInput.enabled) pInput.enabled = true;
+        
         if (anim != null) 
         {
             anim.SetFloat("Speed", 0f); 
@@ -61,7 +63,7 @@ public class PlayerStaggerSystem : MonoBehaviour
         yield return new WaitForSeconds(4f); 
 
        
-        if (pInput != null) pInput.enabled = true;
+        pInput.SwitchCurrentActionMap("Player");
         if (playerMovementScript != null) playerMovementScript.enabled = true;
         if (playerAttackScript != null) playerAttackScript.enabled = true;
     }

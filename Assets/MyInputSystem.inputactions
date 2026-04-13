@@ -223,6 +223,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Stagger",
+            "id": "a8589af1-cf78-4d56-b532-653560999eb2",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "60bb0a2a-888f-4f04-a9e5-d972323adef0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5b0c06aa-e237-44c8-9e32-bedd2841cc10",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

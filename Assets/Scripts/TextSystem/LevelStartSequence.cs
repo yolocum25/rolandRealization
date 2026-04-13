@@ -38,10 +38,11 @@ public class LevelStartSequencer : MonoBehaviour
     private void InitiateNarrativeMode()
     {
 
-        // 1. Bloqueamos al jugador por completo
-        if (playerInput != null) playerInput.enabled = false;
-        if (playerAttack != null) playerAttack.enabled = false;
+        if (playerInput != null) playerInput.enabled = true;
+            
+        playerInput.SwitchCurrentActionMap("UI");
 
+        if (playerAttack != null) playerAttack.enabled = false;
         // 2. Liberamos el ratón para que el jugador pueda interactuar con el diálogo
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -62,8 +63,11 @@ public class LevelStartSequencer : MonoBehaviour
         if (gameHUD != null) gameHUD.SetActive(true);
 
     
-        if (playerInput != null) playerInput.enabled = true;
-        if (playerAttack != null) playerAttack.enabled = true;
+        if (playerInput != null) 
+        {
+            playerInput.enabled = true; 
+            playerInput.SwitchCurrentActionMap("Player"); 
+        }
         
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
