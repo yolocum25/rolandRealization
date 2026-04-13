@@ -109,7 +109,7 @@ TextureImporter:
       name: "Dise\xF1o_sin_t\xEDtulo__4_-removebg-preview_0"
       rect:
         serializedVersion: 2
-        x: 0
+        x: 170
         y: 341
         width: 169
         height: 394
@@ -131,8 +131,8 @@ TextureImporter:
       name: "Dise\xF1o_sin_t\xEDtulo__4_-removebg-preview_1"
       rect:
         serializedVersion: 2
-        x: 169
-        y: 335
+        x: 0
+        y: 339
         width: 169
         height: 396
       alignment: 0
