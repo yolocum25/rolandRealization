@@ -2,6 +2,7 @@
     using System.Collections.Generic;
     using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement2D : MonoBehaviour
@@ -23,6 +24,7 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float dashDistance = 8f;
     private bool canDash = true;
     private bool isDashing;
+    private bool IsPaused;
     
     [Header("SlashDash Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
@@ -37,8 +39,7 @@ public class PlayerMovement2D : MonoBehaviour
     [Header("Audio SlashDash")]
     [SerializeField] private AudioSource playerAudioSource; 
     [SerializeField] private AudioClip slashDashSound;
-   
-
+    
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded;
@@ -46,6 +47,12 @@ public class PlayerMovement2D : MonoBehaviour
     private Vector3 initialScale;
     private List<IDamageable> alreadyDamaged = new();
     private float originalGravity; 
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerAttackSystem playerAttack;
+    
+    [Header("Pause Settings")]
+    [SerializeField] private GameObject PauseCanvas; // El Pausa
+    [SerializeField] private GameObject gameHUD;       
     public PlayerInput PlayerInput { get; private set; }
 
     private void Awake()
@@ -69,6 +76,8 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Jump"].started += Jump;
         PlayerInput.actions["Dash"].started += OnDashPerformed;
         PlayerInput.actions["SlashDash"].started += OnSlashInput;
+        PlayerInput.actions["Player/Pause"].performed += OnPauseToggle;
+        PlayerInput.actions["UI/UnPause"].performed += OnPauseToggle;
     }
 
     private void OnDisable()
@@ -78,6 +87,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput.actions["Jump"].started -= Jump;
         PlayerInput.actions["Dash"].started -= OnDashPerformed;
         PlayerInput.actions["SlashDash"].started -= OnDashPerformed;
+       
         inputVector = Vector2.zero;
         if (rb != null) 
         {
@@ -190,6 +200,38 @@ public class PlayerMovement2D : MonoBehaviour
         {
             clickDuringDash = true;
         }
+    }
+
+    private void OnPauseToggle(InputAction.CallbackContext ctx)
+    {
+        
+        IsPaused = !IsPaused;
+
+        if (IsPaused)
+        {
+            Time.timeScale = 0f;
+            playerInput.SwitchCurrentActionMap("UI");
+            if (gameHUD != null) gameHUD.SetActive(false);
+            if (PauseCanvas != null) PauseCanvas.SetActive(true);
+            if (playerInput != null) playerInput.enabled = false;
+            if (playerAttack != null) playerAttack.enabled = false;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
+        }
+        
+        {
+            Time.timeScale = 1f;
+            playerInput.SwitchCurrentActionMap("Player");
+            if (gameHUD != null) gameHUD.SetActive(true);
+            if(PauseCanvas != null) PauseCanvas.SetActive(false);
+            if (PlayerInput != null) PlayerInput.enabled = true;
+            if (playerInput != null) playerInput.enabled = true;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        
+        
     }
     
     private void OnDashPerformed(InputAction.CallbackContext ctx)

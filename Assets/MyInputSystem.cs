@@ -127,6 +127,15 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""0eab44ba-6cbe-40c9-9bef-fb5553fe87c6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -239,6 +248,17 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""SlashDash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe8ff52f-4f6b-461c-a13d-9d6c6515b537"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -250,6 +270,15 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""name"": ""NextText"",
                     ""type"": ""Button"",
                     ""id"": ""0c2868d4-aa96-4005-9576-b01d212a8c66"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Unpause"",
+                    ""type"": ""Button"",
+                    ""id"": ""aeb3dbde-1576-43f2-9622-388c4398084a"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -267,6 +296,17 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""NextText"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e49680d8-f8e4-4eca-96da-c22a9407ac1c"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Unpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -279,9 +319,11 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SlashDash = m_Player.FindAction("SlashDash", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NextText = m_UI.FindAction("NextText", throwIfNotFound: true);
+        m_UI_Unpause = m_UI.FindAction("Unpause", throwIfNotFound: true);
     }
 
     ~@MyInputSystem()
@@ -367,6 +409,7 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_SlashDash;
+    private readonly InputAction m_Player_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -394,6 +437,10 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/SlashDash".
         /// </summary>
         public InputAction @SlashDash => m_Wrapper.m_Player_SlashDash;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -432,6 +479,9 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
             @SlashDash.started += instance.OnSlashDash;
             @SlashDash.performed += instance.OnSlashDash;
             @SlashDash.canceled += instance.OnSlashDash;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -455,6 +505,9 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
             @SlashDash.started -= instance.OnSlashDash;
             @SlashDash.performed -= instance.OnSlashDash;
             @SlashDash.canceled -= instance.OnSlashDash;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -493,6 +546,7 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_NextText;
+    private readonly InputAction m_UI_Unpause;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -508,6 +562,10 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/NextText".
         /// </summary>
         public InputAction @NextText => m_Wrapper.m_UI_NextText;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/Unpause".
+        /// </summary>
+        public InputAction @Unpause => m_Wrapper.m_UI_Unpause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -537,6 +595,9 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
             @NextText.started += instance.OnNextText;
             @NextText.performed += instance.OnNextText;
             @NextText.canceled += instance.OnNextText;
+            @Unpause.started += instance.OnUnpause;
+            @Unpause.performed += instance.OnUnpause;
+            @Unpause.canceled += instance.OnUnpause;
         }
 
         /// <summary>
@@ -551,6 +612,9 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
             @NextText.started -= instance.OnNextText;
             @NextText.performed -= instance.OnNextText;
             @NextText.canceled -= instance.OnNextText;
+            @Unpause.started -= instance.OnUnpause;
+            @Unpause.performed -= instance.OnUnpause;
+            @Unpause.canceled -= instance.OnUnpause;
         }
 
         /// <summary>
@@ -619,6 +683,13 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSlashDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
@@ -634,5 +705,12 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNextText(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Unpause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUnpause(InputAction.CallbackContext context);
     }
 }
