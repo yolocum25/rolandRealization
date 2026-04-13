@@ -1,30 +1,56 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
-    [SerializeField] private float lifeTime = 2f;
+    [SerializeField] private float damage = 10f;
+    [SerializeField] private float lifeTime = 5f;
+    [SerializeField] private GameObject impactEffect;
 
     private void OnEnable()
     {
-        // Al activarse, se apagará sola después de X segundos
-        Invoke("Deactivate", lifeTime);
+        // Programamos la desactivación por si no choca con nada
+        Invoke(nameof(DesactivateBullet), lifeTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Si choca contra algo, se apaga inmediatamente
-        Deactivate();
+        // 1. Intentamos obtener la interfaz IDamageable del objeto con el que chocamos
+        // Buscamos tanto en el objeto como en sus padres (por si el collider está en un hijo)
+        IDamageable damageable = collision.GetComponentInParent<IDamageable>();
+
+        if (damageable != null)
+        {
+            // 2. Aplicamos el daño a través de la interfaz
+            damageable.TakeDamage(damage);
+            
+            // Lógica visual de impacto
+            ImpactLogic();
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            // 3. Si choca con el suelo/paredes también se destruye
+            ImpactLogic();
+        }
     }
 
-    void Deactivate()
+    private void ImpactLogic()
     {
-        CancelInvoke(); // Limpiamos el timer para que no se raye
-        gameObject.SetActive(false); // Vuelve a la "caja"
+        if (impactEffect != null)
+        {
+            Instantiate(impactEffect, transform.position, Quaternion.identity);
+        }
+
+        // Si usas Pooling, desactivamos. Si no, Destroy(gameObject).
+        gameObject.SetActive(false);
+    }
+
+    private void DesactivateBullet()
+    {
+        gameObject.SetActive(false);
     }
 
     private void OnDisable()
     {
-        // Nos aseguramos de limpiar el timer si se apaga por cualquier motivo
         CancelInvoke();
     }
 }

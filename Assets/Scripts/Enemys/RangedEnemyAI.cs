@@ -1,168 +1,180 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))] // Nos aseguramos de que haya un Animator
+[RequireComponent(typeof(Rigidbody2D), typeof(EnemyHealthSystem))]
 public class RangedEnemyAI : MonoBehaviour
 {
-    [Header("Rangos de Distancia")]
-    [SerializeField] private float viewRange = 10f;
-    [SerializeField] private float safeDistance = 5f;
-    [SerializeField] private float stopDistance = 7f;
+    private enum EnemyState { Patrolling, Chasing, Dead }
+    [SerializeField] private EnemyState currentState = EnemyState.Patrolling;
 
-    [Header("Patrulla")]
-    [SerializeField] private Transform[] patrolPoints;
-    [SerializeField] private float patrolSpeed = 2f;
-    private int currentPatrolIndex;
+    [Header("Detection & Combat Ranges")]
+    [SerializeField] private float detectionRange = 10f; 
+    [SerializeField] private float stopDistance = 7f;      
+    [SerializeField] private float safeDistance = 4f;      
 
-    [Header("Combate")]
-    [SerializeField] private float runSpeed = 4f;
-    [SerializeField] private float fireRate = 1.5f; // Tiempo entre disparos
+    [Header("Patrol Settings")]
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float waitTimeAtPoint = 2f;
+    private int currentWaypointIndex = 0;
+    private float waitTimer;
+    private bool isWaiting;
+
+    [Header("Movement & Combat")]
+    [SerializeField] private float moveSpeed = 2.5f;
+    [SerializeField] private float fireRate = 2f;
     [SerializeField] private Transform firePoint;
     private float nextFireTime;
+    private bool isAttacking;
 
     private Transform player;
     private Rigidbody2D rb;
-    private Animator animator; // Referencia al Animator
-    private bool playerInSight;
-    private bool isAttacking; // Nuevo: Para no movernos mientras disparamos
+    private SpriteRenderer sprite;
+    private Animator anim;
+    private EnemyHealthSystem healthSystem; // Referencia a tu script de vida
 
-    private void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>(); // Obtenemos el Animator
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
+        healthSystem = GetComponent<EnemyHealthSystem>();
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
     }
 
-    private void Update()
+    void Update()
     {
+        // Si tu sistema de vida base tiene una variable para saber si está muerto, úsala aquí
+        // Por ejemplo: if (healthSystem.currentHealth <= 0)
         if (player == null) return;
 
-        // Si estamos en medio de la animación de ataque, no hacemos nada más
-        if (isAttacking) return;
-
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        playerInSight = distanceToPlayer < viewRange;
+        
+        // Cambiamos de estado según distancia
+        if (distanceToPlayer <= detectionRange)
+            currentState = EnemyState.Chasing;
+        else
+            currentState = EnemyState.Patrolling;
 
-        if (playerInSight)
+        switch (currentState)
         {
-            HandleCombat(distanceToPlayer);
+            case EnemyState.Patrolling:
+                PatrolLogic();
+                break;
+            case EnemyState.Chasing:
+                ChaseLogic(distanceToPlayer);
+                break;
+        }
+    }
+
+    private void PatrolLogic()
+    {
+        if (waypoints == null || waypoints.Length == 0) return;
+
+        Transform target = waypoints[currentWaypointIndex];
+        float distanceX = target.position.x - transform.position.x;
+
+        if (isWaiting)
+        {
+            StopMovement();
+            waitTimer += Time.deltaTime;
+            if (waitTimer >= waitTimeAtPoint)
+            {
+                isWaiting = false;
+                currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
+            }
+            return;
+        }
+
+        if (Mathf.Abs(distanceX) < 0.3f)
+        {
+            isWaiting = true;
+            waitTimer = 0;
+            StopMovement();
         }
         else
         {
-            Patrol();
+            MoveTowards(target.position, moveSpeed);
         }
-
-        // Actualizamos animaciones de movimiento (si tienes)
-        UpdateMovementAnimation();
     }
 
-    private void HandleCombat(float distance)
+    private void ChaseLogic(float distance)
     {
+        isWaiting = false;
         LookAtTarget(player.position);
 
         if (distance < safeDistance)
         {
             // HUIR
-            Vector2 runDirection = (transform.position - player.position).normalized;
-            rb.linearVelocity = runDirection * runSpeed;
+            Vector2 fleeTarget = transform.position + (transform.position - player.position);
+            MoveTowards(fleeTarget, moveSpeed * 1.2f);
         }
         else if (distance > stopDistance)
         {
             // ACERCARSE
-            Vector2 approachDirection = (player.position - transform.position).normalized;
-            rb.linearVelocity = approachDirection * (runSpeed * 0.7f);
+            MoveTowards(player.position, moveSpeed);
         }
         else
         {
-            // MANTENER DISTANCIA (Rango ideal)
-            rb.linearVelocity = Vector2.zero;
-            
-            // LÓGICA DE DISPARO ACTIVA
-            if (Time.time >= nextFireTime)
+            // DISPARAR
+            StopMovement();
+            if (Time.time >= nextFireTime && !isAttacking)
             {
-                StartShootSequence(); // 1. Iniciamos la secuencia visual
+                StartShootSequence();
                 nextFireTime = Time.time + fireRate;
             }
         }
     }
 
-    private void Patrol()
+    private void MoveTowards(Vector2 target, float speed)
     {
-        if (patrolPoints.Length == 0) return;
-
-        Transform target = patrolPoints[currentPatrolIndex];
-        Vector2 direction = (target.position - transform.position).normalized;
-        rb.linearVelocity = direction * patrolSpeed;
-
-        LookAtTarget(target.position);
-
-        if (Vector2.Distance(transform.position, target.position) < 0.5f)
-        {
-            currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
-        }
+        if (isAttacking) return;
+        float diffX = target.x - transform.position.x;
+        float direction = Mathf.Sign(diffX);
+        rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+        sprite.flipX = (direction < 0);
+        if (anim != null) anim.SetBool("isWalking", true);
     }
 
-    // --- PARTE 1 DEL DISPARO: LA ANIMACIÓN ---
+    private void StopMovement()
+    {
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        if (anim != null) anim.SetBool("isWalking", false);
+    }
+
+    private void LookAtTarget(Vector2 target)
+    {
+        float diffX = target.x - transform.position.x;
+        sprite.flipX = (diffX < 0);
+    }
+
     private void StartShootSequence()
     {
-        isAttacking = true; // Bloqueamos el movimiento
-        rb.linearVelocity = Vector2.zero; // Nos paramos en seco
-        
-        // Activamos el Trigger en el Animator
-        if (animator != null)
-        {
-            animator.SetTrigger("isShooting");
-        }
+        isAttacking = true;
+        StopMovement();
+        if (anim != null) anim.SetTrigger("isShooting");
+        Invoke(nameof(ResetAttack), 1.5f);
     }
 
-    // --- PARTE 2 DEL DISPARO: LA BALA (Llamada por el Animation Event) ---
-    // IMPORTANTE: Este nombre debe coincidir con el del Animation Event
-    public void PerformShoot()
+    public void PerformShoot() // Evento de Animación
     {
-        if (player == null) return;
-
+        CancelInvoke(nameof(ResetAttack));
         GameObject bullet = BulletPoolManager.Instance.GetBullet();
         if (bullet != null)
         {
             bullet.transform.position = firePoint.position;
-            bullet.transform.rotation = firePoint.rotation;
             bullet.SetActive(true);
-            
             if (bullet.TryGetComponent(out Rigidbody2D bulletRb))
             {
                 Vector2 shootDir = (player.position - firePoint.position).normalized;
-                bulletRb.linearVelocity = shootDir * 12f; // Velocidad de la bala
+                bulletRb.linearVelocity = shootDir * 12f;
             }
         }
-        
-        // La animación ha terminado su fase crítica, permitimos movimiento de nuevo
-        // (Dependiendo de tu animación, quizás quieras llamar a esto en otro evento al FINAL del clip)
-        isAttacking = false; 
+        ResetAttack();
     }
 
-    private void LookAtTarget(Vector3 target)
-    {
-        if (target.x > transform.position.x)
-            transform.localScale = new Vector3(1, 1, 1);
-        else
-            transform.localScale = new Vector3(-1, 1, 1);
-    }
+    private void ResetAttack() => isAttacking = false;
 
-    private void UpdateMovementAnimation()
+    private void OnDisable()
     {
-        if (animator != null)
-        {
-            // Si tienes una animación de "Caminar" (Walk) controlada por un float "Speed"
-            animator.SetFloat("Speed", rb.linearVelocity.magnitude);
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, safeDistance);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, stopDistance);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, viewRange);
+        StopMovement();
     }
 }
