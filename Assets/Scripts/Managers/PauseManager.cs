@@ -30,7 +30,7 @@ public class PauseManager : MonoBehaviour
 
     private void OnDisable()
     {
-        pInput.actions["Pause"].performed -= OnPauseToggle;
+       
     }
 
     // Esta es la función principal que maneja todo
