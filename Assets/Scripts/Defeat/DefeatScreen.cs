@@ -18,10 +18,10 @@ public class DefeatScreen : MonoBehaviour
             reasonText.text = reason;
         }
 
-        // 2. Comprobamos que el AudioSource no sea nulo y esté habilitado
+       
         if (defeatSound != null) 
         {
-            // Si el componente AudioSource mismo está desmarcado, lo habilitamos
+           
             if (!defeatSound.enabled) defeatSound.enabled = true;
             
             defeatSound.Play();

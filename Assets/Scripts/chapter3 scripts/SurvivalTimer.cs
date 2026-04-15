@@ -59,7 +59,7 @@ public class SurvivalTimer : MonoBehaviour
             spawner.StopSpawning();
         }
 
-        // 2. Destruir la puerta
+        
         if (doorObject != null)
         {
             
@@ -69,7 +69,7 @@ public class SurvivalTimer : MonoBehaviour
         GameObject[] remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in remainingEnemies)
         {
-            // Puedes destruirlos o llamar a su método de morir
+            
             Destroy(enemy); 
         }
     }

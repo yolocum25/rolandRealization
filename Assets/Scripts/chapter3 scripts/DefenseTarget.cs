@@ -48,10 +48,10 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
 
         if (player != null && survivalTimer != null)
         {
-            // 1. Efectos visuales/sonoros
+            
             if (activationSound != null) activationSound.Play();
 
-            // 2. Iniciamos la lógica
+            
             eventStarted = true;
             survivalTimer.StartTimer();
 
@@ -96,13 +96,13 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
         if (isDead) return;
         isDead = true;
 
-        // Avisamos al EventManager para que salte el Game Over
+        
         if (EventManager.Instance != null)
         {
             EventManager.Instance.TriggerGameOver();
         }
 
-        // El objeto se desactiva al ser destruido
+        
         gameObject.SetActive(false);
     }
     
