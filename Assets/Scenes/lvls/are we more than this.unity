@@ -337,11 +337,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &84791130 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 412797125517151513, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
-  m_PrefabInstance: {fileID: 88897407}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &88897407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +345,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: gameHUD
+      value: 
+      objectReference: {fileID: 1048048109}
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 1632519971}
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 1632519970}
     - target: {fileID: 412797125517151513, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_Name
       value: Canvas_Narration
@@ -434,10 +441,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7896144293601833471, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: anim
       value: 
@@ -449,10 +452,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8761248043302926262, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1996475477}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
 --- !u!1001 &161245100
 PrefabInstance:
@@ -465,10 +465,6 @@ PrefabInstance:
     - target: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: m_Name
       value: WinCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4524411686350429387, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: m_Pivot.x
@@ -863,22 +859,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1631998257727653935, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -697156557245611194, guid: 9e6bd6134ff0714448a103b710fc11de, type: 3}
     - target: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_Name
       value: Roland_Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: playerInput
-      value: 
-      objectReference: {fileID: 1632519971}
-    - target: {fileID: 4466942496850953040, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
-      propertyPath: playerAttack
-      value: 
-      objectReference: {fileID: 1632519970}
     - target: {fileID: 4631796431799046102, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: deathParticles
       value: 
@@ -1493,10 +1477,6 @@ PrefabInstance:
     - target: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6030296331425458853, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: targetHealthSystem
@@ -3158,28 +3138,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
   m_PrefabInstance: {fileID: 161245100}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1996475475 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8761248043302926262, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
-  m_PrefabInstance: {fileID: 88897407}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1996475477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996475475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451f0aac0ae101d4eb76cca5873cf14b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelStartSequencer
-  narrativeCanvas: {fileID: 84791130}
-  gameHUD: {fileID: 1048048109}
-  playerInput: {fileID: 1632519971}
-  playerAttack: {fileID: 1632519970}
-  ambientAudioSource: {fileID: 0}
 --- !u!1001 &2079909922
 PrefabInstance:
   m_ObjectHideFlags: 0

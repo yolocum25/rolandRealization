@@ -130,7 +130,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7258568264726202592, guid: 7cec8d611c2652f4fbb2a84b312657ea, type: 3}
+  m_Sprite: {fileID: -697156557245611194, guid: 9e6bd6134ff0714448a103b710fc11de, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -226,6 +226,8 @@ MonoBehaviour:
   baseDamageDash: 60
   playerAudioSource: {fileID: 4857945450288047656}
   slashDashSound: {fileID: 8300000, guid: bd4449ea4215dd7419c0e44b25b7dd74, type: 3}
+  playerInput: {fileID: 7152358730356212774}
+  playerAttack: {fileID: 1471313705317855344}
 --- !u!114 &1471313705317855344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +380,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 20576471-c0fb-46a0-b082-b9e62453b3c9
     m_ActionName: 'Player/SlashDash[/Keyboard/shift,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0eab44ba-6cbe-40c9-9bef-fb5553fe87c6
+    m_ActionName: 'Player/Pause[/Keyboard/n]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: aeb3dbde-1576-43f2-9622-388c4398084a
+    m_ActionName: 'UI/Unpause[/Keyboard/n]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 60bb0a2a-888f-4f04-a9e5-d972323adef0
+    m_ActionName: Stagger/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
