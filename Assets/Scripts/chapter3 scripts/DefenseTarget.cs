@@ -43,9 +43,7 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
             eventStarted = true;
             survivalTimer.StartTimer();
 
-            Debug.Log("<color=cyan>¡Objetivo activado por el jugador! Empezando defensa.</color>");
             
-            // Opcional: Podrías cambiar el color del objeto o encender una luz aquí
         }
     }
 
