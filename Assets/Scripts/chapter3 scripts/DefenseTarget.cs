@@ -9,24 +9,30 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
     private float currentHealth;
     private bool isDead = false;
     private bool eventStarted = false;
+    
 
     [Header("Referencias y Audio")]
     [SerializeField] private SurvivalTimer survivalTimer;
     [SerializeField] private AudioSource activationSound; // Sonido al pulsar 'E'
-
+    [SerializeField] private GameObject timerTextUI;
     private void Start()
     {
         currentHealth = maxHealth;
     }
 
-    // Este es el método que llama tu sistema de interacción (la E)
+   
     public void GenerateInteraction()
     {
-        // Si el evento ya empezó, no hacemos nada más al pulsar E
+       
         if (eventStarted || isDead) return;
 
         // Buscamos al jugador (siguiendo tu lógica de la escalera)
         GameObject player = GameObject.FindGameObjectWithTag("Player");
+        
+        if (timerTextUI != null)
+        {
+            timerTextUI.SetActive(true);
+        }
 
         if (player != null && survivalTimer != null)
         {

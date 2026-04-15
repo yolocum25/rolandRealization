@@ -1099,7 +1099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4297036048548071337, guid: ac73714a375248248815463c53199e2d, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4689973268044223750, guid: ac73714a375248248815463c53199e2d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1222,11 +1222,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 44.15997
+      value: 50.042053
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.y
-      value: -1.8263458
+      value: -2.020121
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1061
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1389,6 +1393,7 @@ MonoBehaviour:
   maxHealth: 500
   survivalTimer: {fileID: 1193081983}
   activationSound: {fileID: 978869114}
+  timerTextUI: {fileID: 1013706443}
 --- !u!212 &978869111
 SpriteRenderer:
   serializedVersion: 2
@@ -1397,7 +1402,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978869109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1436,7 +1441,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1675,6 +1680,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
+--- !u!1 &1013706443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8005736652265795652, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+  m_PrefabInstance: {fileID: 2045385186}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1114610013 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
@@ -1775,6 +1785,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1631998257727653935, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2625834785111494640, guid: d2b185caceb3d5445b81f72833ce7841, type: 3}
       propertyPath: m_Name
       value: Roland_Player
@@ -2058,6 +2072,10 @@ PrefabInstance:
     - target: {fileID: 1811930702080858786, guid: 536b164ac8204b2499498d4a19424b9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857829295656001730, guid: 536b164ac8204b2499498d4a19424b9d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4073468297415710765, guid: 536b164ac8204b2499498d4a19424b9d, type: 3}
       propertyPath: m_Name
@@ -2498,6 +2516,10 @@ PrefabInstance:
       propertyPath: enemyAI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4821064921699426992, guid: b35e4329887228b4683a1d6356cb48e7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4887458190078087569, guid: b35e4329887228b4683a1d6356cb48e7, type: 3}
       propertyPath: deathParticles
       value: 
@@ -2862,7 +2884,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2167615341539606769, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
   m_PrefabInstance: {fileID: 2045385186}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1013706443}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -3195,12 +3217,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6030296331425458853, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: targetHealthSystem
       value: 
       objectReference: {fileID: 1114610015}
+    - target: {fileID: 8005736652265795652, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3055882906064056106, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
     m_RemovedGameObjects: []
@@ -3282,6 +3308,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8772930860510206151, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: d809027555b31214e8d83eebed30f867, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3402,6 +3432,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 28042087600116720, guid: a1d622e3be94e5847ab49e6169f5c093, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738489494582792850, guid: a1d622e3be94e5847ab49e6169f5c093, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8308232898728013191, guid: a1d622e3be94e5847ab49e6169f5c093, type: 3}
