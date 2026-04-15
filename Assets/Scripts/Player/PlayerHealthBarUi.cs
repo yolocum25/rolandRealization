@@ -34,4 +34,17 @@ public class PlayerHealthBarUI : MonoBehaviour
         
         healthBarFill.fillAmount = current / max;
     }
+    private void Awake()
+    {
+        
+        if (targetHealthSystem == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                targetHealthSystem = player.GetComponent<charactersHealthSystem>();
+            }
+        }
+    }
+    
 }
