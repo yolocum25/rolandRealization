@@ -2736,6 +2736,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: gameHUD
+      value: 
+      objectReference: {fileID: 852265412}
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 683893951}
+    - target: {fileID: 8076972153608282, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 683893954}
     - target: {fileID: 412797125517151513, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_Name
       value: Canvas_Narration
@@ -4486,6 +4498,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 905388421858651396, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
+      propertyPath: nextLevelName
+      value: are we more than this
+      objectReference: {fileID: 0}
     - target: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: m_Name
       value: WinCanvas
