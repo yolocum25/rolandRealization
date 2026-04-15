@@ -809,7 +809,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: are we more than this?
+  m_text: are we more than this
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -943,22 +943,10 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 298715050}
+  m_TargetGraphic: {fileID: 1086855109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1082077713}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: are we more than this
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &304302599
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +959,7 @@ GameObject:
   - component: {fileID: 304302602}
   - component: {fileID: 304302601}
   - component: {fileID: 304302603}
+  - component: {fileID: 304302604}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1111,6 +1100,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TextHoverColor
   hoverColor: {r: 1, g: 0, b: 0, a: 1}
   transitionSpeed: 5
+--- !u!114 &304302604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304302599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 304302601}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &371082711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,7 +1173,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1956102959}
-  - {fileID: 979898938}
   - {fileID: 1887048189}
   m_Father: {fileID: 1082077712}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2372,15 +2404,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979898937}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1000}
-  m_LocalScale: {x: 2.5982077, y: 10.0031, z: 2.5982077}
+  m_LocalPosition: {x: 0, y: 0, z: 999.99963}
+  m_LocalScale: {x: 2.598208, y: 10.003101, z: 2.598208}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 371082712}
+  m_Father: {fileID: 1887048189}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.17, y: -111}
+  m_AnchoredPosition: {x: -4.1700873, y: -106}
   m_SizeDelta: {x: 87.04, y: 2.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &979898939
@@ -2426,19 +2458,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 979898940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1082077713}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 2
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &979898940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,7 +2941,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.54631776}
-  m_AnchoredPosition: {x: -6, y: -131}
+  m_AnchoredPosition: {x: -6, y: -127}
   m_SizeDelta: {x: 99.42, y: -7.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086855108
@@ -2967,19 +2987,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1086855109}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1082077713}
-        m_TargetAssemblyTypeName: LevelChanger, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: are we more than this
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1086855109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4183,7 +4191,7 @@ MonoBehaviour:
     lockVideo: {fileID: 435202883}
     unlockedImage: {fileID: 1774694639}
     isLocked: 0
-  - sceneName: are we more than this?
+  - sceneName: are we more than this
     button: {fileID: 1086855108}
     lockVideo: {fileID: 1413743926}
     unlockedImage: {fileID: 1609303570}
@@ -4706,6 +4714,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 979898938}
   - {fileID: 985545527}
   - {fileID: 1607424453}
   - {fileID: 304302600}
@@ -5078,7 +5087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -95}
+  m_AnchoredPosition: {x: 4, y: 124}
   m_SizeDelta: {x: 71.71, y: 3.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065055224

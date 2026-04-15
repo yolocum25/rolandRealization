@@ -147,17 +147,23 @@ namespace Enemys
         // Crucial marcarlo como virtual para que el hijo dispare a la estatua/objetivo
         public virtual void PerformShoot()
         {
+            // SEGURIDAD: Si el enemigo (this) o el firePoint han sido destruidos, salimos.
+            if (this == null || firePoint == null) return;
+
+            // SEGURIDAD: Si el jugador ya no existe en la escena, no hay a quién disparar.
+            if (player == null) return;
+
             GameObject bullet = BulletPoolManager.Instance.GetBullet();
-    
+
             if (bullet != null)
             {
                 bullet.transform.position = firePoint.position;
                 bullet.transform.rotation = firePoint.rotation;
                 bullet.SetActive(true);
-        
+
                 if (bullet.TryGetComponent(out Rigidbody2D bRb))
                 {
-                    // Por defecto dispara al jugador
+                    // Ahora es seguro calcular la dirección porque ya comprobamos los nulls arriba
                     Vector2 dir = (player.position - firePoint.position).normalized;
                     bRb.linearVelocity = dir * 12f; 
                 }

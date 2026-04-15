@@ -1,31 +1,24 @@
 using UnityEngine;
 
-public static class LevelCheckerManager 
+public static class LevelCheckerManager
 {
-    
+    // Guarda que un nivel específico ha sido superado
     public static void MarkLevelAsCompleted(string levelName)
     {
-        
-        PlayerPrefs.SetInt("Level_" + levelName + "_Completed", 1);
+
+        string key = "Level_" + levelName.Trim() + "_Completed";
+        PlayerPrefs.SetInt(key, 1);
         PlayerPrefs.Save();
-        Debug.Log($"<color=green>Progreso guardado: {levelName} completado.</color>");
+        Debug.Log($"<color=green>Progreso guardado: {levelName} ahora consta como completado.</color>");
     }
 
-    
-    public static bool IsLevelUnlocked(string levelName)
+    // Esta es la función que deben usar tus botones del menú
+    public static bool IsLevelUnlocked(string levelName) // <--- Solo un parámetro
     {
-        
-        if (levelName == "A Wonderfull life") return true; 
-
-        return PlayerPrefs.GetInt("Level_" + levelName + "_Completed", 0) == 1;
-        
+        if (levelName == "A Wonderfull life") return true;
+        return PlayerPrefs.GetInt("Level_" + levelName.Trim() + "_Completed", 0) == 1;
     }
-    
-
-    
-    
-    
-    
-    
-    
 }
+    
+    
+    
