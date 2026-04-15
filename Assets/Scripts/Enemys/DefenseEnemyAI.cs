@@ -76,29 +76,42 @@ public class DefenseEnemyAI : RangedEnemyAI // Aquí se establece la herencia
         }
     }
 
-    // Sobreescribimos el disparo para decidir a quién apuntar la bala
-    public override void PerformShoot()
+    
+    public virtual void PerformShoot()
     {
-        GameObject bullet = BulletPoolManager.Instance.GetBullet();
-        if (bullet == null) return;
-
-        bullet.transform.position = firePoint.position;
-        bullet.transform.rotation = firePoint.rotation;
-        bullet.SetActive(true);
-
-        if (bullet.TryGetComponent(out Rigidbody2D bRb))
+        // SEGURIDAD 1: Si el jugador ha sido destruido, no disparamos
+        if (player == null) 
         {
-            Vector3 targetPos;
-            float distToPlayer = Vector2.Distance(transform.position, player.position);
-
-            // Si el jugador está en rango, le disparamos a él. Si no, a la defensa.
-            if (distToPlayer <= detectionRange)
-                targetPos = player.position;
-            else
-                targetPos = defenseTarget.position;
-
-            Vector2 dir = (targetPos - firePoint.position).normalized;
-            bRb.linearVelocity = dir * 12f;
+            isAttacking = false;
+            return; 
         }
+
+        GameObject bullet = BulletPoolManager.Instance.GetBullet();
+
+        if (bullet != null)
+        {
+            bullet.transform.position = firePoint.position;
+            bullet.transform.rotation = firePoint.rotation;
+            bullet.SetActive(true);
+    
+            if (bullet.TryGetComponent(out Rigidbody2D bRb))
+            {
+                // SEGURIDAD 2: Volvemos a comprobar el player antes de pedir su .position
+                // por si acaso fue destruido justo en la línea anterior
+                if (player != null)
+                {
+                    Vector2 dir = (player.position - firePoint.position).normalized;
+                    bRb.linearVelocity = dir * 12f; 
+                }
+                else
+                {
+                    // Si el jugador desapareció, apagamos la bala para no dejar basura
+                    bullet.SetActive(false);
+                }
+            }
+        }
+    
+        // Siempre reseteamos el estado para que el enemigo no se quede "congelado"
+        isAttacking = false;
     }
 }

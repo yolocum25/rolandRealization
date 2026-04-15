@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
@@ -41,16 +43,33 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
         }
     }
 
-    // Implementación de IDamageable para que los enemigos le peguen
     public void TakeDamage(float amount)
     {
-        if (isDead || !eventStarted) return;
+        
+        if (isDead || !gameObject.activeInHierarchy) return;
 
         currentHealth -= amount;
+
+        
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(FlashRed());
+        }
 
         if (currentHealth <= 0)
         {
             Die();
+        }
+    }
+
+    private IEnumerator FlashRed()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            sr.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            sr.color = Color.white;
         }
     }
 

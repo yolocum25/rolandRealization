@@ -7,24 +7,29 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        // Si la bala no choca con nada en X segundos, vuelve al pool
         CancelInvoke();
         Invoke(nameof(Deactivate), lifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Buscamos tu sistema de IDamageable
+        // 1. Buscamos si el objeto tiene la interfaz de daño
         IDamageable damageable = collision.GetComponent<IDamageable>();
         
-        if (damageable != null && collision.CompareTag("Player"))
+        if (damageable != null)
         {
-            damageable.TakeDamage(damage);
-            Deactivate();
+          
+            if (collision.CompareTag("Player") || collision.CompareTag("Defense"))
+            {
+                damageable.TakeDamage(damage);
+                Deactivate();
+                return; // Salimos para evitar procesar más colisiones
+            }
         }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+
+        // 3. Si choca con el escenario (suelo/paredes)
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            // Si choca con el suelo/paredes
             Deactivate();
         }
     }
