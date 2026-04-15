@@ -52,6 +52,14 @@ public class EventManager : MonoBehaviour
     {
         OnGameOver?.Invoke();
     }
+    
+    public void TriggerGameOver()
+    {
+        if (OnGameOver != null)
+        {
+            OnGameOver.Invoke();
+        }
+    }
 }
 
 
