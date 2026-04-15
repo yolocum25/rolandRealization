@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
@@ -13,8 +15,13 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
 
     [Header("Referencias y Audio")]
     [SerializeField] private SurvivalTimer survivalTimer;
-    [SerializeField] private AudioSource activationSound; // Sonido al pulsar 'E'
+    [SerializeField] private AudioSource activationSound; 
     [SerializeField] private GameObject timerTextUI;
+    [SerializeField] private GameObject healthBarUI;
+    
+    
+    public event Action OnHealthChanged;
+    
     private void Start()
     {
         currentHealth = maxHealth;
@@ -32,6 +39,11 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
         if (timerTextUI != null)
         {
             timerTextUI.SetActive(true);
+        }
+        
+        if (healthBarUI != null)
+        {
+            healthBarUI.SetActive(true);
         }
 
         if (player != null && survivalTimer != null)
@@ -53,6 +65,8 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
         if (isDead || !gameObject.activeInHierarchy) return;
 
         currentHealth -= amount;
+        
+        OnHealthChanged?.Invoke();
 
         
         if (gameObject.activeInHierarchy)
@@ -90,5 +104,10 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
 
         // El objeto se desactiva al ser destruido
         gameObject.SetActive(false);
+    }
+    
+    public float GetHealthNormalized() 
+    {
+        return currentHealth / maxHealth;
     }
 }

@@ -79,12 +79,15 @@ public class DefenseEnemyAI : RangedEnemyAI // Aquí se establece la herencia
     
     public virtual void PerformShoot()
     {
-        // SEGURIDAD 1: Si el jugador ha sido destruido, no disparamos
-        if (player == null) 
-        {
-            isAttacking = false;
-            return; 
-        }
+        // 1. Seguridad: Si el enemigo o el punto de disparo no existen (el error de antes)
+        if (this == null || firePoint == null) return;
+
+        // 2. Prioridad de objetivo: Si existe un objetivo de defensa, vamos a por él.
+        // Si no, intentamos usar al jugador como respaldo.
+        Transform currentTarget = (defenseTarget != null) ? defenseTarget : player;
+
+        // 3. Si no hay absolutamente nadie, abortamos
+        if (currentTarget == null) return;
 
         GameObject bullet = BulletPoolManager.Instance.GetBullet();
 
@@ -93,25 +96,13 @@ public class DefenseEnemyAI : RangedEnemyAI // Aquí se establece la herencia
             bullet.transform.position = firePoint.position;
             bullet.transform.rotation = firePoint.rotation;
             bullet.SetActive(true);
-    
+
             if (bullet.TryGetComponent(out Rigidbody2D bRb))
             {
-                // SEGURIDAD 2: Volvemos a comprobar el player antes de pedir su .position
-                // por si acaso fue destruido justo en la línea anterior
-                if (player != null)
-                {
-                    Vector2 dir = (player.position - firePoint.position).normalized;
-                    bRb.linearVelocity = dir * 12f; 
-                }
-                else
-                {
-                    // Si el jugador desapareció, apagamos la bala para no dejar basura
-                    bullet.SetActive(false);
-                }
+                // 4. DIRECCIÓN CORRECTA: Usamos el currentTarget (que será la base)
+                Vector2 dir = ((Vector2)currentTarget.position - (Vector2)firePoint.position).normalized;
+                bRb.linearVelocity = dir * 12f; 
             }
         }
-    
-        // Siempre reseteamos el estado para que el enemigo no se quede "congelado"
-        isAttacking = false;
     }
 }
