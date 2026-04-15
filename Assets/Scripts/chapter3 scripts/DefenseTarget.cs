@@ -26,7 +26,7 @@ public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
        
         if (eventStarted || isDead) return;
 
-        // Buscamos al jugador (siguiendo tu lógica de la escalera)
+        
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         
         if (timerTextUI != null)
