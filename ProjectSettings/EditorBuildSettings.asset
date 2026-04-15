@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lvls/A wonderfull life.unity
     guid: e3867b53ef9d97947ada6d572ec4800c
+  - enabled: 1
+    path: Assets/Scenes/lvls/are we more than this.unity
+    guid: 04b03cfdf1a684e44b250f21fa27d368
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}
   m_UseUCBPForAssetBundles: 0
