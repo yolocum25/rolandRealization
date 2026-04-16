@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lvls/Sudenly One Day....unity
     guid: 7e39a33960e7e4545bbcf44cf4cab9de
+  - enabled: 1
+    path: Assets/Scenes/lvls/The Black Silence.unity
+    guid: 3de760de8e17f294eaffd6dee81a8452
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}
   m_UseUCBPForAssetBundles: 0

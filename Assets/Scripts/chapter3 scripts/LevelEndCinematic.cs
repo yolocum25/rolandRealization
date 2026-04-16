@@ -11,24 +11,28 @@ using System.Collections;
 
 public class LevelEndCinematic2D : MonoBehaviour
 {
-    [Header("Referencias")]
+    [Header("Refe")]
     [SerializeField] private GameObject playerGameObject; 
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerAttackSystem playerAttack;
     [SerializeField] private Animator playerAnimator; 
 
-    [Header("Configuración de Movimiento")]
+    [Header("Confi de Movement")]
     [SerializeField] private Transform walkToPoint; 
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private string speedParameterName = "Speed"; 
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource cinematicMusicSource;
+    
+    
     [Header("Cinemachine")]
     [SerializeField] private CinemachineCamera finalVirtualCamera;
     
-    [Header("Progreso")]
+    [Header("Progress")]
     [SerializeField] private string currentLevelName = "Sudenly One Day...";
     
-    [Header("UI & Transición")]
+    [Header("UI & Transition")]
     [SerializeField] private Image fadeOverlay; 
     [SerializeField] private float waitTimeAfterWalking = 2f;
     [SerializeField] private float fadeDuration = 2f;
@@ -60,6 +64,10 @@ public class LevelEndCinematic2D : MonoBehaviour
     private IEnumerator EndLevelRoutine()
     {
         isCinematicStarted = true;
+        if (cinematicMusicSource != null)
+        {
+            cinematicMusicSource.Play();
+        }
 
         // Bloquear controles
         if (playerInput != null) playerInput.enabled = false;
