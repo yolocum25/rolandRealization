@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class LevelStartSequencer : MonoBehaviour
 {
     [Header("Referencias de UI")]
-    [SerializeField] private GameObject narrativeCanvas; // El de los diálogos
-    [SerializeField] private GameObject gameHUD;          // El de vida/timer
+    [SerializeField] private GameObject narrativeCanvas; 
+    [SerializeField] private GameObject gameHUD;          
 
     [Header("Referencias del Jugador")]
     [SerializeField] private PlayerInput playerInput;

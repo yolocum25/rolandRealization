@@ -30,6 +30,7 @@ public class DialogueSystem : MonoBehaviour
 
     [Header("Audio Settings")]
     private AudioSource audioSource;
+    [SerializeField] private AudioSource ambientAudioSource;
     
     [Header("Skip Settings")]
     [SerializeField] private bool canSkip = true;

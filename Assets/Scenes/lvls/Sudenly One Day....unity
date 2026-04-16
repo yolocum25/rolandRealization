@@ -361,7 +361,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 50
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1395,11 +1395,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 50.042053
+      value: 50.995876
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.y
-      value: -2.020121
+      value: -6.4715743
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.z
@@ -1407,11 +1407,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 726.9
+      value: 731.2
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -381.1
+      value: -384.3
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2921,15 +2921,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 155.87038
+      value: 161.1388
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: -4.714327
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 635.5
+      value: 638.1372
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -365.4
+      value: -364.3451
       objectReference: {fileID: 0}
     - target: {fileID: 1759176239235645771, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3195,7 +3199,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 60
-    OrthographicSize: 40
+    OrthographicSize: 50
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
