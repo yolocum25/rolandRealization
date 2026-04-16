@@ -25,6 +25,9 @@ public class LevelEndCinematic2D : MonoBehaviour
     [Header("Cinemachine")]
     [SerializeField] private CinemachineCamera finalVirtualCamera;
     
+    [Header("Progreso")]
+    [SerializeField] private string currentLevelName = "Sudenly One Day...";
+    
     [Header("UI & Transición")]
     [SerializeField] private Image fadeOverlay; 
     [SerializeField] private float waitTimeAfterWalking = 2f;
@@ -71,17 +74,26 @@ public class LevelEndCinematic2D : MonoBehaviour
             Debug.Log("PASO 2: Empezando a caminar...");
             if (playerAnimator != null) playerAnimator.SetFloat(speedParameterName, 1f);
 
-            // Bucle de movimiento
+            // Bucle de movimiento mejorado
             float distance = Vector2.Distance(playerGameObject.transform.position, walkToPoint.position);
-            while (distance > 0.1f)
+            
+            // Subimos el margen a 0.3f para que sea más fácil de alcanzar
+            while (distance > 0.3f)
             {
+                // Calculamos la nueva posición
+                Vector3 targetPos = new Vector3(walkToPoint.position.x, playerGameObject.transform.position.y, playerGameObject.transform.position.z);
+                
                 playerGameObject.transform.position = Vector2.MoveTowards(
                     playerGameObject.transform.position, 
-                    walkToPoint.position, 
+                    targetPos, 
                     walkSpeed * Time.deltaTime
                 );
                 
-                distance = Vector2.Distance(playerGameObject.transform.position, walkToPoint.position);
+                distance = Vector2.Distance(playerGameObject.transform.position, targetPos);
+                
+                // Si el personaje se queda trabado más de 5 segundos, forzamos la salida
+                // (Opcional: puedes añadir un contador de tiempo aquí)
+                
                 yield return null; 
             }
 
@@ -91,6 +103,7 @@ public class LevelEndCinematic2D : MonoBehaviour
 
         Debug.Log("PASO 4: Esperando pausa dramática...");
         yield return new WaitForSeconds(waitTimeAfterWalking);
+        LevelCheckerManager.MarkLevelAsCompleted(currentLevelName);
 
         Debug.Log("PASO 5: Iniciando Fade a negro...");
         yield return StartCoroutine(FadeToBlack());
