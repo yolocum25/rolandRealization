@@ -76,6 +76,8 @@ public class DistorsionScene : MonoBehaviour
     {
         // --- PARTE 1: Roland ve a Angelica ---
         rolandSeenAngelica.gameObject.SetActive(true);
+        angelicaTalks.gameObject.SetActive(false);
+        backScreen.gameObject.SetActive(false);;
         
         for (int i = 0; i < block1.Length; i++)
         {
@@ -170,6 +172,20 @@ public class DistorsionScene : MonoBehaviour
         
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+    }
+    
+    public void UI_NextButton()
+    {
+        if (isTyping) 
+        {
+            // Si está escribiendo, detenemos el efecto de escribir para mostrar el texto completo
+            isTyping = false; 
+        }
+        else 
+        {
+            // Si ya terminó de escribir, permitimos que pase a la siguiente frase
+            playerProceed = true;
+        }
     }
 
     private void EndCinematic()
