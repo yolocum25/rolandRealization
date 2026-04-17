@@ -1360,35 +1360,84 @@ MonoBehaviour:
   typingSpeed: 0.05
   fadeDuration: 2
   block1:
-  - text: 2
+  - text: no..no..Angelica..
+    voice: {fileID: 8300000, guid: 796fb3cc6bae0c143a02acc1b41be34d, type: 3}
+  - text: Please dont leave me..Angelica,please,I need you...
+    voice: {fileID: 8300000, guid: 4244d6bbd29c8e243bfb59aea9863397, type: 3}
+  - text: Angelica no.. please...
+    voice: {fileID: 8300000, guid: e37a9c06d9c481b4699d2d7309f9af0d, type: 3}
+  - text: The years...by your side...were the...best of...my entire existence...thank
+      you Roland...
+    voice: {fileID: 8300000, guid: cde3433f31249b847a4b59a7e8f5c72e, type: 3}
+  - text: '*And just like that, Angelica breathed her last, closing her eyes forever.*'
     voice: {fileID: 0}
-  - text: 3
+  - text: '*After all...he was a pathetic being who couldn''t do anything...because
+      of him, he lost everything...*'
     voice: {fileID: 0}
-  - text: 4
+  - text: '*What would life be like now without Angelica? What would Roland do after
+      all this...?*'
     voice: {fileID: 0}
-  - text: 5
+  - text: '*All these questions might upset you...but that''s okay, I''m here to
+      talk, let''s talk...*'
+    voice: {fileID: 0}
+  - text: '*LET ME INSIDE YOUR MIND...ROLAND*'
     voice: {fileID: 0}
   indexToChangeToAngelica: 3
   block2:
-  - text: 1
+  - text: ' An..gelica..'
+    voice: {fileID: 8300000, guid: 9cf9ecd58b6004349932841da078ae1d, type: 3}
+  - text: '*Finally, Roland  succumbed to distortion, bringing this story of pain
+      and tragedy to a close*'
     voice: {fileID: 0}
   block3:
-  - text: 3
+  - text: oh...
     voice: {fileID: 0}
-  - text: 1
+  - text: this was un expected...
+    voice: {fileID: 0}
+  - text: is your will that strong?
+    voice: {fileID: 0}
+  - text: well..then..
+    voice: {fileID: 0}
+  - text: show me Roland, Break the rule of the City...
+    voice: {fileID: 0}
+  - text: '*Roland''s distortion caused Angelica''s E.G.O. equipment to join the
+      distortion, which resulted in the fusion of two E.G.O. equipment of different
+      classes, creating a conflict with the City''s rules.*'
+    voice: {fileID: 0}
+  - text: '*In other words, the approach of an event horizon that would disrupt the
+      timescale was unavoidable.*'
     voice: {fileID: 0}
   block4:
-  - text: ewe
+  - text: ....
     voice: {fileID: 0}
-  - text: ds
+  - text: Fascinating...Simply fascinating
     voice: {fileID: 0}
-  - text: de
+  - text: The original timeline was broken, so the city's will had no choice but
+      to accept the new one created by your singularity.
     voice: {fileID: 0}
-  - text: no tengo nada pero mis papus
+  - text: Now answer me, Roland...how are you feeling?
     voice: {fileID: 0}
-  - text: y no quiero nada mas
-    voice: {fileID: 0}
-  indexToRelise: 2
+  - text: '"I have nothing but my sorrow'
+    voice: {fileID: 8300000, guid: ca02fb34f809a3e409e75d48747caa1b, type: 3}
+  - text: ' and I want nothing more.'
+    voice: {fileID: 8300000, guid: 20e4670fcbdcaa64483c8a364c62389d, type: 3}
+  - text: It has been, it still is, faithful to me.
+    voice: {fileID: 8300000, guid: adfd339b8a0c0ae4c820f4fe491e5848, type: 3}
+  - text: Why should I begrudge it
+    voice: {fileID: 8300000, guid: 948eb4f6e03e5794398707c1a7479741, type: 3}
+  - text: ' since during the hours'
+    voice: {fileID: 8300000, guid: e5b12604ab44b504ba9dec5c5ec7bac4, type: 3}
+  - text: when my soul crushed the depths of my heart
+    voice: {fileID: 8300000, guid: 8928723dd9f9f7f4abf25d4757f8b6f1, type: 3}
+  - text: it was seated there beside me?
+    voice: {fileID: 8300000, guid: d7e629cbbec467547a50cf8bb126c5eb, type: 3}
+  - text: 'Oh sorrow, I have ended, you see, by respecting you, because I am certain
+      you will never leave me. Ah, I realize it: your beauty lies in the force of
+      your being.Because I know that on the day of my final agony, you will be there,
+      lying in my sheets, O sorrow, so that you might once again attempt to enter
+      my heart."'
+    voice: {fileID: 8300000, guid: 32c2df1ffd200c040954ee5b909af9db, type: 3}
+  indexToRelise: 4
   playerInput: {fileID: 1957103919}
   playerAttack: {fileID: 1957103922}
 --- !u!224 &1706050303 stripped
