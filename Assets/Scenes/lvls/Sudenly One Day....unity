@@ -647,7 +647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412797125517151513, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6668278913340230555, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_Pivot.x
@@ -747,102 +747,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: sentences.Array.size
-      value: 16
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[0]'
-      value: hello
+      value: huh?
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[1]'
-      value: Isn't it a beautiful day?
+      value: What is the distortion like?
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[2]'
-      value: Yes, it's nice...
+      value: Hmm, I don't know, some say that once you hear a bell, there's no going
+        back.
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[3]'
-      value: Huh? You seem very distracted lately, is something wrong?
+      value: And that your mind collapses, how scary, right? Imagine if that happened
+        to someone close to you.
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[4]'
-      value: ...
+      value: Well, today is our last mission, let's give it our all, okay?
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[5]'
-      value: Roland...I'm pregnant...
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[6]'
-      value: huh..?
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[7]'
-      value: HUH!!!!!????
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[8]'
-      value: ' I... didn''t know how to tell you... I, sr-'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[9]'
-      value: That's wonderful!! How great, how wonderful! I can't wait! Will it be
-        a boy or a girl? What will we name it? Will it like fencing like its father?
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[10]'
-      value: '*laughing* You are so dumb'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[11]'
-      value: I was afraid of how you would react, to be honest, but now I realize
-        that I'm the fool for doubting you.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[12]'
-      value: How could I not be happy? After these months I was dying to know. I'm
-        glad you told me despite your fear; you're very brave.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[13]'
-      value: Whatever... thanks Roland, well I'm going to request the withdrawal
-        from the department, finally we have all the savings for a quiet and free
-        life, in a few months they will give me my maternity leave
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[14]'
-      value: Nothing, nothing, now let's give it our all until the day! Come on,
-        come on!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'sentences.Array.data[15]'
-      value: '*laughing* yes lets give our best'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: dialogueSounds.Array.size
-      value: 16
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 869b96f1e546ae64e8155b09e2e95fc8, type: 3}
+      objectReference: {fileID: 8300000, guid: 613539ce74d881e4e9837569f21f1018, type: 3}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: bbd239ba05ccd754bb775dea536a0c0e, type: 3}
+      objectReference: {fileID: 8300000, guid: 4890d478962d7c44da715004cd8ac3dd, type: 3}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 3b714d4d436c97947884af1949100dd0, type: 3}
+      objectReference: {fileID: 8300000, guid: 799a9725e1b002840a1abc262f391abc, type: 3}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[3]'
       value: 
-      objectReference: {fileID: 8300000, guid: 77627ab3a3dd62e45a2f9252027c6b0b, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff528e64a7fc8e4f8e4537f453f3e69, type: 3}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[4]'
       value: 
-      objectReference: {fileID: 8300000, guid: 24c5ec77587265b42be884fc94822918, type: 3}
+      objectReference: {fileID: 8300000, guid: fad12282d58585f46bdb631db9eaa9a3, type: 3}
     - target: {fileID: 8373581846860197092, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: 'dialogueSounds.Array.data[5]'
       value: 
@@ -7395,7 +7391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67d05effa6fbdf43a33ac55d9bece7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurvivalTimer
-  timeRemaining: 90
+  timeRemaining: 5
   timerText: {fileID: 1756047845}
   doorObject: {fileID: 516513864}
 --- !u!224 &1193081984 stripped
@@ -9060,7 +9056,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6030296331425458853, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
       propertyPath: targetHealthSystem

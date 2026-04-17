@@ -118,6 +118,8 @@ public class LevelEndCinematic2D : MonoBehaviour
 
         Debug.Log("PASO 6: Cargando escena: " + mainMenuSceneName);
         SceneManager.LoadScene(mainMenuSceneName);
+        Cursor.lockState = CursorLockMode.None; 
+        Cursor.visible = true;
     }
 
     private IEnumerator FadeToBlack()
