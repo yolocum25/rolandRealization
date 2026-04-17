@@ -1,11 +1,13 @@
-    using System.Collections;
+
+        using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovement2D : MonoBehaviour
+
+public class PlayerSecond : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float movementSpeed = 8f;
@@ -16,8 +18,6 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private float detectionRadius = 0.2f;
     [SerializeField] private LayerMask whatIsGround;
     
-    
-    
     [Header("Dash Settings")]
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashCooldown = 4f;
@@ -25,6 +25,10 @@ public class PlayerMovement2D : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private bool isPaused;
+    
+    [Header("Attack - Shaft")]
+    [SerializeField] private float shaftDamage = 50f;
+    [SerializeField] private float shaftRadius = 4f;
     
     [Header("SlashDash Settings")]
     [SerializeField] private LayerMask whatIsDamageable;
@@ -40,6 +44,14 @@ public class PlayerMovement2D : MonoBehaviour
     [SerializeField] private AudioSource playerAudioSource; 
     [SerializeField] private AudioClip slashDashSound;
     
+    [Header("Furioso Settings")]
+    [SerializeField] private float furiosoSearchRadius = 10f;
+    [SerializeField] private float damagePerHit = 15f;
+    [SerializeField] private float timeBetweenHits = 0.15f; 
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private AudioClip furiosoSound;
+    
+    
     private Rigidbody2D rb;
     private Animator anim;
     private bool isGrounded;
@@ -47,8 +59,12 @@ public class PlayerMovement2D : MonoBehaviour
     private Vector3 initialScale;
     private List<IDamageable> alreadyDamaged = new();
     private float originalGravity; 
+    private bool isExecutingFurioso = false;
+    private Vector3 positionBeforeFurioso;
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerAttackSystem playerAttack;
+    
+    
     
     
     public PlayerInput PlayerInput { get; private set; }
@@ -69,22 +85,27 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerInput.actions["Move"].performed += UpdateMovement;
-        PlayerInput.actions["Move"].canceled += UpdateMovement;
-        PlayerInput.actions["Jump"].started += Jump;
-        PlayerInput.actions["Dash"].started += OnDashPerformed;
-        PlayerInput.actions["SlashDash"].started += OnSlashInput;
+        var actions = playerInput.actions;
+        actions["Move"].performed += UpdateMovement;
+        actions["Move"].canceled += UpdateMovement;
+        actions["Jump"].started += Jump;
+        actions["Dash"].started += OnDashPerformed;
+        actions["Shaft"].started += OnShaftPerformed;
+        actions["Furioso"].started += OnFuriosoPerformed;
+
         // PlayerInput.actions["Player/Pause"].performed += OnPauseToggle;
         // PlayerInput.actions["UI/UnPause"].performed += OnPauseToggle;
     }
 
     private void OnDisable()
     {
-        PlayerInput.actions["Move"].performed -= UpdateMovement;
-        PlayerInput.actions["Move"].canceled -= UpdateMovement;
-        PlayerInput.actions["Jump"].started -= Jump;
-        PlayerInput.actions["Dash"].started -= OnDashPerformed;
-        PlayerInput.actions["SlashDash"].started -= OnDashPerformed;
+        var actions = playerInput.actions;
+        actions["Move"].performed -= UpdateMovement;
+        actions["Move"].canceled -= UpdateMovement;
+        actions["Jump"].started -= Jump;
+        actions["Dash"].started -= OnDashPerformed;
+        actions["Shaft"].started -= OnShaftPerformed;
+        actions["Furioso"].started -= OnFuriosoPerformed;
        
         inputVector = Vector2.zero;
         if (rb != null) 
@@ -132,8 +153,8 @@ public class PlayerMovement2D : MonoBehaviour
             return; 
         }
 
-        // 2. CONTROL DE ESTADO: ¿Estamos en modo Diálogo/UI o en modo Juego?
-        if (PlayerInput.currentActionMap.name != "Player")
+        
+        if (PlayerInput.currentActionMap.name != "PlayerSecond")
         {
            
             inputVector = Vector2.zero;
@@ -164,7 +185,7 @@ public class PlayerMovement2D : MonoBehaviour
             return;
         }
         
-        if (PlayerInput.currentActionMap.name != "Player") 
+        if (PlayerInput.currentActionMap.name != "PlayerSecond") 
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             return;
@@ -192,7 +213,33 @@ public class PlayerMovement2D : MonoBehaviour
             rb.linearVelocity = new Vector2(inputVector.x * finalSpeed, rb.linearVelocity.y);
         }
     
+        private void OnFuriosoPerformed(InputAction.CallbackContext ctx)
+        {
+            // Requisito: 90% de Sorrowness
+            if (!isExecutingFurioso && SorrownessManager.Instance.GetSorrowLevel() >= 0.9f)
+            {
+                StartCoroutine(ExecuteFuriosoRoutine());
+            }
+        }
+        
+        private void OnShaftPerformed(InputAction.CallbackContext ctx)
+        {
+            if (isExecutingFurioso) return;
 
+            anim.SetTrigger("Shaft");
+    
+            
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, shaftRadius, enemyLayer);
+            foreach (Collider2D hit in hits)
+            {
+                if (hit.TryGetComponent(out IDamageable target))
+                {
+                    target.TakeDamage(shaftDamage);
+                }
+            }
+        }
+        
+        
     private void OnSlashInput(InputAction.CallbackContext ctx)
     {
         // Solo registramos el click si el botón se presiona (started)
@@ -202,12 +249,94 @@ public class PlayerMovement2D : MonoBehaviour
             clickDuringDash = true;
         }
     }
+  private IEnumerator ExecuteFuriosoRoutine()
+{
+    isExecutingFurioso = true;
+    positionBeforeFurioso = transform.position; 
 
+    // 1. Detección de enemigos en el rango original
+    Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(positionBeforeFurioso, furiosoSearchRadius, enemyLayer);
+    List<Transform> enemiesInRange = new List<Transform>();
+    
+    foreach (var col in potentialTargets) 
+    {
+        // Solo añadimos si es enemigo (evitamos al player si por error tiene la misma capa)
+        if (!col.CompareTag("Player")) enemiesInRange.Add(col.transform);
+    }
+
+    if (enemiesInRange.Count == 0)
+    {
+        Debug.Log("No hay enemigos cerca para liberar la furia.");
+        isExecutingFurioso = false;
+        yield break;
+    }
+
+    // Preparación de estado
+    rb.simulated = false; 
+    SorrownessManager.Instance.ResetSorrow(); 
+    Transform currentTarget = enemiesInRange[0];
+
+    // 2. Bucle de 9 golpes encadenados
+    for (int i = 1; i <= 9; i++)
+    {
+        // Lógica de "Salto entre objetivos"
+        if (enemiesInRange.Count > 1)
+        {
+            // Salta al siguiente enemigo de la lista en cada iteración
+            currentTarget = enemiesInRange[i % enemiesInRange.Count];
+        }
+        // Si el enemigo original murió o desapareció, buscamos el siguiente disponible
+        if (currentTarget == null) 
+        {
+             // Filtro rápido para no romper el bucle
+             enemiesInRange.RemoveAll(item => item == null);
+             if(enemiesInRange.Count > 0) currentTarget = enemiesInRange[0];
+             else break; 
+        }
+
+        // --- TELETRANSPORTE ---
+        // Nos posicionamos a la izquierda o derecha del enemigo
+        float offset = (currentTarget.position.x > transform.position.x) ? -1.2f : 1.2f;
+        transform.position = new Vector3(currentTarget.position.x + offset, currentTarget.position.y, transform.position.z);
+        
+        FlipTowards(currentTarget.position);
+
+        // --- DISPARAR ANIMACIÓN ---
+        anim.SetInteger("FuriosoIndex", i); // Indica cuál de las 9 toca
+        anim.SetTrigger("NextHit");         // Dispara la transición instantánea
+
+        // --- INSTANCIA DE DAÑO ---
+        if (currentTarget.TryGetComponent(out IDamageable dmg))
+        {
+            dmg.TakeDamage(damagePerHit);
+            // Aquí podrías instanciar un efecto de chispas o sangre
+        }
+
+        if (playerAudioSource && furiosoSound) 
+            playerAudioSource.PlayOneShot(furiosoSound);
+
+        // Espera muy corta para que se vea la animación antes del siguiente salto
+        // Ajusta este tiempo según la duración de tus clips
+        yield return new WaitForSeconds(timeBetweenHits);
+    }
+
+    // 3. FINALIZACIÓN
+    yield return new WaitForSeconds(0.1f); // Pequeño respiro tras el último golpe
+    
+    anim.SetInteger("FuriosoIndex", 0);
+    anim.SetTrigger("FuriosoExit"); // Opcional: una transición a Idle/Salida
+    
+    transform.position = positionBeforeFurioso; 
+    rb.simulated = true;
+    isExecutingFurioso = false;
+    
+    Debug.Log("Combo Furioso completado.");
+}
     
 
     private void OnDashPerformed(InputAction.CallbackContext ctx)
     {
-        if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
+        if (canDash && !isDashing && PlayerInput.currentActionMap.name == "PlayerSecond")
         {
             float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
             if (posPerc >= 0.5f)
@@ -334,7 +463,17 @@ public class PlayerMovement2D : MonoBehaviour
         {
             Gizmos.color = isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireSphere(feet.position, detectionRadius);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(transform.position, furiosoSearchRadius);
+            
         }
+    }
+    private void FlipTowards(Vector3 targetPos)
+    {
+        if (targetPos.x > transform.position.x)
+            transform.localScale = new Vector3(Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
+        else
+            transform.localScale = new Vector3(-Mathf.Abs(initialScale.x), initialScale.y, initialScale.z);
     }
     
     private void CheckForDamageDash()
@@ -390,4 +529,5 @@ public class PlayerMovement2D : MonoBehaviour
     }
     
 }
+
 
