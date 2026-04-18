@@ -15,6 +15,7 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
     public float GetMaxHealth() => maxhealth;
     protected float currentHealth;
     protected bool staggered = false;
+    public bool isInvulnerable = false;
     
     
     protected virtual void Awake()

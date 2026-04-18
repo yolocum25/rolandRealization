@@ -7,6 +7,7 @@ namespace Player
     {
         public override void TakeDamage(float damage)
         {
+            if (isInvulnerable) return;
             base.TakeDamage(damage);
 
             EventManager.Instance.PlayerDamage(currentHealth, maxhealth);

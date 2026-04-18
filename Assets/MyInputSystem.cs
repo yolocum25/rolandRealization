@@ -263,6 +263,220 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""PlayerSecond"",
+            ""id"": ""2dc9d3f5-ab20-4206-937c-9ea3ee448bf9"",
+            ""actions"": [
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""70f7d78e-d6c0-4d3f-b132-4a94b3bf2454"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""eedd0f0a-243e-4a09-bb88-09a3752de5a9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cddf2bc-12c7-4ddf-94e9-1848e1038059"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shaft"",
+                    ""type"": ""Button"",
+                    ""id"": ""d48477ec-70ac-432d-b4f4-ae719dae33ef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Furioso"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3240276-fe7e-419a-a3f3-9dae49247507"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlashDash"",
+                    ""type"": ""Button"",
+                    ""id"": ""25987e80-e522-4805-996d-d2115aea4c06"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc7a788a-5028-4181-bdef-df4a07447307"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""db0ea4c9-72af-4be6-9e0f-802dd4ada4c5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""8442f1f0-441c-4625-bfa0-0f026a837404"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""77026219-d856-42e5-aa5f-2350b0e03e83"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""6ad1b893-8595-4f3b-95cb-a3eb01ee5e7f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8aaaaa22-c60d-4c1b-a391-a75756b7ec6a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""19333caf-552c-47ee-975f-76fe9a3cb923"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5ad9133-1a27-42b7-9aaa-0a38f7e4cf50"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb91df7d-c940-41bb-8784-e9e72669180f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shaft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88a08f31-e904-413e-b91a-244940fd7b53"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Furioso"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""7611d9a3-8118-42cd-b5cc-ca7015f1dcea"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlashDash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""f8bfac83-5eae-48f4-ac88-e3a837586815"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlashDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Binding"",
+                    ""id"": ""3273162b-015a-48f8-9265-6cf9448811b4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlashDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6eac5570-a40d-4dfb-8db0-79b27fd874fc"",
+                    ""path"": ""<Keyboard>/n"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""UI"",
             ""id"": ""502a22de-6792-46bf-9366-2ac9a3f66abd"",
             ""actions"": [
@@ -348,6 +562,15 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_SlashDash = m_Player.FindAction("SlashDash", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        // PlayerSecond
+        m_PlayerSecond = asset.FindActionMap("PlayerSecond", throwIfNotFound: true);
+        m_PlayerSecond_Jump = m_PlayerSecond.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerSecond_Move = m_PlayerSecond.FindAction("Move", throwIfNotFound: true);
+        m_PlayerSecond_Dash = m_PlayerSecond.FindAction("Dash", throwIfNotFound: true);
+        m_PlayerSecond_Shaft = m_PlayerSecond.FindAction("Shaft", throwIfNotFound: true);
+        m_PlayerSecond_Furioso = m_PlayerSecond.FindAction("Furioso", throwIfNotFound: true);
+        m_PlayerSecond_SlashDash = m_PlayerSecond.FindAction("SlashDash", throwIfNotFound: true);
+        m_PlayerSecond_Pause = m_PlayerSecond.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_NextText = m_UI.FindAction("NextText", throwIfNotFound: true);
@@ -360,6 +583,7 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
     ~@MyInputSystem()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, MyInputSystem.Player.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerSecond.enabled, "This will cause a leak and performance issues, MyInputSystem.PlayerSecond.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, MyInputSystem.UI.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Stagger.enabled, "This will cause a leak and performance issues, MyInputSystem.Stagger.Disable() has not been called.");
     }
@@ -573,6 +797,168 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
     /// </summary>
     public PlayerActions @Player => new PlayerActions(this);
+
+    // PlayerSecond
+    private readonly InputActionMap m_PlayerSecond;
+    private List<IPlayerSecondActions> m_PlayerSecondActionsCallbackInterfaces = new List<IPlayerSecondActions>();
+    private readonly InputAction m_PlayerSecond_Jump;
+    private readonly InputAction m_PlayerSecond_Move;
+    private readonly InputAction m_PlayerSecond_Dash;
+    private readonly InputAction m_PlayerSecond_Shaft;
+    private readonly InputAction m_PlayerSecond_Furioso;
+    private readonly InputAction m_PlayerSecond_SlashDash;
+    private readonly InputAction m_PlayerSecond_Pause;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "PlayerSecond".
+    /// </summary>
+    public struct PlayerSecondActions
+    {
+        private @MyInputSystem m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public PlayerSecondActions(@MyInputSystem wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_PlayerSecond_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Move".
+        /// </summary>
+        public InputAction @Move => m_Wrapper.m_PlayerSecond_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Dash".
+        /// </summary>
+        public InputAction @Dash => m_Wrapper.m_PlayerSecond_Dash;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Shaft".
+        /// </summary>
+        public InputAction @Shaft => m_Wrapper.m_PlayerSecond_Shaft;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Furioso".
+        /// </summary>
+        public InputAction @Furioso => m_Wrapper.m_PlayerSecond_Furioso;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/SlashDash".
+        /// </summary>
+        public InputAction @SlashDash => m_Wrapper.m_PlayerSecond_SlashDash;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerSecond/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_PlayerSecond_Pause;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_PlayerSecond; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="PlayerSecondActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(PlayerSecondActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="PlayerSecondActions" />
+        public void AddCallbacks(IPlayerSecondActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerSecondActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerSecondActionsCallbackInterfaces.Add(instance);
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
+            @Shaft.started += instance.OnShaft;
+            @Shaft.performed += instance.OnShaft;
+            @Shaft.canceled += instance.OnShaft;
+            @Furioso.started += instance.OnFurioso;
+            @Furioso.performed += instance.OnFurioso;
+            @Furioso.canceled += instance.OnFurioso;
+            @SlashDash.started += instance.OnSlashDash;
+            @SlashDash.performed += instance.OnSlashDash;
+            @SlashDash.canceled += instance.OnSlashDash;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="PlayerSecondActions" />
+        private void UnregisterCallbacks(IPlayerSecondActions instance)
+        {
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
+            @Shaft.started -= instance.OnShaft;
+            @Shaft.performed -= instance.OnShaft;
+            @Shaft.canceled -= instance.OnShaft;
+            @Furioso.started -= instance.OnFurioso;
+            @Furioso.performed -= instance.OnFurioso;
+            @Furioso.canceled -= instance.OnFurioso;
+            @SlashDash.started -= instance.OnSlashDash;
+            @SlashDash.performed -= instance.OnSlashDash;
+            @SlashDash.canceled -= instance.OnSlashDash;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerSecondActions.UnregisterCallbacks(IPlayerSecondActions)" />.
+        /// </summary>
+        /// <seealso cref="PlayerSecondActions.UnregisterCallbacks(IPlayerSecondActions)" />
+        public void RemoveCallbacks(IPlayerSecondActions instance)
+        {
+            if (m_Wrapper.m_PlayerSecondActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="PlayerSecondActions.AddCallbacks(IPlayerSecondActions)" />
+        /// <seealso cref="PlayerSecondActions.RemoveCallbacks(IPlayerSecondActions)" />
+        /// <seealso cref="PlayerSecondActions.UnregisterCallbacks(IPlayerSecondActions)" />
+        public void SetCallbacks(IPlayerSecondActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerSecondActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerSecondActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="PlayerSecondActions" /> instance referencing this action map.
+    /// </summary>
+    public PlayerSecondActions @PlayerSecond => new PlayerSecondActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -804,6 +1190,63 @@ public partial class @MyInputSystem: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SlashDash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSlashDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerSecond" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="PlayerSecondActions.AddCallbacks(IPlayerSecondActions)" />
+    /// <seealso cref="PlayerSecondActions.RemoveCallbacks(IPlayerSecondActions)" />
+    public interface IPlayerSecondActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shaft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShaft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Furioso" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFurioso(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "SlashDash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
