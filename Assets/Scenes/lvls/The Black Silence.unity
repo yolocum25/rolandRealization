@@ -245,7 +245,7 @@ VideoPlayer:
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
-  - 1
+  - 0.5
   m_Url: 
   m_EnabledAudioTracks: 01
   m_DirectAudioMutes: 00
@@ -3486,11 +3486,19 @@ PrefabInstance:
       objectReference: {fileID: 871209659}
     - target: {fileID: 6190483830666407469, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190483830666407469, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
+      propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6190483830666407469, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6205102834620297506, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8904295729001610699, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
       propertyPath: m_Name
