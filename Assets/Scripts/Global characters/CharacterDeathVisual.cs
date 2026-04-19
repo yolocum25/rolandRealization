@@ -8,7 +8,7 @@ public class CharacterDeathVisuals : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public ParticleSystem deathParticles;
 
-    [Header("Ajustes")]
+    [Header("confi")]
     public float delayBeforeFade = 1.5f;
     public float fadeDuration = 1.0f;
     public string deathTriggerName = "Dead";
@@ -28,7 +28,7 @@ public class CharacterDeathVisuals : MonoBehaviour
 
     private void Start()
     {
-        // Suscripción simple en Start para asegurar que el EventManager ya existe
+        
         if (EventManager.Instance != null)
         {
             EventManager.Instance.OnCharacterDead += HandleDeath;
@@ -37,14 +37,14 @@ public class CharacterDeathVisuals : MonoBehaviour
 
     private void OnDestroy()
     {
-        // Limpieza de eventos al destruir el objeto
+      
         if (EventManager.Instance != null)
         {
             EventManager.Instance.OnCharacterDead -= HandleDeath;
         }
     }
 
-    // Cambiado a PUBLIC para que el HealthSystem pueda llamarlo directamente
+   
     public void HandleDeath(GameObject deadCharacter)
     {
         if (deadCharacter != this.gameObject || isDead) return;

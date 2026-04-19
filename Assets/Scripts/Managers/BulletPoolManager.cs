@@ -13,22 +13,22 @@ public class BulletPoolManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton para acceder desde cualquier script
+        
         Instance = this;
         
-        // Inicializar el pool
+        
         bulletPool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(bulletPrefab);
-            obj.SetActive(false); // Las balas empiezan "apagadas"
+            obj.SetActive(false);
             bulletPool.Add(obj);
         }
     }
 
     public GameObject GetBullet()
     {
-        // Buscamos una bala que no esté activa
+        
         foreach (GameObject bullet in bulletPool)
         {
             if (!bullet.activeInHierarchy)
@@ -37,7 +37,7 @@ public class BulletPoolManager : MonoBehaviour
             }
         }
 
-        // Opcional: Si se acaban, crear una nueva (expansión dinámica)
+       
         GameObject newObj = Instantiate(bulletPrefab);
         newObj.SetActive(false);
         bulletPool.Add(newObj);

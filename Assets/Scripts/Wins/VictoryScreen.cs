@@ -18,7 +18,7 @@ public class VictoryScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        // 1. Buscamos el spawner en la escena y lo apagamos
+       
         EnemySpawnerV2 spawner = Object.FindFirstObjectByType<EnemySpawnerV2>();
 
         if (spawner != null)
@@ -26,7 +26,7 @@ public class VictoryScreen : MonoBehaviour
             spawner.StopSpawning();
         }
 
-        // 2. Ahora que el spawner está muerto, borramos los enemigos
+       
         ClearAllEnemies();
 
         if (EventManager.Instance != null)
@@ -49,13 +49,13 @@ public class VictoryScreen : MonoBehaviour
             victoryAudioSource.Play();
         }
         
-        // Mostramos el total de enemigos (los 9 que configuramos en el VictoryManager)
+      
         if (killsText != null)
         {
             killsText.text = "All anomalies has been Obliterated!";
         }
         
-        // Obtenemos el tiempo del LevelTimer
+       
         if (timeText != null && LevelTimer.Instance != null)
         {
             timeText.text = "In: <color=yellow>" + LevelTimer.Instance.GetTimeElapsedFormatted() + "</color>";
@@ -73,7 +73,7 @@ public class VictoryScreen : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject enemy in enemies)
         {
-            // Solo destruimos si el objeto aún existe
+           
             if (enemy != null) Destroy(enemy);
         }
     }

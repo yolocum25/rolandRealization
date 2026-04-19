@@ -7,20 +7,20 @@ public class SorrownessBar : MonoBehaviour
     [SerializeField] private Image fillImage; 
     
     [Header("Bar Settings")]
-    [SerializeField] public float maxValue = 100f; // Ahora es propia de este script
+    [SerializeField] public float maxValue = 100f;
     [SerializeField] private float lerpSpeed = 5f;
 
     private float currentValue = 0f;
     private float targetValue = 0f;
 
-    // Propiedades para que el Manager lea los datos
+   
     public float CurrentValue => currentValue;
     public float MaxValue => maxValue;
     public float FillPercentage => currentValue / maxValue;
 
     private void Update()
     {
-        // Movimiento suave de la barra
+        
         if (Mathf.Abs(currentValue - targetValue) > 0.01f)
         {
             currentValue = Mathf.Lerp(currentValue, targetValue, Time.deltaTime * lerpSpeed);

@@ -7223,7 +7223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67d05effa6fbdf43a33ac55d9bece7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SurvivalTimer
-  timeRemaining: 5
+  timeRemaining: 90
   timerText: {fileID: 1756047845}
   doorObject: {fileID: 516513864}
 --- !u!224 &1193081984 stripped

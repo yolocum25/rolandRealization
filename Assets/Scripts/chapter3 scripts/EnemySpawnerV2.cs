@@ -44,7 +44,7 @@ public class EnemySpawnerV2 : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        // Si canSpawn es false o el prefab es nulo, salimos antes de intentar el Instantiate
+        
         if (!canSpawn || enemyPrefab == null) return; 
 
         if (spawnPoints.Length == 0) return;

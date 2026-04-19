@@ -18,7 +18,7 @@ public class PlayerSecondAttack : MonoBehaviour
     [SerializeField] private AudioClip attackSound;
     
     private Animator anim;
-    private bool attacking; // Esta variable controla la lógica de daño
+    private bool attacking; 
     private List<IDamageable> alreadyDamaged = new List<IDamageable>();
 
     private void Awake()
@@ -30,7 +30,7 @@ public class PlayerSecondAttack : MonoBehaviour
     {
         if (!enabled) return;
 
-        // Atacamos si pulsamos click, ha pasado el cooldown y no estamos atacando ya
+        
         if (Input.GetMouseButtonDown(0) && Time.time >= nextAttackTime && !attacking)
         {
             PerformAttack();
@@ -49,26 +49,25 @@ public class PlayerSecondAttack : MonoBehaviour
         if (playerAudioSource != null && attackSound != null)
             playerAudioSource.PlayOneShot(attackSound);
 
-        // 1. Abrimos la ventana (Lógica y Animación)
+        
         OpenAttackWindow1();
         
-        // 2. Programamos el cierre a los 0.5 segundos
+
         CancelInvoke(nameof(CloseAttackWindow1)); 
         Invoke(nameof(CloseAttackWindow1), 0.5f); 
     }
 
-    // --- MÉTODOS DE CONTROL DE VENTANA ---
+   
 
     public void OpenAttackWindow1()
     {
         attacking = true;
-        alreadyDamaged.Clear(); // Limpiamos la lista al empezar un ataque nuevo
+        alreadyDamaged.Clear(); 
 
-        // Si tu Animator usa un Bool llamado "attacking"
+       
         if (anim != null) anim.SetBool("attacking", true);
         
-        // Si tu Animator usa un Trigger llamado "attack" (Descomenta la línea de abajo si es así)
-        // if (anim != null) anim.SetTrigger("attack");
+       
     }
 
     public void CloseAttackWindow1()
@@ -76,11 +75,11 @@ public class PlayerSecondAttack : MonoBehaviour
         attacking = false;
         alreadyDamaged.Clear(); 
 
-        // IMPORTANTE: Ponemos el bool en false para que la animación termine
+       
         if (anim != null) anim.SetBool("attacking", false);
     }
 
-    // ---------------------------------------
+   
 
     private void CheckForDamage()
     {
@@ -101,7 +100,7 @@ public class PlayerSecondAttack : MonoBehaviour
                 damageable.TakeDamage(currentDamage);
                 alreadyDamaged.Add(damageable);
 
-                // --- AÑADE ESTA LÍNEA ---
+               
                 if(SorrownessManager.Instance != null) 
                     SorrownessManager.Instance.PlayerDealtDamage();
             }

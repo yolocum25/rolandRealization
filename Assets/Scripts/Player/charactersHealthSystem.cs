@@ -42,11 +42,11 @@ public class charactersHealthSystem : MonoBehaviour,IDamageable
     }
     protected virtual void Die()
     {
-        // 1. Avisar al mundo (Evento)
+        
         if (EventManager.Instance != null)
             EventManager.Instance.CharacterDead(this.gameObject);
 
-        // 2. Llamada directa de seguridad (Esto garantiza que funcione)
+      
         CharacterDeathVisuals visuals = GetComponent<CharacterDeathVisuals>();
         if (visuals != null)
         {

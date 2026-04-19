@@ -30,7 +30,7 @@ public class PlayerMain : MonoBehaviour
 
         foreach (var col in colliders)
         {
-            // Intentamos obtener la interfaz del objeto tocado
+            
             IInteractable interactable = col.GetComponent<IInteractable>();
             
             if (interactable != null)

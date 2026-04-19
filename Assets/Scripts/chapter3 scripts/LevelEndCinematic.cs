@@ -42,7 +42,7 @@ public class LevelEndCinematic2D : MonoBehaviour
 
     private void Awake()
     {
-        // Aseguramos que empiece invisible
+      
         if (fadeOverlay != null)
         {
             Color c = fadeOverlay.color;
@@ -56,7 +56,7 @@ public class LevelEndCinematic2D : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isCinematicStarted)
         {
-            Debug.Log("PASO 1: Jugador detectado en el Trigger");
+            
             StartCoroutine(EndLevelRoutine());
         }
     }
@@ -69,26 +69,26 @@ public class LevelEndCinematic2D : MonoBehaviour
             cinematicMusicSource.Play();
         }
 
-        // Bloquear controles
+        
         if (playerInput != null) playerInput.enabled = false;
         if (playerAttack != null) playerAttack.enabled = false;
 
-        // Activar cámara
+       
         if (finalVirtualCamera != null) finalVirtualCamera.Priority = 100;
 
-        // Movimiento
+       
         if (walkToPoint != null && playerGameObject != null)
         {
-            Debug.Log("PASO 2: Empezando a caminar...");
+           
             if (playerAnimator != null) playerAnimator.SetFloat(speedParameterName, 1f);
 
-            // Bucle de movimiento mejorado
+            
             float distance = Vector2.Distance(playerGameObject.transform.position, walkToPoint.position);
             
-            // Subimos el margen a 0.3f para que sea más fácil de alcanzar
+            
             while (distance > 0.3f)
             {
-                // Calculamos la nueva posición
+               
                 Vector3 targetPos = new Vector3(walkToPoint.position.x, playerGameObject.transform.position.y, playerGameObject.transform.position.z);
                 
                 playerGameObject.transform.position = Vector2.MoveTowards(
@@ -99,24 +99,22 @@ public class LevelEndCinematic2D : MonoBehaviour
                 
                 distance = Vector2.Distance(playerGameObject.transform.position, targetPos);
                 
-                // Si el personaje se queda trabado más de 5 segundos, forzamos la salida
-                // (Opcional: puedes añadir un contador de tiempo aquí)
                 
                 yield return null; 
             }
 
-            Debug.Log("PASO 3: Llegué al punto. Deteniendo animación.");
+            
             if (playerAnimator != null) playerAnimator.SetFloat(speedParameterName, 0f);
         }
 
-        Debug.Log("PASO 4: Esperando pausa dramática...");
+        
         yield return new WaitForSeconds(waitTimeAfterWalking);
         LevelCheckerManager.MarkLevelAsCompleted(currentLevelName);
 
-        Debug.Log("PASO 5: Iniciando Fade a negro...");
+       
         yield return StartCoroutine(FadeToBlack());
 
-        Debug.Log("PASO 6: Cargando escena: " + mainMenuSceneName);
+        
         SceneManager.LoadScene(mainMenuSceneName);
         Cursor.lockState = CursorLockMode.None; 
         Cursor.visible = true;
@@ -126,7 +124,7 @@ public class LevelEndCinematic2D : MonoBehaviour
     {
         if (fadeOverlay == null)
         {
-            Debug.LogError("¡ERROR! No hay imagen asignada en FadeOverlay");
+            
             yield break;
         }
 
@@ -144,7 +142,7 @@ public class LevelEndCinematic2D : MonoBehaviour
         
         c.a = 1f;
         fadeOverlay.color = c;
-        Debug.Log("Fade Out completado al 100%");
+        
     }
 }
 }

@@ -60,7 +60,7 @@ public class PlayerMovement2D : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         initialScale = transform.localScale;
     
-        // Guardamos la gravedad original aquí
+        
         originalGravity = rb.gravityScale; 
 
         rb.freezeRotation = true;
@@ -80,10 +80,11 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void OnDisable()
     {
+        
         PlayerInput.actions["Move"].performed -= UpdateMovement;
         PlayerInput.actions["Move"].canceled -= UpdateMovement;
         PlayerInput.actions["Jump"].started -= Jump;
-        PlayerInput.actions["Dash"].started -= OnDashPerformed;
+        PlayerInput.actions["Dash"].performed -= OnDashPerformed;
         PlayerInput.actions["SlashDash"].started -= OnDashPerformed;
        
         inputVector = Vector2.zero;
@@ -98,6 +99,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void UpdateMovement(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (!enabled) 
         {
             inputVector = Vector2.zero;
@@ -108,8 +110,9 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (!enabled) return;
-
+       
         if (ctx.started && isGrounded)
         {
             float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
@@ -132,7 +135,7 @@ public class PlayerMovement2D : MonoBehaviour
             return; 
         }
 
-        // 2. CONTROL DE ESTADO: ¿Estamos en modo Diálogo/UI o en modo Juego?
+      
         if (PlayerInput.currentActionMap.name != "Player")
         {
            
@@ -195,8 +198,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void OnSlashInput(InputAction.CallbackContext ctx)
     {
-        // Solo registramos el click si el botón se presiona (started)
-        // y si estamos en medio de un dash normal.
+      
         if (ctx.started && isDashing && !isSlashDashing)
         {
             clickDuringDash = true;
@@ -207,6 +209,7 @@ public class PlayerMovement2D : MonoBehaviour
 
     private void OnDashPerformed(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (canDash && !isDashing && PlayerInput.currentActionMap.name == "Player")
         {
             float posPerc = EmotionManager.Instance.positiveBar.FillPercentage;
@@ -222,7 +225,7 @@ public class PlayerMovement2D : MonoBehaviour
         isDashing = true;
         clickDuringDash = false;
 
-        rb.gravityScale = 0f; // Usamos la global
+        rb.gravityScale = 0f; 
         rb.linearVelocity = Vector2.zero; 
 
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
@@ -291,7 +294,7 @@ public class PlayerMovement2D : MonoBehaviour
         }
 
         rb.linearVelocity = Vector2.zero;
-        rb.gravityScale = originalGravity; // Acceso directo y seguro
+        rb.gravityScale = originalGravity; 
         isDashing = false;
         isSlashDashing = false;
         SlashDash = false;

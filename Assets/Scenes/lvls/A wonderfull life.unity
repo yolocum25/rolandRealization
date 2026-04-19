@@ -638,6 +638,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e6266aa5d76e984894ee6cfbfea008d, type: 3}
+--- !u!114 &147281738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2167615341539606769, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+  m_PrefabInstance: {fileID: 2042534700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &211776869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,6 +2352,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
   m_PrefabInstance: {fileID: 2042534700}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &852265418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852265412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7391f5ea807c604ca2ae91706da227c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelTimer
+  timeLimit: 180
+  AudioSource: {fileID: 0}
+  timerText: {fileID: 147281738}
+  warningColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1001 &936032317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3845,7 +3872,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5856220842717582419, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 852265418}
   m_SourcePrefab: {fileID: 100100000, guid: 513e015eeeb5d4345ba420249b172aff, type: 3}
 --- !u!114 &2073291835 stripped
 MonoBehaviour:

@@ -41,7 +41,7 @@ public class PlayerAttackSystem : MonoBehaviour
             anim.SetTrigger(AttackTrigger);
             
             attacking = true; 
-            Invoke(nameof(CloseAttackWindow), 0.5f); // Lo cerramos a los 0.5 segundos
+            Invoke(nameof(CloseAttackWindow), 0.5f); 
         }
 
         if (attacking)

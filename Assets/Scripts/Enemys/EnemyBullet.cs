@@ -13,7 +13,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 1. Buscamos si el objeto tiene la interfaz de daño
+        
         IDamageable damageable = collision.GetComponent<IDamageable>();
         
         if (damageable != null)
@@ -23,11 +23,11 @@ public class EnemyBullet : MonoBehaviour
             {
                 damageable.TakeDamage(damage);
                 Deactivate();
-                return; // Salimos para evitar procesar más colisiones
+                return; 
             }
         }
 
-        // 3. Si choca con el escenario (suelo/paredes)
+        
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             Deactivate();

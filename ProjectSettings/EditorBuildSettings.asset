@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/lvls/Pure Sorrow.unity
     guid: bee0350840101d44da110ab3678638d8
   - enabled: 1
-    path: Assets/Scenes/lvls/YourVoice.unity
+    path: Assets/Scenes/lvls/Your Voice.unity
     guid: eddd9444a4dc0e340979adb8e5319d73
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}

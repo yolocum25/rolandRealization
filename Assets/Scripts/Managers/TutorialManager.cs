@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
             playerInput.SwitchCurrentActionMap("UI");
         }
 
-        // Cambiado a "ActivateDialogue" para que coincida con el otro script
+        
         if (dialogueSystem != null)
         {
             dialogueSystem.ActivateDialogue();

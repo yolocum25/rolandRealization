@@ -1692,7 +1692,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 905388421858651396, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: nextLevelName
-      value: YourVoice
+      value: Your Voice
       objectReference: {fileID: 0}
     - target: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: m_Name

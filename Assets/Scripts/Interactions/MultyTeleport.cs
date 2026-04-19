@@ -17,11 +17,10 @@ public class MultiTeleport : MonoBehaviour, IInteractable
 
         if (player != null && teleportPoints.Length > 0)
         {
-            // 1. Calculamos el siguiente índice
-            // El símbolo '%' (módulo) hace que al llegar al final vuelva al 0
+            
             currentPointIndex = (currentPointIndex + 1) % teleportPoints.Length;
 
-            // 2. Referencia al punto destino
+          
             Transform targetPoint = teleportPoints[currentPointIndex];
 
             if (targetPoint != null)

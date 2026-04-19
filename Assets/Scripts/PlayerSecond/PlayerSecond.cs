@@ -84,7 +84,7 @@ public class PlayerSecond : MonoBehaviour
         PlayerInput = GetComponent<PlayerInput>();
         initialScale = transform.localScale;
     
-        // Guardamos la gravedad original aquí
+        
         originalGravity = rb.gravityScale; 
 
         rb.freezeRotation = true;
@@ -129,6 +129,7 @@ public class PlayerSecond : MonoBehaviour
 
     private void UpdateMovement(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (!enabled) 
         {
             inputVector = Vector2.zero;
@@ -139,6 +140,7 @@ public class PlayerSecond : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (!enabled || isExecutingFurioso) return;
 
         if (ctx.started && isGrounded)
@@ -235,7 +237,7 @@ public class PlayerSecond : MonoBehaviour
     }
         private void OnFuriosoPerformed(InputAction.CallbackContext ctx)
         {
-           
+            if (this == null || !gameObject.activeInHierarchy) return;
             if (!isExecutingFurioso && SorrownessManager.Instance.GetSorrowLevel() >= 0.9f)
             {
                 StartCoroutine(ExecuteFuriosoRoutine());
@@ -262,7 +264,7 @@ public class PlayerSecond : MonoBehaviour
         
     private void OnSlashInput(InputAction.CallbackContext ctx)
     {
-       
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (ctx.started && isDashing && !isSlashDashing)
         {
             clickDuringDash = true;
@@ -270,6 +272,7 @@ public class PlayerSecond : MonoBehaviour
     }
   private IEnumerator ExecuteFuriosoRoutine()
 {
+    
     isExecutingFurioso = true;
     
     SpriteRenderer sr = GetComponent<SpriteRenderer>();
@@ -277,13 +280,13 @@ public class PlayerSecond : MonoBehaviour
     originalOrder = playerSprite.sortingOrder;
     playerSprite.sortingOrder = 100; 
 
-    // 1. Detección de enemigos en el rango original
+    
     Collider2D[] potentialTargets = Physics2D.OverlapCircleAll(positionBeforeFurioso, furiosoSearchRadius, enemyLayer);
     List<Transform> enemiesInRange = new List<Transform>();
     
     foreach (var col in potentialTargets) 
     {
-        // Solo añadimos si es enemigo (evitamos al player si por error tiene la misma capa)
+       
         if (!col.CompareTag("Player")) enemiesInRange.Add(col.transform);
     }
 
@@ -294,61 +297,59 @@ public class PlayerSecond : MonoBehaviour
         yield break;
     }
 
-    // Preparación de estado
+   
     rb.simulated = false; 
     SorrownessManager.Instance.ResetSorrow(); 
     Transform currentTarget = enemiesInRange[0];
 
-    // 2. Bucle de 9 golpes encadenados
+   
     for (int i = 1; i <= 9; i++)
     {
-        // Lógica de "Salto entre objetivos"
+       
         if (enemiesInRange.Count > 1)
         {
-            // Salta al siguiente enemigo de la lista en cada iteración
+            
             currentTarget = enemiesInRange[i % enemiesInRange.Count];
         }
-        // Si el enemigo original murió o desapareció, buscamos el siguiente disponible
+      
         if (currentTarget == null) 
         {
-             // Filtro rápido para no romper el bucle
+             
              enemiesInRange.RemoveAll(item => item == null);
              if(enemiesInRange.Count > 0) currentTarget = enemiesInRange[0];
              else break; 
         }
 
-        // --- TELETRANSPORTE ---
-        // Nos posicionamos a la izquierda o derecha del enemigo
+       
         float offset = (currentTarget.position.x > transform.position.x) ? -1.2f : 1.2f;
 
-// Forzamos la Z a un valor negativo (ej. -0.5f) para que esté más cerca de la cámara que el enemigo
+
         transform.position = new Vector3(currentTarget.position.x + offset, currentTarget.position.y, -0.5f);
         
         FlipTowards(currentTarget.position);
 
-        // --- DISPARAR ANIMACIÓN ---
-        anim.SetInteger("FuriosoIndex", i); // Indica cuál de las 9 toca
-        anim.SetTrigger("NextHit");         // Dispara la transición instantánea
+        
+        anim.SetInteger("FuriosoIndex", i); 
+        anim.SetTrigger("NextHit");         
 
-        // --- INSTANCIA DE DAÑO ---
+       
         if (currentTarget.TryGetComponent(out IDamageable dmg))
         {
             dmg.TakeDamage(damagePerHit);
-            // Aquí podrías instanciar un efecto de chispas o sangre
+            
         }
 
         if (playerAudioSource && furiosoSound) 
             playerAudioSource.PlayOneShot(furiosoSound);
 
-        // Espera muy corta para que se vea la animación antes del siguiente salto
-        // Ajusta este tiempo según la duración de tus clips
+        
         yield return new WaitForSeconds(timeBetweenHits);
     }
 
-    // 3. FINALIZACIÓN
+   
     playerSprite.sortingOrder = originalOrder;
     isExecutingFurioso = false;
-    yield return new WaitForSeconds(0.1f); // Pequeño respiro tras el último golpe
+    yield return new WaitForSeconds(0.1f);
     
     
     
@@ -362,6 +363,7 @@ public class PlayerSecond : MonoBehaviour
 
     private void OnDashPerformed(InputAction.CallbackContext ctx)
     {
+        if (this == null || !gameObject.activeInHierarchy) return;
         if (canDash && !isDashing || isExecutingFurioso || PlayerInput.currentActionMap.name == "PlayerSecond")
         {
                 StartCoroutine(DashLogic());
@@ -373,7 +375,7 @@ public class PlayerSecond : MonoBehaviour
         isDashing = true;
         clickDuringDash = false;
 
-        rb.gravityScale = 0f; // Usamos la global
+        rb.gravityScale = 0f; 
         rb.linearVelocity = Vector2.zero; 
 
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
@@ -438,7 +440,7 @@ public class PlayerSecond : MonoBehaviour
         }
 
         rb.linearVelocity = Vector2.zero;
-        rb.gravityScale = originalGravity; // Acceso directo y seguro
+        rb.gravityScale = originalGravity; 
         isDashing = false;
         isSlashDashing = false;
         SlashDash = false;

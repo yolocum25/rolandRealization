@@ -128,11 +128,11 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Visualizar Rango de detección
+       
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
 
-        // Visualizar Waypoints
+        
         if (waypoints != null)
         {
             Gizmos.color = Color.cyan;

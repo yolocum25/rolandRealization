@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class DefenseTarget : MonoBehaviour, IDamageable, IInteractable
 {
-    [Header("Ajustes de Vida")]
+    [Header("confi HP")]
     [SerializeField] private float maxHealth = 500f;
     private float currentHealth;
     private bool isDead = false;
     private bool eventStarted = false;
     
 
-    [Header("Referencias y Audio")]
+    [Header("Ref and Audio")]
     [SerializeField] private SurvivalTimer survivalTimer;
     [SerializeField] private AudioSource activationSound; 
     [SerializeField] private GameObject timerTextUI;

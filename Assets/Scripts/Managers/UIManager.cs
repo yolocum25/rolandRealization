@@ -16,30 +16,6 @@ public class UIManager : MonoBehaviour
         EventManager.Instance.OnPlayerDamaged -= UpdateHealthBar;
     }
     
-    
-    
-    
-    
-    
-    private void ActualizarUivida()
-    {
-        Debug.Log("Actualizar UIvida");
-    }
-    
-    
-    
-    
-    
-    //(([Serializedfield] private characterhealSystem healsysytem; //mala opcion y no hay que hacer
-    
-    
-    
-    // private void OnDisable()
-    // {
-    //     CharacterHealthSystem.Ondamage += ActualizarvidaUIvida;
-    // }))
-
-
     public void UpdateHealthBar(float currentHealth, float maxhealth)
     {
         healthBar.fillAmount = currentHealth / maxhealth;

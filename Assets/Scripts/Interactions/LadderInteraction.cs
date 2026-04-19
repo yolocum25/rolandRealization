@@ -3,11 +3,11 @@ using UnityEngine;
 public class LadderInteraction : MonoBehaviour, IInteractable
 {
     [Header("tp POINTS")]
-    [SerializeField] private Transform topPoint;    // Arrastra el objeto de arriba
-    [SerializeField] private Transform bottomPoint; // Arrastra el objeto de abajo
+    [SerializeField] private Transform topPoint;   
+    [SerializeField] private Transform bottomPoint;
 
     [Header("Confi")]
-    [SerializeField] private bool isAtBottom = true; // Controla hacia dónde va el jugador
+    [SerializeField] private bool isAtBottom = true; 
     [SerializeField] private AudioSource interactSound;
 
     public void GenerateInteraction()

@@ -44,9 +44,9 @@ public class EnemyStaggerResponse : MonoBehaviour
 
         if (rb != null)
         {
-            // 2. CONGELAMOS EL RIGIDBODY COMPLETAMENTE
+            
             rb.linearVelocity = Vector2.zero;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll; // Bloquea X, Y y Rotación
+            rb.constraints = RigidbodyConstraints2D.FreezeAll; 
         }
     
         if (anim != null) anim.SetBool("Stagger", true);
@@ -56,7 +56,7 @@ public class EnemyStaggerResponse : MonoBehaviour
    
         if (anim != null) anim.SetBool("Stagger", false);
 
-        // 3. DEVOLVEMOS LA LIBERTAD (Solo congelamos rotación Z)
+        
         if (rb != null)
         {
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;

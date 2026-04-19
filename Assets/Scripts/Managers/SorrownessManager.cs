@@ -5,7 +5,7 @@ public class SorrownessManager : MonoBehaviour
     public static SorrownessManager Instance;
 
     [Header("UI Reference")]
-    public SorrownessBar sorrowBar; // Referencia directa a tu nuevo script
+    public SorrownessBar sorrowBar; 
 
     [Header("Balance Settings")]
     [SerializeField] private float passiveGainRate = 1f;    
@@ -20,14 +20,14 @@ public class SorrownessManager : MonoBehaviour
 
     void Update()
     {
-        // Ganancia pasiva propia
+        
         if (sorrowBar != null && sorrowBar.CurrentValue < sorrowBar.MaxValue)
         {
             sorrowBar.AddValue(passiveGainRate * Time.deltaTime);
         }
     }
 
-    // Métodos para que el Player 2 los llame
+    
     public void PlayerDealtDamage() => sorrowBar.AddValue(gainOnHitGiven);
     public void PlayerTookDamage() => sorrowBar.AddValue(gainOnHitReceived);
     

@@ -32,7 +32,7 @@ public class TextHoverColor : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     
-    private System.Collections.IEnumerator ChangeColor(Color targetColor) //opcional pa que qeude bien la transicion
+    private System.Collections.IEnumerator ChangeColor(Color targetColor) 
     {
         Color currentColor = textMesh.color;
         float tick = 0f;

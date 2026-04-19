@@ -6,7 +6,7 @@ public class LevelTimer : MonoBehaviour
     public static LevelTimer Instance;
 
     [Header("Ajustes de Tiempo")]
-    [SerializeField] private float timeLimit = 300f; // 5 minutos
+    [SerializeField] private float timeLimit = 300f; 
     private float currentTime;
     private bool timerRunning = true;
 
@@ -57,7 +57,7 @@ public class LevelTimer : MonoBehaviour
             currentTime -= Time.deltaTime;
             UpdateTimerDisplay();
             
-            // Efecto visual: si quedan menos de 30 segundos, poner en rojo
+           
             if (currentTime <= 30f && timerText != null)
             {
                 timerText.color = warningColor;
@@ -90,7 +90,7 @@ public class LevelTimer : MonoBehaviour
         }
     }
 
-    // El VictoryScreen llamará a esto para mostrar el tiempo final
+   
     public string GetTimeElapsedFormatted()
     {
         float elapsed = timeLimit - currentTime;

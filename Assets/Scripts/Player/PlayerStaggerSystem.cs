@@ -53,7 +53,7 @@ public class PlayerStaggerSystem : MonoBehaviour
         }
         if (anim != null) anim.Play("roland_Stagger", 0, 0f);
         
-        // 3. Frenamos al personaje
+        
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
