@@ -3,13 +3,13 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [Header("Configuración de Spawn")]
+    [Header("Confi Spawn")]
     [SerializeField] private GameObject enemyPrefab;    
     [SerializeField] private float spawnInterval = 10f;  
     [SerializeField] private Transform[] spawnPoints;   
     [SerializeField] private SurvivalTimer survivalTimer;
 
-    [Header("Límites")]
+    [Header("Limit")]
     [SerializeField] private int maxEnemiesAtOnce = 4; 
     
     private bool canSpawn = true;

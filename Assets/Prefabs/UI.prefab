@@ -722,7 +722,6 @@ GameObject:
   - component: {fileID: 3131035031635698074}
   - component: {fileID: 6589436342585039323}
   - component: {fileID: 1296542881040101667}
-  - component: {fileID: 3055882906064056106}
   m_Layer: 0
   m_Name: UI
   m_TagString: Enemy
@@ -842,22 +841,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3055882906064056106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5856220842717582419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7391f5ea807c604ca2ae91706da227c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelTimer
-  timeLimit: 220
-  AudioSource: {fileID: 5741649789993432931}
-  timerText: {fileID: 2167615341539606769}
-  warningColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &6845390781804802180
 GameObject:
   m_ObjectHideFlags: 0
