@@ -1279,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7738489494582792850, guid: a1d622e3be94e5847ab49e6169f5c093, type: 3}
       propertyPath: enemiesToWin
-      value: 70
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8308232898728013191, guid: a1d622e3be94e5847ab49e6169f5c093, type: 3}
       propertyPath: gameHUD
@@ -1690,10 +1690,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 905388421858651396, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
-      propertyPath: nextLevelName
-      value: Pure Sorrow
-      objectReference: {fileID: 0}
     - target: {fileID: 2715805135728704007, guid: 7c44f2b228ee607498c5b3c99afd181a, type: 3}
       propertyPath: m_Name
       value: WinCanvas
@@ -7586,7 +7582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412797125517151513, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6668278913340230555, guid: ecb75a9cd6ed46046981a46b53ffb670, type: 3}
       propertyPath: m_Pivot.x
@@ -8947,6 +8943,10 @@ PrefabInstance:
       propertyPath: targetHealthSystem
       value: 
       objectReference: {fileID: 871209659}
+    - target: {fileID: 5086188109695278989, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d96deb47ac5e3246945d922c49e4f41, type: 3}
     - target: {fileID: 6190483830666407469, guid: 0648031b8e32a26469a2e432d6af078d, type: 3}
       propertyPath: m_Enabled
       value: 1

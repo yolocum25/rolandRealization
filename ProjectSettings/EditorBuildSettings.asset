@@ -29,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lvls/The Black Silence.unity
     guid: 3de760de8e17f294eaffd6dee81a8452
+  - enabled: 1
+    path: Assets/Scenes/lvls/Pure Sorrow.unity
+    guid: bee0350840101d44da110ab3678638d8
+  - enabled: 1
+    path: Assets/Scenes/lvls/YourVoice.unity
+    guid: eddd9444a4dc0e340979adb8e5319d73
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: fa86f21bdacf3ff4bac5eceda33096a2, type: 3}
   m_UseUCBPForAssetBundles: 0
