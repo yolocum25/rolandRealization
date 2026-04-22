@@ -12,7 +12,6 @@ public class EnemyHealthSystem : charactersHealthSystem
         
         if (EmotionManager.Instance != null)
         {
-            // Subimos la barra azul del jugador
             EmotionManager.Instance.GainPositive(damage * 0.5f);
         }
     }
