@@ -3,7 +3,7 @@ using UnityEngine.TextCore.Text;
 namespace Player
 
 {
-    public class PlayerHealthSystem : charactersHealthSystem
+    public class PlayerHealthSystem : CharactersHealthSystem
     {
         public override void TakeDamage(float damage)
         {

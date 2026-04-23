@@ -1,10 +1,11 @@
+using Player;
 using UnityEngine;
 using UnityEngine.UI; 
 
 public class PlayerHealthBarUI : MonoBehaviour
 {
     [Header("Referencias")]
-    [SerializeField] private charactersHealthSystem targetHealthSystem;
+    [SerializeField] private CharactersHealthSystem targetHealthSystem;
     [SerializeField] private Image healthBarFill; 
 
     private void OnEnable()
@@ -42,7 +43,7 @@ public class PlayerHealthBarUI : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null)
             {
-                targetHealthSystem = player.GetComponent<charactersHealthSystem>();
+                targetHealthSystem = player.GetComponent<CharactersHealthSystem>();
             }
         }
     }

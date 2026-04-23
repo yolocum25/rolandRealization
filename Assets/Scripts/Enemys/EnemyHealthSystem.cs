@@ -1,6 +1,7 @@
+using Player;
 using UnityEngine;
 
-public class EnemyHealthSystem : charactersHealthSystem
+public class EnemyHealthSystem : CharactersHealthSystem
 {
     
    

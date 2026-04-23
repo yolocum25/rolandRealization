@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Player;
 
 public class StaggerUIFeedback : MonoBehaviour
 {
     [Header("Referencias")]
-    [SerializeField] private charactersHealthSystem healthSystem;
+    [SerializeField] private CharactersHealthSystem healthSystem;
     [SerializeField] private Image stateIndicatorImage; 
 
     [Header("Configuración Visual")]
